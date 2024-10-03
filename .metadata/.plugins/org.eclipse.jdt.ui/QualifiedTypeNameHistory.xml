@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.opensymphony.xwork2.ActionSupport"/>
+    <fullyQualifiedTypeName name="com.sinctrlaltf4.model.services.repository.GenericRepositoryServiceImpl"/>
+    <fullyQualifiedTypeName name="com.sinctrlaltf4.model.services.repository.util.JpaUtil"/>
+    <fullyQualifiedTypeName name="com.sinctrlaltf4.action.util.GestionHistorialUtil"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.http.HttpServletRequest"/>
+    <fullyQualifiedTypeName name="org.apache.struts2.ServletActionContext"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.http.HttpServletResponse"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC	
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="true"/>
+	
+	<package name="base" extends="struts-default">
+		<action name="Entrar" class="com.sinctrlaltf4.action.EntrarAction">
+			<result name="success">/pre-game.jsp</result>
+		</action>
+		<action name="Jugar" class="com.sinctrlaltf4.action.JugarAction">
+			<result name="success">/game.jsp</result>
+			<result name="none">/index.jsp</result>
+		</action>
+		<action name="Juego" class="com.sinctrlaltf4.action.JuegoAction">
+			<result name="input">/final.jsp</result>
+		</action>
+		<action name="Final" class="com.sinctrlaltf4.action.FinalAction">
+			<result name="input">/pre-game.jsp</result>
+			<result name="none">/final.jsp</result>
+			<result name="success">/index.jsp</result>
+		</action>
+		<action name="Creditos" class="com.sinctrlaltf4.action.CreditosAction">
+			<result name="input">/creditos.jsp</result>
+		</action>
+	</package>
+</struts>

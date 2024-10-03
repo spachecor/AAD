@@ -1,0 +1,103 @@
+body {
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    background-image: url('../img/fondos/1.gif');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+}
+
+.vidas {
+    display: flex;
+    flex-direction: column;
+}
+
+.nombres {
+	width: 100%;
+    display: flex;
+    justify-content: center;
+	color: black;
+}
+.nombres > p{
+	margin: 25px 300px 0 300px;
+	font-size: 30px;
+	font-weight: bolder;
+}
+
+.barra-vida {
+    display: flex;
+    justify-content: center;
+    margin: 0 0px;
+    position: absolute;
+    top: 10%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    width: 60px; 
+    height: auto; 
+}
+
+.tiempo {
+    display: flex;
+    justify-content: center;
+
+    margin: 0 0px;
+    position: absolute;
+    top: 17%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    width: 60px; 
+    height: auto; 
+}
+
+.juego {
+   
+    display: flex;
+    align-items: end;
+}
+
+.botones1 {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0px;
+
+    position: absolute;
+    top: 70%; 
+    left: 0%; 
+    transform: translate(-50%, -50%); 
+    width: 0px; 
+    height: auto; 
+}
+
+.botones2 {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0px;
+    position: absolute;
+    top: 70%; 
+    right: 0%; 
+    transform: translate(-50%, -50%); 
+    width: 50px; 
+    height: auto; 
+}
+
+.jugador1 {
+    margin: 0 0px;
+    position: absolute;
+    top: 70%; 
+    left: 20%; 
+    transform: translate(-50%, -50%); 
+    width: 50px; 
+    height: auto; 
+}
+
+.jugador2 {
+    margin: 0 0px;
+    position: absolute;
+    top: 70%; 
+    right: 40%; 
+    transform: translate(-50%, -50%); 
+    width: 50px; 
+    height: auto;
+}

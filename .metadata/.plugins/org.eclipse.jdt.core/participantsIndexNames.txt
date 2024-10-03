@@ -1,0 +1,5 @@
+INDEX VERSION 1.134
+C:\Users\Selene\Documents\Aad\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1574937036.index
+\juego\src\main\java
+C:\Users\Selene\Documents\Aad\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3824593747.index
+\juego\src\main\java

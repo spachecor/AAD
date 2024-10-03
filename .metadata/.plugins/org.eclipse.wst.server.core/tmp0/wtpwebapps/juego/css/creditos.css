@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    background-image: url('../img/fondos/creditos.png');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+}
+#salir {
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	cursor: pointer;
+    padding: 0;
+    background: none;
+    margin: 0 0px;
+    border: none;
+}

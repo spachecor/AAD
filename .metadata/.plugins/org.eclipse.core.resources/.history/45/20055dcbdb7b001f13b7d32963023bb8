@@ -1,0 +1,13 @@
+body{
+	background-color
+}
+#salir {
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	cursor: pointer;
+    padding: 0;
+    background: none;
+    margin: 0 0px;
+    border: none;
+}

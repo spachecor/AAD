@@ -1,0 +1,8 @@
+package com.sinctrlaltf4.action.util;
+
+import com.sinctrlaltf4.model.services.repository.GenericRepositoryServiceImpl;
+
+public class GestionHistorialUtil {
+	GenericRepositoryServiceImpl<Juego> juegoGenericRepositoryServiceImpl
+
+}
