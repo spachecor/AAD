@@ -27,6 +27,8 @@ public class EjercicioUno {
             System.out.println("Nombre escrito correctamente");
         }catch (Exception e){
             e.printStackTrace();
+        }finally{
+            sc.close();
         }
     }
 }

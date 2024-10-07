@@ -11,7 +11,7 @@ public class EjecicioSeis {
         * Escribe un programa que lea el fichero personas.bin y muestre todos los nombres y edades de las personas en
         * la lista.
         * */
-        List<Persona> personas = new ArrayList<Persona>();
+        List<Persona> personas = new ArrayList<>();
         try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("documentos/ejerciciostemaunoparteuno/persona2.bin"))){
             //leemos el primer objeto
             Object aux = ois.readObject();
