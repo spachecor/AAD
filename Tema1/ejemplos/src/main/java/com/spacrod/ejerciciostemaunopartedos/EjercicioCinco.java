@@ -14,7 +14,6 @@ public class EjercicioCinco {
         * */
         String path = "documentos/ejerciciostemaunopartedos/libro.txt";
         Libro libro = new Libro("Hola mundo", "MundoLovers");
-        System.out.println(libro);
         try{
             File file = new File(path);
             if(!file.exists())file.createNewFile();

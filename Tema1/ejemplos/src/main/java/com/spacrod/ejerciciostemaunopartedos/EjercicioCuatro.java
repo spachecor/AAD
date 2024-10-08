@@ -13,7 +13,7 @@ public class EjercicioCuatro {
         String path = "documentos/ejerciciostemaunopartedos/lineas.txt";
         try{
             List<String> lineas = Files.readAllLines(Path.of(path));
-            lineas.forEach(System.out::println);
+            System.out.println(lineas.size());
         }catch(Exception e){
             e.printStackTrace();
         }
