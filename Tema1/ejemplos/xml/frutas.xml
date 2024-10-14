@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<frutas>
+    <fruta>
+        <nombre>Manzana</nombre>
+        <color>Rojo</color>
+        <cantidad>10</cantidad>
+    </fruta>
+    <fruta>
+        <nombre>Banana</nombre>
+        <color>Amarillo</color>
+        <cantidad>5</cantidad>
+    </fruta>
+</frutas>
