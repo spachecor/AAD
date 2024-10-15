@@ -6,6 +6,9 @@ import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.util.Scanner;
 
@@ -34,13 +37,13 @@ public class EjercicioCinco {
 
             // Obtener los elementos título y autor
             NodeList listaFrutas = doc.getElementsByTagName("fruta");
-            System.out.println("Seleccione una fruta por el nº que le precede");
+            System.out.println("Seleccione una fruta por el nº que le precede\n");
             for (int i = 0; i < listaFrutas.getLength(); i++) {
                 Element fruta = (Element) listaFrutas.item(i);
-                System.out.println("Fruta nº: "+i+1);
+                System.out.println("Fruta nº: "+(i+1));
                 System.out.println("Nombre: " + fruta.getElementsByTagName("nombre").item(0).getTextContent());
                 System.out.println("Color: " + fruta.getElementsByTagName("color").item(0).getTextContent());
-                System.out.println("Cantidad: " + fruta.getElementsByTagName("cantidad").item(0).getTextContent());
+                System.out.println("Cantidad: " + fruta.getElementsByTagName("cantidad").item(0).getTextContent()+"\n");
             }
             System.out.println("Seleccione la fruta: ");
             int frutaElegida = sc.nextInt();
@@ -51,18 +54,31 @@ public class EjercicioCinco {
                 System.out.println("1- Nombre\n2- Color\n3- Cantidad");
                 int opcion = sc.nextInt();
                 switch (opcion) {
-                    //todo terminar hacer metodos
                     case 1:
-                        modificarNombreFruta();
+                        Element nombre = (Element) fruta.getElementsByTagName("nombre").item(0);
+                        sc.nextLine();
+                        System.out.println("Introduzca un nuevo nombre: ");
+                        nombre.setTextContent(sc.nextLine());
                         break;
                     case 2:
-                        modificarColorFruta();
+                        Element color = (Element) fruta.getElementsByTagName("color").item(0);
+                        sc.nextLine();
+                        System.out.println("Introduzca un nuevo color: ");
+                        color.setTextContent(sc.nextLine());
                         break;
                     case 3:
-                        modificarCantidadFruta();
+                        Element cantidad = (Element) fruta.getElementsByTagName("cantidad").item(0);
+                        sc.nextLine();
+                        System.out.println("Introduzca una nueva cantidad: ");
+                        cantidad.setTextContent(sc.nextLine());
                         break;
                 }
                 //CODIGO PARA MODIFICAR LA FRUTA ELEGIDA, TOMAREMOS ÚNICAMENTE LA FRUTA QUE HA SELECCIONADO EL USUARIO
+                Transformer transformer = TransformerFactory.newInstance().newTransformer();
+                Result output = new StreamResult(archivo);
+                Source input = new DOMSource(doc);
+                transformer.transform(input, output);
+                System.out.println("Elemento modificado correctamente");
             }
         } catch (Exception e) {
             e.printStackTrace();

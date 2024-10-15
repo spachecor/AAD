@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<frutas>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><frutas>
     <fruta>
         <nombre>Manzana</nombre>
         <color>Rojo</color>
