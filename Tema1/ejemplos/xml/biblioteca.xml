@@ -1,0 +1,10 @@
+<biblioteca>
+    <libro>
+        <titulo>Soy un titulo</titulo>
+        <autor>Soy un autor</autor>
+    </libro>
+    <libro>
+        <titulo>Soy un titulo</titulo>
+        <autor>Soy un autor</autor>
+    </libro>
+</biblioteca>
