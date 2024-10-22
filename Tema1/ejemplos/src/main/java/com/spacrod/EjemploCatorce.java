@@ -10,12 +10,15 @@ public class EjemploCatorce {
     public static void main(String[] args) {
         try {
             File file = new File("xml/biblioteca.xml");
-            JAXBContext jaxbContext = JAXBContext.newInstance(Libro.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance(Libros.class);
 
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-            Libro libro = (Libro) jaxbUnmarshaller.unmarshal(file);
-            System.out.println("Título: " + libro.getTitulo());
-            System.out.println("Autor: " + libro.getAutor());
+            Libros libros = (Libros) jaxbUnmarshaller.unmarshal(file);
+
+            // Mostrar los libros leídos
+            for (Libro libro : libros.getListaLibros()) {
+                System.out.println("Título: " + libro.getTitulo() + ", Autor: " + libro.getAutor());
+            }
         } catch (JAXBException e) {
             e.printStackTrace();
         }

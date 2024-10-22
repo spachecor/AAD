@@ -1,10 +1,10 @@
-<biblioteca>
+<libros>
     <libro>
-        <titulo>Soy un titulo</titulo>
-        <autor>Soy un autor</autor>
+        <titulo>El Principito</titulo>
+        <autor>Antoine de Saint-Exupéry</autor>
     </libro>
     <libro>
-        <titulo>Soy un titulo</titulo>
-        <autor>Soy un autor</autor>
+        <titulo>1984</titulo>
+        <autor>George Orwell</autor>
     </libro>
-</biblioteca>
+</libros>
