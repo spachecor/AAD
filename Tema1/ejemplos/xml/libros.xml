@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<libros>
+    <libro>
+        <autor>Antoine de Saint-Exupéry</autor>
+        <titulo>El Principito</titulo>
+    </libro>
+    <libro>
+        <autor>George Orwell</autor>
+        <titulo>1984</titulo>
+    </libro>
+</libros>
