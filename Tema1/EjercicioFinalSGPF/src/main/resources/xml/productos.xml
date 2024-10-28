@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <productos>
     <producto>
-        <cantidad>5</cantidad>
+        <cantidad>4</cantidad>
         <nombre>Mayonesa</nombre>
         <precio>1.67</precio>
     </producto>
@@ -23,11 +23,6 @@
     <producto>
         <cantidad>3</cantidad>
         <nombre>Salsa Rosa</nombre>
-        <precio>3.5</precio>
-    </producto>
-    <producto>
-        <cantidad>3</cantidad>
-        <nombre>Salsa Pesto</nombre>
         <precio>3.5</precio>
     </producto>
 </productos>

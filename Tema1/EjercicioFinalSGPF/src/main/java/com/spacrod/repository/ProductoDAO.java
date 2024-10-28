@@ -14,33 +14,41 @@ import java.io.File;
  * @version 1.0
  */
 public class ProductoDAO {
-    private String pathName;
+    private File file;
 
     public ProductoDAO() {
-        this.pathName = "src/main/resources/xml/productos.xml";;
+        this.file = new File("src/main/resources/xml/productos.xml");
     }
 
     public boolean agregarProducto(Producto producto) {
         Productos productos = new Productos();
-        //primero comprobamos si el xml existe
-        File file = new File(pathName);
         if (file.exists()) {//si ya existe, primero lo leemos para tomar los productos ya existentes
             productos = this.getProductos();
         }
         productos.getProductos().add(producto);
-        return this.constructorXML(productos, file);
+        return this.constructorXML(productos);
     }
     public boolean eliminarProducto(Producto producto) {
-        return true;
+        Productos productos = this.getProductos();
+        boolean eliminacion = productos.getProductos().remove(producto);
+        if(eliminacion) {
+            this.constructorXML(productos);
+            return true;
+        }else return false;
     }
-    public boolean actualizarProducto(Producto producto) {
+    public boolean actualizarProducto(String nombre, Producto producto) {
+        Productos productos = this.getProductos();
+        for(Producto productoTemp : productos.getProductos()) {
+            if(productoTemp.getNombre().equals(nombre)) {
+                productoTemp.setNombre(producto.getNombre());
+                productoTemp.setPrecio(producto.getPrecio());
+                productoTemp.setCantidad(producto.getCantidad());
+            }
+        }
+        this.constructorXML(productos);
         return true;
-    }
-    public Producto getProducto(String nombre){
-        return null;
     }
     public Productos getProductos() {
-        File file = new File(pathName);
         Productos productos = new Productos();
         if(!file.exists()){
             return productos;
@@ -54,7 +62,7 @@ public class ProductoDAO {
         }
         return productos;
     }
-    private boolean constructorXML(Productos productos, File file){
+    public boolean constructorXML(Productos productos){
         try{
             JAXBContext jaxbContext = JAXBContext.newInstance(Productos.class);
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();

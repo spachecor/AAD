@@ -16,6 +16,12 @@ public class Producto implements Comparable<Producto>{
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof Producto))return false;
+        return this.nombre.equals(((Producto)obj).nombre);
+    }
+
+    @Override
     public String toString() {
         return "Producto{" + "nombre=" + nombre + ", precio=" + precio + ", cantidad=" + cantidad + '}';
     }
