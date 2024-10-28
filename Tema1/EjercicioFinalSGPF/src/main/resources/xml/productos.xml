@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<productos>
+    <producto>
+        <cantidad>5</cantidad>
+        <nombre>Mayonesa</nombre>
+        <precio>1.67</precio>
+    </producto>
+    <producto>
+        <cantidad>10</cantidad>
+        <nombre>Ketchup</nombre>
+        <precio>2.36</precio>
+    </producto>
+    <producto>
+        <cantidad>15</cantidad>
+        <nombre>Tomate frito</nombre>
+        <precio>0.75</precio>
+    </producto>
+    <producto>
+        <cantidad>5</cantidad>
+        <nombre>Salsa Barbacoa</nombre>
+        <precio>2.5</precio>
+    </producto>
+    <producto>
+        <cantidad>3</cantidad>
+        <nombre>Salsa Rosa</nombre>
+        <precio>3.5</precio>
+    </producto>
+    <producto>
+        <cantidad>3</cantidad>
+        <nombre>Salsa Pesto</nombre>
+        <precio>3.5</precio>
+    </producto>
+</productos>

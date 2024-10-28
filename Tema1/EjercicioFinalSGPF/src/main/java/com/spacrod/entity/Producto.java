@@ -1,7 +1,9 @@
 package com.spacrod.entity;
 
-import java.math.BigDecimal;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement(name = "producto")
 public class Producto implements Comparable<Producto>{
     private String nombre;
     private Double precio;
@@ -13,6 +15,12 @@ public class Producto implements Comparable<Producto>{
         return this.nombre.compareTo(o.nombre);
     }
 
+    @Override
+    public String toString() {
+        return "Producto{" + "nombre=" + nombre + ", precio=" + precio + ", cantidad=" + cantidad + '}';
+    }
+
+    @XmlElement
     public String getNombre() {
         return nombre;
     }
@@ -21,6 +29,7 @@ public class Producto implements Comparable<Producto>{
         this.nombre = nombre;
     }
 
+    @XmlElement
     public Double getPrecio() {
         return precio;
     }
@@ -29,6 +38,7 @@ public class Producto implements Comparable<Producto>{
         this.precio = precio;
     }
 
+    @XmlElement
     public Integer getCantidad() {
         return cantidad;
     }

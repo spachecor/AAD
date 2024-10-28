@@ -1,14 +1,17 @@
 package com.spacrod.util;
 
 import com.spacrod.entity.Producto;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductosList{
+@XmlRootElement(name = "productos")
+public class Productos {
     private List<Producto> productos;
-    public ProductosList(){
-        productos = new ArrayList<Producto>();
+    public Productos(){
+        productos = new ArrayList<>();
     }
     public void agregarProducto(Producto producto){
         productos.add(producto);
@@ -30,6 +33,8 @@ public class ProductosList{
         }
         return producto;
     }
+
+    @XmlElement(name = "producto")
     public List<Producto> getProductos() {
         return productos;
     }
