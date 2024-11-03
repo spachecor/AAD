@@ -1,0 +1,7 @@
+module:com.spachecor.proyectoproductos
+com.spachecor.proyectoproductos
+com.spachecor.proyectoproductos.controller
+com.spachecor.proyectoproductos.model.conversores
+com.spachecor.proyectoproductos.model.entity
+com.spachecor.proyectoproductos.model.repository
+com.spachecor.proyectoproductos.model.util

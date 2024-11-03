@@ -1,0 +1,32 @@
+[
+  {
+    "nombre": "Mayonesa",
+    "precio": 1.67,
+    "cantidad": 4
+  },
+  {
+    "nombre": "Ketchup",
+    "precio": 2.36,
+    "cantidad": 10
+  },
+  {
+    "nombre": "Tomate frito",
+    "precio": 0.75,
+    "cantidad": 15
+  },
+  {
+    "nombre": "Salsa Barbacoa",
+    "precio": 2.56,
+    "cantidad": 5
+  },
+  {
+    "nombre": "Salsa Rosa",
+    "precio": 3.75,
+    "cantidad": 3
+  },
+  {
+    "nombre": "Mostaza",
+    "precio": 1.59,
+    "cantidad": 5
+  }
+]

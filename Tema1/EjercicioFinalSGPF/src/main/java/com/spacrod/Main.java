@@ -4,6 +4,10 @@ import com.spacrod.entity.Producto;
 import com.spacrod.repository.ProductoDAO;
 import com.spacrod.service.conversores.Conversor;
 import com.spacrod.service.conversores.ConversorCSV;
+import com.spacrod.service.conversores.ConversorJSON;
+import com.spacrod.service.conversores.ConversorXML;
+
+import java.io.File;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,7 +22,11 @@ public class Main {
         productoDos.setNombre("Salsa Pesto");
         System.out.println(productoDAO.eliminarProducto(productoDos));
         productoDAO.getProductos().getProductos().forEach(System.out::println);*/
-        ConversorCSV conversorCSV = new ConversorCSV();
-        System.out.println(conversorCSV.obtenerExtensionDocumento("productos.html"));
+        ConversorXML conversorXML = new ConversorXML();
+        try {
+            conversorXML.convert(new File("src/main/resources/json/productos.json"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

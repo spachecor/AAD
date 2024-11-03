@@ -25,23 +25,24 @@ public class ConversorCSV extends Conversor {
     }
 
     @Override
-    public File convert(File file) throws FileNotFoundException {
+    public File convert(File file) throws IOException {
         if(!file.exists())throw new FileNotFoundException("Archivo no encontrado");
-        //tomamos la extensión del fichero para saber si es csv, json o xml
+        //tomamos la extensión del fichero para saber si es csv o xml
         ExtensionDocumento extensionDocumento = super.obtenerExtensionDocumento(file.getName());
         switch(extensionDocumento){
             case CSV:
+                System.out.println("Devolviendo el mismo archivo...");
                 return file;
             case XML:
                 ProductoDAO productoDAO = new ProductoDAO();
                 Productos productos = productoDAO.getProductos();
                 //generamos el csv con el metodo concreto
-                cargarEnCSV(productos.getProductos());
-                return this.file;
-            case JSON:
-                //todo gestionar que venga de un json
+                boolean crearCSV = cargarEnCSV(productos.getProductos());
+                if(crearCSV){
+                    return this.file;
+                }else throw new IOException("Imposible convertir el archivo");
+            default: throw new IllegalArgumentException("La extensión del documento no es válida para hacer la conversión.");
         }
-        return null;
     }
     private boolean cargarEnCSV(List<Producto> productos){
         Path path = Path.of(this.file.getPath());
@@ -50,7 +51,7 @@ public class ConversorCSV extends Conversor {
             for(Producto producto: productos){
                 Files.writeString(
                         path,
-                        producto.getNombre()+","+producto.getPrecio()+","+producto.getCantidad(),
+                        producto.getNombre()+","+producto.getPrecio()+","+producto.getCantidad()+"\n",
                         StandardCharsets.UTF_8,
                         StandardOpenOption.APPEND
                 );
