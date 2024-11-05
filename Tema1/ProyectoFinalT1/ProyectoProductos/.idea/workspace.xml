@@ -4,42 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8da340d9-4046-426e-a2ab-58cf083412c7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../EjercicioFinalSGPF/src/main/resources/csv/productos.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../EjercicioFinalSGPF/src/main/resources/json/productos.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/spachecor/proyectoproductos/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/spachecor/proyectoproductos/controller/ProductosController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/spachecor/proyectoproductos/model/conversores/Conversor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/spachecor/proyectoproductos/model/conversores/ConversorCSV.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/spachecor/proyectoproductos/model/conversores/ConversorJSON.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/spachecor/proyectoproductos/model/conversores/ConversorXML.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/spachecor/proyectoproductos/model/conversores/ExtensionDocumento.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/spachecor/proyectoproductos/model/entity/Producto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/spachecor/proyectoproductos/model/repository/ProductoDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/spachecor/proyectoproductos/model/util/Productos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/spachecor/proyectoproductos/csv/productos.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/spachecor/proyectoproductos/img/icono.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/spachecor/proyectoproductos/view/productos.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/spachecor/proyectoproductos/xml/productos.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjercicioFinalSGPF/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../EjercicioFinalSGPF/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjercicioFinalSGPF/src/main/java/com/spacrod/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EjercicioFinalSGPF/src/main/java/com/spacrod/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjercicioFinalSGPF/src/main/java/com/spacrod/service/conversores/Conversor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EjercicioFinalSGPF/src/main/java/com/spacrod/service/conversores/Conversor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjercicioFinalSGPF/src/main/java/com/spacrod/service/conversores/ConversorCSV.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EjercicioFinalSGPF/src/main/java/com/spacrod/service/conversores/ConversorCSV.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjercicioFinalSGPF/src/main/java/com/spacrod/service/conversores/ConversorJSON.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EjercicioFinalSGPF/src/main/java/com/spacrod/service/conversores/ConversorJSON.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EjercicioFinalSGPF/src/main/java/com/spacrod/service/conversores/ConversorXML.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EjercicioFinalSGPF/src/main/java/com/spacrod/service/conversores/ConversorXML.java" afterDir="false" />
-    </list>
+    <list default="true" id="8da340d9-4046-426e-a2ab-58cf083412c7" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,7 +18,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -73,25 +38,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.HelloApplication.executor": "Run",
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Selene/Documents/AAD/Tema1/ProyectoProductos/src/main/java/com/spachecor/proyectoproductos",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "Errors",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Selene/Documents/AAD/Tema1/ProyectoFinalT1/ProyectoProductos&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Selene\Documents\AAD\Tema1\ProyectoProductos\src\main\java\com\spachecor\proyectoproductos" />
@@ -120,6 +85,10 @@
       <workItem from="1730578340201" duration="127000" />
       <workItem from="1730644353001" duration="6211000" />
       <workItem from="1730653693928" duration="15110000" />
+      <workItem from="1730708016032" duration="63000" />
+      <workItem from="1730752592400" duration="2466000" />
+      <workItem from="1730794111016" duration="1434000" />
+      <workItem from="1730795598248" duration="238000" />
     </task>
     <servers />
   </component>

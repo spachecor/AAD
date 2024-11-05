@@ -129,12 +129,14 @@ public class ProductosController implements Initializable {
         labelNotificacion.setText("");
         //tomamos el producto que se ha seleccionado
         Producto p = tablaProductos.getSelectionModel().getSelectedItem();
-        //eliminamos p de la tabla y del xml
-        this.productos.remove(p);
-        this.tablaProductos.refresh();
-        productoDAO.eliminarProducto(p);
-        this.limpiarCampos();
-        this.tablaProductos.getSelectionModel().clearSelection();
+        if(p!=null){
+            //eliminamos p de la tabla y del xml
+            this.productos.remove(p);
+            this.tablaProductos.refresh();
+            productoDAO.eliminarProducto(p);
+            this.limpiarCampos();
+            this.tablaProductos.getSelectionModel().clearSelection();
+        }else labelNotificacion.setText("Debe seleccionar un producto");
     }
 
     /**
