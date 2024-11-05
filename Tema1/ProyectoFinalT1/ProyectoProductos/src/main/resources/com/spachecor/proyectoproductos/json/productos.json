@@ -28,5 +28,25 @@
     "nombre": "Mostaza",
     "precio": 1.59,
     "cantidad": 5
+  },
+  {
+    "nombre": "Salsa de frutos secos",
+    "precio": 5.36,
+    "cantidad": 10
+  },
+  {
+    "nombre": "Salsa Fetuchini",
+    "precio": 6.54,
+    "cantidad": 10
+  },
+  {
+    "nombre": "Mayonesa Ybarra",
+    "precio": 6.0,
+    "cantidad": 3
+  },
+  {
+    "nombre": "Alioli",
+    "precio": 5.0,
+    "cantidad": 6
   }
 ]
