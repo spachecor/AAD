@@ -2,6 +2,7 @@ module com.spacrod.ejerciciofinalpersonasdirecciones {
     requires javafx.controls;
     requires javafx.fxml;
     requires jdk.unsupported.desktop;
+    requires java.sql;
 
 
     opens com.spacrod.ejerciciofinalpersonasdirecciones to javafx.fxml;

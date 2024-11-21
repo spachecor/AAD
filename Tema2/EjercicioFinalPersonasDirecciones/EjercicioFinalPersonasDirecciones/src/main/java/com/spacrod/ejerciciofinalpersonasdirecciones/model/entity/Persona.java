@@ -12,6 +12,15 @@ public class Persona {
         this.edad = edad;
     }
 
+    @Override
+    public String toString() {
+        return "Persona{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", edad=" + edad +
+                '}';
+    }
+
     public Integer getId() {
         return id;
     }

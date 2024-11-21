@@ -1,6 +1,6 @@
 package com.spacrod.ejerciciofinalpersonasdirecciones.model.entity;
 
-public class Direccion {
+public class Direccion implements Comparable<Direccion>{
     private Integer id;
     private String calle;
     private String ciudad;
@@ -14,6 +14,17 @@ public class Direccion {
         this.ciudad = ciudad;
         this.codigoPostal = codigoPostal;
         this.persona = persona;
+    }
+
+    @Override
+    public String toString() {
+        return "Direccion{" +
+                "id=" + id +
+                ", calle='" + calle + '\'' +
+                ", ciudad='" + ciudad + '\'' +
+                ", codigoPostal=" + codigoPostal +
+                ", persona=" + persona +
+                '}';
     }
 
     public Integer getId() {
@@ -54,5 +65,13 @@ public class Direccion {
 
     public void setPersona(Persona persona) {
         this.persona = persona;
+    }
+
+    @Override
+    public int compareTo(Direccion o) {
+        if(this.id==o.id){
+            return 0;
+        }
+        return 1;
     }
 }
