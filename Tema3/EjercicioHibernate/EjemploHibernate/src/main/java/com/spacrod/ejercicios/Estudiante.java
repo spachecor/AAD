@@ -1,4 +1,4 @@
-package com.spacrod.ejercicioestudiante;
+package com.spacrod.ejercicios;
 
 import jakarta.persistence.*;
 
@@ -11,13 +11,26 @@ public class Estudiante {
     private String nombre;
     private String apellido;
     private String email;
+    private Integer edad;
 
     public Estudiante() {}
 
-    public Estudiante(String nombre, String apellido, String email) {
+    public Estudiante(String nombre, String apellido, String email, Integer edad) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
+        this.edad = edad;
+    }
+
+    @Override
+    public String toString() {
+        return "Estudiante{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", email='" + email + '\'' +
+                ", edad=" + edad +
+                '}';
     }
 
     public Integer getId() {
@@ -50,5 +63,13 @@ public class Estudiante {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Integer getEdad() {
+        return edad;
+    }
+
+    public void setEdad(Integer edad) {
+        this.edad = edad;
     }
 }

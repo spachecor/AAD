@@ -26,7 +26,6 @@
 
         <!-- Activar el uso de transacciones -->
         <property name="hibernate.current_session_context_class">thread</property>
-        <mapping class="com.spacrod.Persona"/>
-        <mapping class="com.spacrod.ejercicioestudiante.Estudiante"/>
+        <mapping class="com.spacrod.ejercicios.Estudiante"/>
     </session-factory>
 </hibernate-configuration>

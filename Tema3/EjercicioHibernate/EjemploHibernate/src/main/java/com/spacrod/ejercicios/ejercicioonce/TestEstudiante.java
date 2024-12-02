@@ -1,8 +1,11 @@
-package com.spacrod.ejercicioestudiante;
+package com.spacrod.ejercicios.ejercicioonce;
 
+import com.spacrod.ejercicios.Estudiante;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+
+import java.util.List;
 
 public class TestEstudiante {
     public static void main(String[] args) {
@@ -10,8 +13,8 @@ public class TestEstudiante {
         Session session = sessionFactory.openSession();
         try{
             session.beginTransaction();
-            Estudiante estudiante = new Estudiante("Juan", "Pérez", "juan.perez@exam");
-            session.save(estudiante);
+            Long numeroEstudiantes = session.createQuery("select count(*) from Estudiante", Long.class).getSingleResult();
+            System.out.println(numeroEstudiantes);
             session.getTransaction().commit();
         }catch (Exception e){
             session.getTransaction().rollback();
