@@ -6,7 +6,7 @@
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
 
         <!-- URL de conexión -->
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/personas</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/empresapracticas</property>
 
         <!-- Usuario y contraseña -->
         <property name="hibernate.connection.username">root</property>
@@ -26,6 +26,7 @@
 
         <!-- Activar el uso de transacciones -->
         <property name="hibernate.current_session_context_class">thread</property>
-        <mapping class="com.spacrod.ejerciciosparteuno.Estudiante"/>
+        <mapping class="com.spacrod.ejerciciopartedos.Empresa"/>
+        <mapping class="com.spacrod.ejerciciopartedos.Estudiante"/>
     </session-factory>
 </hibernate-configuration>
