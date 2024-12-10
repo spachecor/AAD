@@ -23,12 +23,12 @@ public class EmpresaRepositoryImpl implements CRUDRepository<Empresa> {
 
     @Override
     public void save(Empresa empresa) {
-        if (empresa.getId() == null||empresa.getId() == 0)session.persist(empresa);
-        else session.merge(empresa);
+        if (empresa.getId() == null||empresa.getId() == 0)session.persist(empresa);//si no existe la empresa, se guarda
+        else session.merge(empresa);//si existe, se modifica
     }
 
     @Override
     public void delete(Empresa empresa) {
-        session.remove(empresa);
+        session.remove(empresa);//eliminamos la empresa
     }
 }
