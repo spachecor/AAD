@@ -4,6 +4,14 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+/**
+ * Clase Nota, que es la nota que un estudiante obtiene en un curso
+ * @see Entidad
+ * @see Curso
+ * @see Estudiante
+ * @author Selene
+ * @version 1.0
+ */
 @Entity
 public class Nota extends Entidad<Nota>{
     @Id

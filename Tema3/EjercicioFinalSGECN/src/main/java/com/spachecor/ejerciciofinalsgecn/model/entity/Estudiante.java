@@ -5,6 +5,13 @@ import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Clase Estudiante, que define al estudiante que puede matricularse en una serie de cursos.
+ * @see Entidad
+ * @see Curso
+ * @author Selene
+ * @version 1.0
+ */
 @Entity
 public class Estudiante extends Entidad<Estudiante>{
     @Id

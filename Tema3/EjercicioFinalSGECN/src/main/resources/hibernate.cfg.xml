@@ -6,26 +6,26 @@
         <property name="hibernate.connection.driver_class">org.h2.Driver</property>
 
         <!-- URL de conexión -->
-        <property name="hibernate.connection.url">jdbc:h2:~/personas</property>
+        <property name="hibernate.connection.url">jdbc:h2:~/ecn</property>
 
         <!-- Usuario y contraseña -->
-        <property name="hibernate.connection.username">sa</property>
+        <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password"/>
 
         <!-- Dialecto SQL -->
         <property name="hibernate.dialect">org.hibernate.dialect.H2Dialect</property>
 
         <!-- Gestión del esquema -->
-        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
 
         <!-- Mostrar SQL en consola -->
-        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.show_sql">false</property>
 
         <!-- Formatear SQL -->
         <property name="hibernate.format_sql">true</property>
 
         <!-- Configuración del log de nivel SQL (opcional, para más detalle) -->
-        <property name="hibernate.use_sql_comments">true</property>
+        <property name="hibernate.use_sql_comments">false</property>
 
         <!-- Activar el uso de transacciones -->
         <property name="hibernate.current_session_context_class">thread</property>

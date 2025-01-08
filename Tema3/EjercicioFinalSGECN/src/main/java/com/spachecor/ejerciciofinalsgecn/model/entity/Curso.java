@@ -5,6 +5,14 @@ import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Clase Curso, que es un curso donde pueden matricularse estudiantes y que contiene las notas de los mismos
+ * @see Entidad
+ * @see Estudiante
+ * @see Nota
+ * @author Selene
+ * @version 1.0
+ */
 @Entity
 public class Curso extends Entidad<Curso>{
     @Id
