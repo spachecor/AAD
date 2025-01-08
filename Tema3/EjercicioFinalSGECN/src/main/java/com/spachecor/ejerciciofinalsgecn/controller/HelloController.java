@@ -1,4 +1,4 @@
-package com.spacrod.ejerciciofinalsgppt.controllers;
+package com.spachecor.ejerciciofinalsgecn.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
