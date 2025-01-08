@@ -14,21 +14,11 @@ public class Test {
     public static void main(String[] args) {
 
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
 
-        List<Curso> cursos = session.createQuery("from Curso").list();
-        List<Nota> notas = session.createQuery("from Nota").list();
-        List<Estudiante> estudiantes = session.createQuery("from Estudiante").list();
-        Object estudianteCurso = session.createNativeQuery(
-                "SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'ESTUDIANTE_CURSO'"
-        ).getResultList();
-        System.out.println("Leido");
-        cursos.forEach(System.out::println);
-        notas.forEach(System.out::println);
-        estudiantes.forEach(System.out::println);
-        System.out.println(estudianteCurso);
+
         
-        /*try{
+        try{
             session.beginTransaction();
             Estudiante jose = new Estudiante();
             jose.setNombre("Jose");
@@ -73,6 +63,14 @@ public class Test {
 
             session.persist(notaJoseInformaticaDos);
 
+            List<Curso> cursos = session.createQuery("from Curso").list();
+            List<Nota> notas = session.createQuery("from Nota").list();
+            List<Estudiante> estudiantes = session.createQuery("from Estudiante").list();
+            System.out.println("Leido");
+            cursos.forEach(System.out::println);
+            notas.forEach(System.out::println);
+            estudiantes.forEach(System.out::println);
+
             session.getTransaction().commit();
         }catch (Exception e){
             session.getTransaction().rollback();
@@ -80,7 +78,9 @@ public class Test {
         }finally{
             session.close();
             sessionFactory.close();
-        }*/
+        }
+
+
 
 
 
