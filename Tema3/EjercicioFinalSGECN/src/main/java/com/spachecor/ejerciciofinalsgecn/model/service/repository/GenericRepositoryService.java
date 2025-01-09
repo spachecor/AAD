@@ -3,6 +3,7 @@ package com.spachecor.ejerciciofinalsgecn.model.service.repository;
 import com.spachecor.ejerciciofinalsgecn.model.entity.Entidad;
 import org.hibernate.Session;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,12 +16,10 @@ import java.util.Optional;
  * @version 1.0
  */
 public class GenericRepositoryService<T extends Entidad> {
-    private Session session;
-    private GenericRepository<T> repository;
+    private final GenericRepository<T> repository;
 
-    public GenericRepositoryService(Session session, Class<T> entityClass) {
-        this.session = session;
-        this.repository = new GenericRepository<>(session, entityClass);
+    public GenericRepositoryService(Class<T> entityClass) {
+        this.repository = new GenericRepository<>(entityClass);
     }
 
     /**
@@ -28,7 +27,15 @@ public class GenericRepositoryService<T extends Entidad> {
      * @return Un objeto de tipo List con una lista de entidades encontradas
      */
     public List<T> listar() {
-        return this.repository.listar();
+        Session session = ServiceUtil.getSession();
+        List<T> list = new ArrayList<>();
+        try{
+            session.beginTransaction();
+            list = this.repository.listar(session);
+            session.getTransaction().commit();
+        }finally {
+            return list;
+        }
     }
 
     /**
@@ -37,7 +44,13 @@ public class GenericRepositoryService<T extends Entidad> {
      * @return Un objeto Optional que englobará la entidad encontrada o null
      */
     public Optional<T> buscarPorId(Integer id) {
-        return Optional.ofNullable(this.repository.porId(id));
+        Session session = ServiceUtil.getSession();
+        Optional<T> result = Optional.empty();
+        try{
+            result = Optional.ofNullable(this.repository.porId(session, id));
+        }finally {
+            return result;
+        }
     }
 
     /**
@@ -45,12 +58,13 @@ public class GenericRepositoryService<T extends Entidad> {
      * @param t La entidad a actualizar/guardar
      */
     public void guardar(T t) {
+        Session session = ServiceUtil.getSession();
         try{
-            this.session.getTransaction().begin();
-            this.repository.guardar(t);
-            this.session.getTransaction().commit();
+            session.getTransaction().begin();
+            repository.guardar(session, t);
+            session.getTransaction().commit();
         }catch (Exception e) {
-            this.session.getTransaction().rollback();
+            session.getTransaction().rollback();
         }
     }
 
@@ -59,12 +73,13 @@ public class GenericRepositoryService<T extends Entidad> {
      * @param id El id de la enitidad a eliminar
      */
     public void eliminar(Integer id) {
+        Session session = ServiceUtil.getSession();
         try{
-            this.session.getTransaction().begin();
-            this.repository.eliminar(id);
-            this.session.getTransaction().commit();
+            session.getTransaction().begin();
+            this.repository.eliminar(session, id);
+            session.getTransaction().commit();
         }catch (Exception e) {
-            this.session.getTransaction().rollback();
+            session.getTransaction().rollback();
         }
     }
 }

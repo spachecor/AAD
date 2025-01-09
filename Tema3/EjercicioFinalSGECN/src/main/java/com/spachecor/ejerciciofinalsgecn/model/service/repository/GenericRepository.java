@@ -14,46 +14,48 @@ import java.util.List;
  * @version 1.0
  */
 public class GenericRepository<T extends Entidad>{
-    private Session session;
     private Class<T> entityClass;
 
-    GenericRepository(Session session, Class<T> entityClass) {
-        this.session = session;
+    GenericRepository(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
 
     /**
      * Método que lista todas las entidades de la tabla a la que pertenece la entidad
+     * @param session la sesion actual para realizar la operacion
      * @return devuelve un objeto List de T con la lista de entidades encontradas
      */
-    List<T> listar(){
-        return this.session.createQuery("select t from "+this.entityClass.getSimpleName()+" t").getResultList();
+    List<T> listar(Session session){
+        return session.createQuery("from "+this.entityClass.getSimpleName()).getResultList();
     }
 
     /**
      * Método que obtiene una entidad en concreto que coincida con el id indicado
+     * @param session la sesion actual para realizar la operacion
      * @param id El id de la entidad solicitada
      * @return La entidad solicitada o null si no la encuentra
      */
-    T porId(Integer id){
-        return this.session.find(this.entityClass, id);
+    T porId(Session session, Integer id){
+        return session.find(this.entityClass, id);
     }
     /**
      * Método que comprueba si la entidad pasada existe en la base de datos. Si existe, la
      * actualiza, si no, la crea en el repositorio
+     * @param session la sesion actual para realizar la operacion
      * @param t La entidad a actualizar/crear
      */
-    void guardar(T t){
-        if(t.getId() != null&&t.getId()>0&&porId(t.getId())!=null)this.session.merge(t);
-        else this.session.persist(t);
+    void guardar(Session session, T t){
+        if(t.getId() != null&&t.getId()>0&&porId(session, t.getId())!=null)session.merge(t);
+        else session.persist(t);
     }
 
     /**
      * Método que elimina la entidad que coincide con el id indicado
+     * @param session la sesion actual para realizar la operacion
      * @param id El id de la entidad a eliminar
      */
-    void eliminar(Integer id){
-        this.session.remove(id);
+    void eliminar(Session session, Integer id){
+        session.remove(id);
     }
 
 }

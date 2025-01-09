@@ -10,14 +10,14 @@ import org.hibernate.cfg.Configuration;
 import java.time.LocalDate;
 import java.util.List;
 
-public class Test {
+public class TestDos {
     public static void main(String[] args) {
 
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 
 
-        Session session = sessionFactory.openSession();
-        
+        /*Session session = sessionFactory.getCurrentSession();
+
         try{
             session.beginTransaction();
             Estudiante jose = new Estudiante();
@@ -75,13 +75,10 @@ public class Test {
         }catch (Exception e){
             session.getTransaction().rollback();
             e.printStackTrace();
-        }finally{
-            session.close();
-            session = null;
         }
 
 
-        session = sessionFactory.openSession();
+        session = sessionFactory.getCurrentSession();
 
         try{
             session.beginTransaction();
@@ -136,34 +133,35 @@ public class Test {
         }catch (Exception e){
             session.getTransaction().rollback();
             e.printStackTrace();
-        }finally{
-            session.close();
-            session = null;
-        }
+        }*/
 
-        /*Session sessionC = sessionFactory.openSession();
+        Session sessionC = sessionFactory.openSession();
         try{
             sessionC.beginTransaction();
             List<Nota> notas = sessionC.createQuery("from Nota").getResultList();
             List<Estudiante> estudiantes = sessionC.createQuery("from Estudiante").getResultList();
             List<Curso> cursos = sessionC.createQuery("from Curso").getResultList();
             for(Nota nota : notas){
-                System.out.println(nota);
+                sessionC.remove(nota);
             }
             for(Estudiante estudiante : estudiantes){
-                System.out.println(estudiante);
+                sessionC.remove(estudiante);
             }
             for(Curso curso : cursos){
-                System.out.println(curso);
+                sessionC.remove(curso);
             }
-            Object estudiantecurso = sessionC.createNativeQuery("select * from estudiante_curso").getResultList();
+            List<List<Integer>> estudiantecurso = sessionC.createNativeQuery("select * from estudiante_curso").getResultList();
+            Object estudianteCurso = sessionC.createNativeQuery(
+                    "SELECT * FROM INFORMATION_SCHEMA.COLUMNS " +
+                            "WHERE TABLE_NAME = 'ESTUDIANTE_CURSO'"
+            ).getResultList();
             sessionC.getTransaction().commit();
         }catch(Exception e){
             sessionC.getTransaction().rollback();
             e.printStackTrace();
         }finally {
             sessionC.close();
-        }*/
+        }
 
 
         System.out.println("hola");
