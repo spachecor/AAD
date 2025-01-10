@@ -20,16 +20,19 @@ public class Estudiante extends Entidad<Estudiante>{
     private String nombre;
     private String apellido;
     private String email;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "estudiante_curso",
             joinColumns = @JoinColumn(name = "id_estudiante"),
             inverseJoinColumns = @JoinColumn(name = "id_curso")
     )
     private Set<Curso> cursos;
+    @OneToMany(mappedBy = "estudiante", orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<Nota> notas;
 
     public Estudiante() {
         this.cursos = new HashSet<>();
+        this.notas = new HashSet<>();
     }
 
     public String getNombre() {
@@ -62,6 +65,14 @@ public class Estudiante extends Entidad<Estudiante>{
 
     public void setCursos(Set<Curso> cursos) {
         this.cursos = cursos;
+    }
+
+    public Set<Nota> getNotas() {
+        return notas;
+    }
+
+    public void setNotas(Set<Nota> notas) {
+        this.notas = notas;
     }
 
     @Override

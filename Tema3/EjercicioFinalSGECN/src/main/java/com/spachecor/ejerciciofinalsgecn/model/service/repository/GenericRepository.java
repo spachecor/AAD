@@ -52,10 +52,10 @@ public class GenericRepository<T extends Entidad>{
     /**
      * Método que elimina la entidad que coincide con el id indicado
      * @param session la sesion actual para realizar la operacion
-     * @param id El id de la entidad a eliminar
+     * @param t La entidad a eliminar
      */
-    void eliminar(Session session, Integer id){
-        session.remove(id);
+    void eliminar(Session session, T t){
+        session.remove(t);
     }
 
 }

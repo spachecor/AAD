@@ -33,6 +33,8 @@ public class GenericRepositoryService<T extends Entidad> {
             session.beginTransaction();
             list = this.repository.listar(session);
             session.getTransaction().commit();
+        }catch (Exception e) {
+            e.printStackTrace();
         }finally {
             return list;
         }
@@ -46,8 +48,12 @@ public class GenericRepositoryService<T extends Entidad> {
     public Optional<T> buscarPorId(Integer id) {
         Session session = ServiceUtil.getSession();
         Optional<T> result = Optional.empty();
-        try{
+        try {
+            session.beginTransaction();
             result = Optional.ofNullable(this.repository.porId(session, id));
+            session.getTransaction().commit();
+        }catch (Exception e) {
+            e.printStackTrace();
         }finally {
             return result;
         }
@@ -64,21 +70,23 @@ public class GenericRepositoryService<T extends Entidad> {
             repository.guardar(session, t);
             session.getTransaction().commit();
         }catch (Exception e) {
+            e.printStackTrace();
             session.getTransaction().rollback();
         }
     }
 
     /**
      * Método que elimina la entidad cuyo id coincida con el proporcionado
-     * @param id El id de la enitidad a eliminar
+     * @param t La enitidad a eliminar
      */
-    public void eliminar(Integer id) {
+    public void eliminar(T t) {
         Session session = ServiceUtil.getSession();
         try{
             session.getTransaction().begin();
-            this.repository.eliminar(session, id);
+            this.repository.eliminar(session, t);
             session.getTransaction().commit();
         }catch (Exception e) {
+            e.printStackTrace();
             session.getTransaction().rollback();
         }
     }

@@ -20,9 +20,9 @@ public class Curso extends Entidad<Curso>{
     private Integer id;
     private String nombre;
     private String descripcion;
-    @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "curso", orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Nota> notas;
-    @ManyToMany(mappedBy = "cursos", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "cursos", fetch = FetchType.EAGER)
     private Set<Estudiante> estudiantes;
 
     public Curso() {

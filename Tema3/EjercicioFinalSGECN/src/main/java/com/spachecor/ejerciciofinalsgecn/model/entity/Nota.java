@@ -19,10 +19,10 @@ public class Nota extends Entidad<Nota>{
     private Integer id;
     private Double valor;
     private LocalDate fecha;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_curso")
     private Curso curso;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_estudiante")
     private Estudiante estudiante;
 
