@@ -3,6 +3,7 @@ package com.spachecor.ejerciciofinalsgecn.model.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * Clase Nota, que es la nota que un estudiante obtiene en un curso
@@ -68,6 +69,18 @@ public class Nota extends Entidad<Nota>{
     @Override
     public int compareTo(Nota o) {
         return this.getId().compareTo(o.getId());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Nota nota)) return false;
+        return Objects.equals(id, nota.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 
     @Override

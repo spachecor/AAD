@@ -16,7 +16,6 @@ public class TestCuatro {
         insertarDatos();
         TestCuatro.listarTodo();
         System.out.println("-------------------------------------------------------------");
-
         Thread.sleep(500);
         TestCuatro.listarTodo();
     }

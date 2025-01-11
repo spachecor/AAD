@@ -86,8 +86,8 @@ public class GenericRepositoryService<T extends Entidad> {
             this.repository.eliminar(session, t);
             session.getTransaction().commit();
         }catch (Exception e) {
-            e.printStackTrace();
             session.getTransaction().rollback();
+            throw e;
         }
     }
 }

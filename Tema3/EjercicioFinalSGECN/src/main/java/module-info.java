@@ -12,4 +12,6 @@ module com.spachecor.ejerciciofinalsgecn {
     opens com.spachecor.ejerciciofinalsgecn.controller;
     exports com.spachecor.ejerciciofinalsgecn.model.entity;
     opens com.spachecor.ejerciciofinalsgecn.model.entity;
+    exports com.spachecor.ejerciciofinalsgecn.model.row;
+    opens com.spachecor.ejerciciofinalsgecn.model.row;
 }

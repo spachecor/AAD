@@ -3,6 +3,7 @@ package com.spachecor.ejerciciofinalsgecn.model.entity;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -29,7 +30,10 @@ public class Curso extends Entidad<Curso>{
         this.notas = new HashSet<>();
         this.estudiantes = new HashSet<>();
     }
-
+    @PreRemove
+    private void preRemove() {
+        this.notas.clear();
+    }
     public String getNombre() {
         return nombre;
     }
@@ -70,6 +74,18 @@ public class Curso extends Entidad<Curso>{
     @Override
     public int compareTo(Curso o) {
         return this.getId().compareTo(o.getId());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Curso curso)) return false;
+        return Objects.equals(id, curso.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 
     @Override

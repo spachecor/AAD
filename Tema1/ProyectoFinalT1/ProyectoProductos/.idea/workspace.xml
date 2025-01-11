@@ -4,7 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8da340d9-4046-426e-a2ab-58cf083412c7" name="Changes" comment="" />
+    <list default="true" id="8da340d9-4046-426e-a2ab-58cf083412c7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../Tema3/EjercicioFinalSGECN/src/main/java/com/spachecor/ejerciciofinalsgecn/controller/GestionarCursosController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Tema3/EjercicioFinalSGECN/src/main/java/com/spachecor/ejerciciofinalsgecn/controller/MainController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Tema3/EjercicioFinalSGECN/src/main/java/com/spachecor/ejerciciofinalsgecn/controller/service/FXService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Tema3/EjercicioFinalSGECN/src/main/java/com/spachecor/ejerciciofinalsgecn/model/row/CursoRow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Tema3/EjercicioFinalSGECN/src/main/resources/com/spachecor/ejerciciofinalsgecn/img/edutrack-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Tema3/EjercicioFinalSGECN/src/main/resources/com/spachecor/ejerciciofinalsgecn/view/gestionar-cursos-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Tema3/EjercicioFinalSGECN/src/main/resources/com/spachecor/ejerciciofinalsgecn/view/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Tema3/EjemploTablaBotones/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Tema3/EjemploTablaBotones/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Tema3/EjemploTablaBotones/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Tema3/EjemploTablaBotones/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Tema3/EjemploTablaBotones/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Tema3/EjemploTablaBotones/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Tema3/EjemploTablaBotones/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Tema3/EjemploTablaBotones/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Tema3/EjemploTablaBotones/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Tema3/EjemploTablaBotones/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Tema3/EjemploTablaBotones/src/main/java/com/spachecor/ejemplotablabotones/HelloApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Tema3/EjemploTablaBotones/src/main/java/com/spachecor/ejemplotablabotones/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Tema3/EjemploTablaBotones/src/main/java/module-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Tema3/EjemploTablaBotones/src/main/resources/com/spachecor/ejemplotablabotones/hello-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Tema3/EjercicioFinalSGECN/src/main/java/com/spachecor/ejerciciofinalsgecn/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Tema3/EjercicioFinalSGECN/src/main/java/com/spachecor/ejerciciofinalsgecn/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Tema3/EjercicioFinalSGECN/src/main/java/com/spachecor/ejerciciofinalsgecn/TestCuatro.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Tema3/EjercicioFinalSGECN/src/main/java/com/spachecor/ejerciciofinalsgecn/TestCuatro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Tema3/EjercicioFinalSGECN/src/main/java/com/spachecor/ejerciciofinalsgecn/controller/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Tema3/EjercicioFinalSGECN/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Tema3/EjercicioFinalSGECN/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Tema3/EjercicioFinalSGECN/src/main/resources/com/spachecor/ejerciciofinalsgecn/view/hello-view.fxml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,6 +118,7 @@
       <workItem from="1730795598248" duration="238000" />
       <workItem from="1730797375043" duration="1262000" />
       <workItem from="1731066910765" duration="86000" />
+      <workItem from="1736592019212" duration="4117000" />
     </task>
     <servers />
   </component>
