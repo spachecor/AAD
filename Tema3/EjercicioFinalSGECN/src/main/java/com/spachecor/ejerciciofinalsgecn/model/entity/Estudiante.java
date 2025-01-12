@@ -100,12 +100,6 @@ public class Estudiante extends Entidad<Estudiante>{
 
     @Override
     public String toString() {
-        return "Estudiante{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", email='" + email + '\'' +
-                ", nº cursos=" + cursos.size() +
-                '}';
+        return this.id+"- "+this.nombre+" "+this.apellido;
     }
 }

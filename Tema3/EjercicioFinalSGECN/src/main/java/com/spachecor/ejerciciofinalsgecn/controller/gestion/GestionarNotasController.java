@@ -1,11 +1,9 @@
-package com.spachecor.ejerciciofinalsgecn.controller;
+package com.spachecor.ejerciciofinalsgecn.controller.gestion;
 
 import com.spachecor.ejerciciofinalsgecn.controller.service.FXService;
 import com.spachecor.ejerciciofinalsgecn.controller.service.tablaservice.EntidadRowListener;
 import com.spachecor.ejerciciofinalsgecn.controller.service.tablaservice.TableRecargable;
-import com.spachecor.ejerciciofinalsgecn.model.entity.Curso;
 import com.spachecor.ejerciciofinalsgecn.model.entity.Nota;
-import com.spachecor.ejerciciofinalsgecn.model.row.CursoRow;
 import com.spachecor.ejerciciofinalsgecn.model.row.NotaRow;
 import com.spachecor.ejerciciofinalsgecn.model.service.repository.GenericRepositoryService;
 import javafx.collections.FXCollections;
@@ -31,6 +29,10 @@ public class GestionarNotasController implements TableRecargable, EntidadRowList
         recargar();
     }
     @FXML
+    private void onClickNuevoButton(){
+        FXService.cambiarVentana(FXService.INSERTAR_NOTA);
+    }
+    @FXML
     private void onClickSalirButton() {
         FXService.cambiarVentana(FXService.MAIN);
     }
@@ -53,7 +55,7 @@ public class GestionarNotasController implements TableRecargable, EntidadRowList
         this.centrarCentroContenidoComumna(valorColumn);
         TableColumn<NotaRow, LocalDate> fechaColumn = new TableColumn<>("FECHA");
         fechaColumn.setCellValueFactory(new PropertyValueFactory<>("fecha"));
-        fechaColumn.setMinWidth(75);
+        fechaColumn.setMinWidth(150);
         this.centrarCentroContenidoComumna(fechaColumn);
         TableColumn<NotaRow, Integer> idCursoColumn = new TableColumn<>("ID CURSO");
         idCursoColumn.setCellValueFactory(new PropertyValueFactory<>("idCurso"));
@@ -61,7 +63,7 @@ public class GestionarNotasController implements TableRecargable, EntidadRowList
         this.centrarCentroContenidoComumna(idCursoColumn);
         TableColumn<NotaRow, String> nombreCursoColumn = new TableColumn<>("NOMBRE DEL CURSO");
         nombreCursoColumn.setCellValueFactory(new PropertyValueFactory<>("nombreCurso"));
-        nombreCursoColumn.setMinWidth(75);
+        nombreCursoColumn.setMinWidth(300);
         this.centrarIzqContenidoComumna(nombreCursoColumn);
         TableColumn<NotaRow, Integer> idEstudianteColumn = new TableColumn<>("ID ESTUDIANTE");
         idEstudianteColumn.setCellValueFactory(new PropertyValueFactory<>("idEstudiante"));
@@ -69,7 +71,7 @@ public class GestionarNotasController implements TableRecargable, EntidadRowList
         this.centrarCentroContenidoComumna(idEstudianteColumn);
         TableColumn<NotaRow, String> nombreEstudianteColumn = new TableColumn<>("NOMBRE DEL ESTUDIANTE");
         nombreEstudianteColumn.setCellValueFactory(new PropertyValueFactory<>("nombreEstudiante"));
-        nombreEstudianteColumn.setMinWidth(75);
+        nombreEstudianteColumn.setMinWidth(300);
         this.centrarIzqContenidoComumna(nombreEstudianteColumn);
         TableColumn<NotaRow, Button> modificarTableColumn = new TableColumn<>("MODIFICAR");
         modificarTableColumn.setCellValueFactory(new PropertyValueFactory<>("modificar"));

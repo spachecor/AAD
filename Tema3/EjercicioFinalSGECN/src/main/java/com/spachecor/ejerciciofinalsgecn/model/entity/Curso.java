@@ -21,9 +21,9 @@ public class Curso extends Entidad<Curso>{
     private Integer id;
     private String nombre;
     private String descripcion;
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "curso", orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "curso", orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Nota> notas;
-    @ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "cursos", fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.MERGE, mappedBy = "cursos", fetch = FetchType.EAGER)
     private Set<Estudiante> estudiantes;
 
     public Curso() {
@@ -90,12 +90,6 @@ public class Curso extends Entidad<Curso>{
 
     @Override
     public String toString() {
-        return "Curso{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", nº notas=" + notas.size() +
-                ", nº estudiantes=" + estudiantes.size() +
-                '}';
+        return this.id+"- "+this.nombre+": "+this.descripcion;
     }
 }

@@ -1,4 +1,4 @@
-package com.spachecor.ejerciciofinalsgecn.controller;
+package com.spachecor.ejerciciofinalsgecn.controller.gestion;
 
 import com.spachecor.ejerciciofinalsgecn.controller.service.tablaservice.EntidadRowListener;
 import com.spachecor.ejerciciofinalsgecn.controller.service.FXService;
@@ -30,6 +30,10 @@ public class GestionarEstudiantesController implements TableRecargable, EntidadR
     @FXML
     private void onClickSalirButton() {
         FXService.cambiarVentana(FXService.MAIN);
+    }
+    @FXML
+    private void onClickNuevoButton(){
+        FXService.cambiarVentana(FXService.INSERTAR_ESTUDIANTE);
     }
     private ObservableList<EstudianteRow> getObservableListToCursos(){
         List<Estudiante> estudiantes = genericRepositoryService.listar();

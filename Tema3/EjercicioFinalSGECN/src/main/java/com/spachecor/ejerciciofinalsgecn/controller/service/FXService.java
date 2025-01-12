@@ -1,9 +1,14 @@
 package com.spachecor.ejerciciofinalsgecn.controller.service;
 
 import com.spachecor.ejerciciofinalsgecn.Main;
+import com.spachecor.ejerciciofinalsgecn.model.entity.Curso;
+import com.spachecor.ejerciciofinalsgecn.model.entity.Entidad;
+import com.spachecor.ejerciciofinalsgecn.model.entity.Estudiante;
+import com.spachecor.ejerciciofinalsgecn.model.entity.Nota;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -19,11 +24,27 @@ public class FXService {
     public static final String GESTIONAR_CURSOS;
     public static final String GESTIONAR_ESTUDIANTES;
     public static final String GESTIONAR_NOTAS;
+    public static final String INSERTAR_CURSO;
+    public static final String INSERTAR_ESTUDIANTE;
+    public static final String INSERTAR_NOTA;
+    public static final String CONSULTAR_NOTAS_ESTUDIANTE_CURSO;
+    public static final String CONSULTAR_ESTUDIANTES_NOTAS_POR_CURSO;
+    private static Curso curso;
+    private static Estudiante estudiante;
+    private static Nota nota;
     static{
         MAIN = "main-view.fxml";
-        GESTIONAR_CURSOS = "gestionar-cursos-view.fxml";
-        GESTIONAR_ESTUDIANTES = "gestionar-estudiantes-view.fxml";
-        GESTIONAR_NOTAS = "gestionar-notas-view.fxml";
+        GESTIONAR_CURSOS = "gestion/gestionar-cursos-view.fxml";
+        GESTIONAR_ESTUDIANTES = "gestion/gestionar-estudiantes-view.fxml";
+        GESTIONAR_NOTAS = "gestion/gestionar-notas-view.fxml";
+        INSERTAR_CURSO = "insercion/insertar-curso-view.fxml";
+        INSERTAR_ESTUDIANTE = "insercion/insertar-estudiante-view.fxml";
+        INSERTAR_NOTA = "insercion/insertar-nota-view.fxml";
+        CONSULTAR_NOTAS_ESTUDIANTE_CURSO = "consulta/consulta-notas-estudiante-curso-view.fxml";
+        CONSULTAR_ESTUDIANTES_NOTAS_POR_CURSO = "consulta/consulta-estudiantes-notas-por-curso-view.fxml";
+        curso = null;
+        estudiante = null;
+        nota = null;
     }
 
     /**
@@ -43,5 +64,39 @@ public class FXService {
             System.out.println("No se puede cambiar la ventana: "+e.getMessage());
             System.exit(1);
         }
+    }
+    public static <T extends Entidad> void cambiarVentana(String ventana, T t){
+        if(t instanceof Curso){
+            FXService.setCurso((Curso) t);
+        }else if(t instanceof Estudiante){
+            FXService.setEstudiante((Estudiante) t);
+        }else if(t instanceof Nota){
+            FXService.setNota((Nota) t);
+        }
+        FXService.cambiarVentana(ventana);
+    }
+
+    public static Curso getCurso() {
+        return curso;
+    }
+
+    public static void setCurso(Curso curso) {
+        FXService.curso = curso;
+    }
+
+    public static Estudiante getEstudiante() {
+        return estudiante;
+    }
+
+    public static void setEstudiante(Estudiante estudiante) {
+        FXService.estudiante = estudiante;
+    }
+
+    public static Nota getNota() {
+        return nota;
+    }
+
+    public static void setNota(Nota nota) {
+        FXService.nota = nota;
     }
 }

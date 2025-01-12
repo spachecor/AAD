@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="720.0" prefWidth="1280.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.spachecor.ejerciciofinalsgecn.controller.insercion.InsertarNotaController">
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <children>
+      <VBox alignment="CENTER" prefHeight="480.0" prefWidth="1240.0" spacing="20.0">
+         <children>
+            <Label text="Valor de la Nota" />
+            <TextField fx:id="valorTextField" maxWidth="500.0" prefWidth="701.0">
+               <VBox.margin>
+                  <Insets bottom="25.0" />
+               </VBox.margin></TextField>
+            <Label text="Fecha de la Nota" />
+            <DatePicker fx:id="fechaTextField" prefWidth="500.0">
+               <VBox.margin>
+                  <Insets bottom="25.0" />
+               </VBox.margin></DatePicker>
+            <Label text="Curso al que pertenece la Nota" />
+            <ChoiceBox fx:id="cursoChoiceBox" prefWidth="500.0">
+               <VBox.margin>
+                  <Insets bottom="25.0" />
+               </VBox.margin></ChoiceBox>
+            <Label text="Estudiante al que pertenece la Nota" />
+            <ChoiceBox fx:id="estudianteChoiceBox" prefWidth="500.0" />
+         </children></VBox>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="1240.0" spacing="20.0">
+         <children>
+            <Label fx:id="errorLabel" />
+            <HBox alignment="CENTER" prefHeight="125.0" prefWidth="1240.0" spacing="250.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onClickGuardarButton" text="Guardar" />
+                  <Button mnemonicParsing="false" onAction="#onClickVolverButton" text="Volver" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</VBox>

@@ -13,7 +13,9 @@ public class MainController {
     @FXML
     private Button gestionarNotasButton;
     @FXML
-    private Button buscadorButton;
+    private Button consultaNotasEstudiantePorCursoButton;
+    @FXML
+    private Button consultaEstudianteNotaCursoButton;
     @FXML
     private void onClickGestionarCursosButton() {
         FXService.cambiarVentana(FXService.GESTIONAR_CURSOS);
@@ -27,5 +29,11 @@ public class MainController {
         FXService.cambiarVentana(FXService.GESTIONAR_NOTAS);
     }
     @FXML
-    private void onClickBuscadorButton() {}
+    private void onClickconsultaNotasEstudiantePorCursoButton() {
+        FXService.cambiarVentana(FXService.CONSULTAR_NOTAS_ESTUDIANTE_CURSO);
+    }
+    @FXML
+    private void onClickConsultaEstudianteNotaCursoButton() {
+        FXService.cambiarVentana(FXService.CONSULTAR_ESTUDIANTES_NOTAS_POR_CURSO);
+    }
 }

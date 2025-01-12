@@ -1,6 +1,7 @@
 package com.spachecor.ejerciciofinalsgecn.model.row;
 
 import com.spachecor.ejerciciofinalsgecn.Main;
+import com.spachecor.ejerciciofinalsgecn.controller.service.FXService;
 import com.spachecor.ejerciciofinalsgecn.controller.service.tablaservice.EntidadRowListener;
 import com.spachecor.ejerciciofinalsgecn.model.entity.Curso;
 import javafx.scene.control.Button;
@@ -22,6 +23,9 @@ public class CursoRow {
         this.descripcion = curso.getDescripcion();
         this.nEstudiantes = curso.getEstudiantes().size();
         this.modificar = new Button();
+        this.modificar.setOnAction(_ ->{
+            FXService.cambiarVentana(FXService.INSERTAR_CURSO, curso);
+        });
         this.setIcon(this.modificar, new Image(Objects.requireNonNull(Main.class.getResourceAsStream("/com/spachecor/ejerciciofinalsgecn/img/modificar-icon.png"))));
         this.eliminar = new Button();
         this.eliminar.setOnAction(_ -> {
