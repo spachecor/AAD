@@ -7,6 +7,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+/**
+ * Clase InsertarEstudianteController, que es el controlador de la interfaz gráfica con la que el usuario agregar o
+ * modificar estudiantes
+ * @author Selene
+ * @version 1.0
+ */
 public class InsertarEstudianteController {
     @FXML
     private TextField nombreTextField;
@@ -26,10 +32,19 @@ public class InsertarEstudianteController {
             this.estudiante = FXService.getEstudiante();
         }else this.estudiante = new Estudiante();
     }
+
+    /**
+     * Método que nos devuelve a la pantalla anterior
+     */
     @FXML
     private void onClickVolverButton(){
         FXService.cambiarVentana(FXService.GESTIONAR_ESTUDIANTES);
     }
+
+    /**
+     * Método que guarda la nueva o modificada entidad en la base de datos usando el repositorio. Valida que no haya campos
+     * vacíos antes de guardar, si los hay, avisa y no guarda.
+     */
     @FXML
     private void onClickGuardarButton(){
         if(!this.nombreTextField.getText().isEmpty() || !this.apellidoTextField.getText().isEmpty() || !this.emailTextField.getText().isEmpty()){

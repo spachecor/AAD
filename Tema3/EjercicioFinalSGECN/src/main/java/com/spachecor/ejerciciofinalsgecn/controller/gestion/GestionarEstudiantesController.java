@@ -15,6 +15,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase GestionarEstudiantesController, que es el controlador de la interfaz gráfica con la que el usuario puede gestionar
+ * los estudiantes.
+ * @author Selene
+ * @version 1.0
+ */
 public class GestionarEstudiantesController implements TableRecargable, EntidadRowListener<Estudiante> {
     @FXML
     private TableView<EstudianteRow> tablaCursosTableView;
@@ -27,14 +33,28 @@ public class GestionarEstudiantesController implements TableRecargable, EntidadR
         this.inicializarColumnas();
         recargar();
     }
+
+    /**
+     * Método que nos devuelve a la pantalla anterior
+     */
     @FXML
     private void onClickSalirButton() {
         FXService.cambiarVentana(FXService.MAIN);
     }
+
+    /**
+     * Método que nos envía a la interfaz gráfica para insertar un nuevo estudiante
+     */
     @FXML
     private void onClickNuevoButton(){
         FXService.cambiarVentana(FXService.INSERTAR_ESTUDIANTE);
     }
+
+    /**
+     * Método que nos devuelve una lista tipo ObservableList con todos los estudiantes actuales preparada para usarla
+     * en la tabla
+     * @return Una lista tipo ObservableList con todos los estudiantes preparada para usarse en la tabla
+     */
     private ObservableList<EstudianteRow> getObservableListToCursos(){
         List<Estudiante> estudiantes = genericRepositoryService.listar();
         List<EstudianteRow> estudianteRowList = new ArrayList<>();
@@ -43,6 +63,11 @@ public class GestionarEstudiantesController implements TableRecargable, EntidadR
         }
         return FXCollections.observableList(estudianteRowList);
     }
+
+    /**
+     * Método que inicializa las columnas de la tabla, vinculandolas a cada atributo de la entidad EstudianteRow, específicamente
+     * hecha para mostrar cursos en la tabla.
+     */
     private void inicializarColumnas(){
         TableColumn<EstudianteRow, Integer> idTableColumn = new TableColumn<>("ID");
         idTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -74,12 +99,31 @@ public class GestionarEstudiantesController implements TableRecargable, EntidadR
         this.centrarCentroContenidoComumna(eliminarTableColumn);
         this.tablaCursosTableView.getColumns().addAll(idTableColumn, nombreColumn, apellidoColumn, emailColumn, nCursosEstudianteColumn, modificarTableColumn, eliminarTableColumn);
     }
+
+    /**
+     * Método que centra el contenido de una columna en el centro
+     * @param column La columna a centrar
+     * @param <T> El tipo de dato que contiene la columna
+     */
     private <T> void centrarCentroContenidoComumna(TableColumn<EstudianteRow, T> column){
         this.centrarContenidoColumna(column, "-fx-alignment: CENTER;");
     }
+
+    /**
+     * Método que centra el contenido de una columna en la izquierda
+     * @param column La columna a centrar
+     * @param <T> El tipo de dato que contiene la columna
+     */
     private <T> void centrarIzqContenidoComumna(TableColumn<EstudianteRow, T> column){
         this.centrarContenidoColumna(column, "-fx-alignment: CENTER-LEFT;");
     }
+
+    /**
+     * Método que centra el contenido de una columna según se le indique
+     * @param column La columna a centrar
+     * @param style Como queremos que se centre la columna (EJ: -fx-alignment: CENTER-LEFT; para centro izquierda)
+     * @param <T> El tipo de dato que contiene la columna
+     */
     private <T> void centrarContenidoColumna(TableColumn<EstudianteRow, T> column, String style) {
         column.setCellFactory(_ -> new TableCell<>() {
             @Override
@@ -111,8 +155,7 @@ public class GestionarEstudiantesController implements TableRecargable, EntidadR
         try{
             this.genericRepositoryService.eliminar(estudiante);
         }catch (org.hibernate.exception.ConstraintViolationException e){
-            errorLabel.setText("No puedes eliminar un curso si tiene alumnos inscritos.");
-            System.err.println("Se ha intentado eliminar un curso con alumnos inscritos. Proceso abortado.");
+            System.err.println("Se ha intentado eliminar un estudiante y la operación falló.");
         }
         this.recargar();
     }

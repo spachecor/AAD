@@ -13,6 +13,12 @@ import javafx.scene.control.TextField;
 
 import java.time.LocalDate;
 
+/**
+ * Clase InsertarNotaController, que es el controlador de la interfaz gráfica con la que el usuario agregar o
+ * modificar notas
+ * @author Selene
+ * @version 1.0
+ */
 public class InsertarNotaController {
     @FXML
     private TextField valorTextField;
@@ -43,6 +49,11 @@ public class InsertarNotaController {
             this.recargarEstudianteChoiceBox(newValue);
         });
     }
+
+    /**
+     * Método que guarda la nueva o modificada entidad en la base de datos usando el repositorio. Valida que no haya campos
+     * vacíos antes de guardar, si los hay, avisa y no guarda.
+     */
     @FXML
     private void onClickGuardarButton(){
         if(this.valorTextField.getText().isEmpty() || this.fechaTextField.getValue()==null || this.cursoChoiceBox.getValue()==null || this.estudianteChoiceBox.getValue()==null){
@@ -61,19 +72,37 @@ public class InsertarNotaController {
         notaGenericRepositoryService.guardar(this.nota);
         this.onClickVolverButton();
     }
+
+    /**
+     * Método que nos devuelve a la pantalla anterior
+     */
     @FXML
     private void onClickVolverButton(){
         FXService.cambiarVentana(FXService.GESTIONAR_NOTAS);
     }
+
+    /**
+     * Método que obtiene todos los cursos de la base de datos y los recarga en el ChoiceBox correspondiente
+     */
     private void recargarCursoChoiceBox(){
         GenericRepositoryService<Curso> cursoGenericRepositoryService = new GenericRepositoryService<>(Curso.class);
         this.cursoChoiceBox.getItems().clear();
         this.cursoChoiceBox.getItems().addAll(cursoGenericRepositoryService.listar());
     }
+
+    /**
+     * Método que obtiene todos los estudiantes del curso y los recarga en el ChoiceBox correspondiente
+     */
     private void recargarEstudianteChoiceBox(Curso curso){
         this.estudianteChoiceBox.getItems().clear();
         this.estudianteChoiceBox.getItems().addAll(curso.getEstudiantes());
     }
+
+    /**
+     * Método que comprueba si la cadena entrante es completamente numérica
+     * @param input La cadena a comprobar
+     * @return true si es completamente numérica y false si no lo es
+     */
     private boolean containsNumbers(String input) {
         return input.matches(".*\\d.*");
     }

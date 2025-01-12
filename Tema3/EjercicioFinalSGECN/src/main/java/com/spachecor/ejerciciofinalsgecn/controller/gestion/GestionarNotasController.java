@@ -16,6 +16,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase GestionarNotasController, que es el controlador de la interfaz gráfica con la que el usuario puede gestionar
+ * las notas.
+ * @author Selene
+ * @version 1.0
+ */
 public class GestionarNotasController implements TableRecargable, EntidadRowListener<Nota> {
     @FXML
     private TableView<NotaRow> tablaCursosTableView;
@@ -28,14 +34,28 @@ public class GestionarNotasController implements TableRecargable, EntidadRowList
         this.inicializarColumnas();
         recargar();
     }
+
+    /**
+     * Método que nos envía a la interfaz gráfica para insertar una nueva nota
+     */
     @FXML
     private void onClickNuevoButton(){
         FXService.cambiarVentana(FXService.INSERTAR_NOTA);
     }
+
+    /**
+     * Método que nos devuelve a la pantalla anterior
+     */
     @FXML
     private void onClickSalirButton() {
         FXService.cambiarVentana(FXService.MAIN);
     }
+
+    /**
+     * Método que nos devuelve una lista tipo ObservableList con todas las notas actuales preparada para usarla
+     * en la tabla
+     * @return Una lista tipo ObservableList con todas las notas preparada para usarse en la tabla
+     */
     private ObservableList<NotaRow> getObservableListToCursos(){
         List<Nota> notas = genericRepositoryService.listar();
         List<NotaRow> notaRowList = new ArrayList<>();
@@ -44,6 +64,11 @@ public class GestionarNotasController implements TableRecargable, EntidadRowList
         }
         return FXCollections.observableList(notaRowList);
     }
+
+    /**
+     * Método que inicializa las columnas de la tabla, vinculandolas a cada atributo de la entidad NotaRow, específicamente
+     * hecha para mostrar notas en la tabla.
+     */
     private void inicializarColumnas(){
         TableColumn<NotaRow, Integer> idColumn = new TableColumn<>("ID");
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -83,12 +108,31 @@ public class GestionarNotasController implements TableRecargable, EntidadRowList
         this.centrarCentroContenidoComumna(eliminarTableColumn);
         this.tablaCursosTableView.getColumns().addAll(idColumn, valorColumn, fechaColumn, idCursoColumn, nombreCursoColumn, idEstudianteColumn, nombreEstudianteColumn, modificarTableColumn, eliminarTableColumn);
     }
+
+    /**
+     * Método que centra el contenido de una columna en el centro
+     * @param column La columna a centrar
+     * @param <T> El tipo de dato que contiene la columna
+     */
     private <T> void centrarCentroContenidoComumna(TableColumn<NotaRow, T> column){
         this.centrarContenidoColumna(column, "-fx-alignment: CENTER;");
     }
+
+    /**
+     * Método que centra el contenido de una columna en la izquierda
+     * @param column La columna a centrar
+     * @param <T> El tipo de dato que contiene la columna
+     */
     private <T> void centrarIzqContenidoComumna(TableColumn<NotaRow, T> column){
         this.centrarContenidoColumna(column, "-fx-alignment: CENTER-LEFT;");
     }
+
+    /**
+     * Método que centra el contenido de una columna según se le indique
+     * @param column La columna a centrar
+     * @param style Como queremos que se centre la columna (EJ: -fx-alignment: CENTER-LEFT; para centro izquierda)
+     * @param <T> El tipo de dato que contiene la columna
+     */
     private <T> void centrarContenidoColumna(TableColumn<NotaRow, T> column, String style) {
         column.setCellFactory(_ -> new TableCell<>() {
             @Override
@@ -120,8 +164,7 @@ public class GestionarNotasController implements TableRecargable, EntidadRowList
         try{
             this.genericRepositoryService.eliminar(nota);
         }catch (org.hibernate.exception.ConstraintViolationException e){
-            errorLabel.setText("No puedes eliminar un curso si tiene alumnos inscritos.");
-            System.err.println("Se ha intentado eliminar un curso con alumnos inscritos. Proceso abortado.");
+            System.err.println("Se ha intentado eliminar una nota y la operación falló.");
         }
         this.recargar();
     }

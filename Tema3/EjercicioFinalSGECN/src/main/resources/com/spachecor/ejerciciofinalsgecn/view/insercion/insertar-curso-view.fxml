@@ -3,8 +3,9 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<HBox prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.spachecor.ejerciciofinalsgecn.controller.insercion.InsertarCursoController">
+<HBox prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #F1F1E6;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.spachecor.ejerciciofinalsgecn.controller.insercion.InsertarCursoController">
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
@@ -13,13 +14,19 @@
          <children>
             <VBox alignment="CENTER" prefHeight="530.0" prefWidth="100.0" spacing="50.0">
                <children>
-                  <Label text="Nombre del curso:" />
+                  <Label text="Nombre del curso:" textFill="#02547f">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
                   <TextField fx:id="nombreTextField" maxWidth="500.0">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </TextField>
-                  <Label text="Descripción del curso:" />
+                  <Label text="Descripción del curso:" textFill="#02547f">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
                   <TextField fx:id="descripcionTextField" maxWidth="500.0">
                      <VBox.margin>
                         <Insets bottom="50.0" />
@@ -36,8 +43,14 @@
                   </Label>
                   <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="250.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#onClickGuardarButton" text="Guardar" />
-                        <Button mnemonicParsing="false" onAction="#onClickVolverButton" text="Volver" />
+                        <Button mnemonicParsing="false" onAction="#onClickGuardarButton" text="Guardar" textFill="#02547f">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Button>
+                        <Button mnemonicParsing="false" onAction="#onClickVolverButton" text="Volver" textFill="#02547f">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Button>
                      </children>
                   </HBox>
                </children>
@@ -49,14 +62,20 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="310.0">
                      <children>
-                        <Label text="Alumnos inscritos:" />
+                        <Label text="Alumnos inscritos:" textFill="#02547f">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="310.0" spacing="5.0">
                      <children>
-                        <Label text="Nuevo alumno: " />
+                        <Label text="Nuevo alumno: " textFill="#02547f" />
                         <ChoiceBox fx:id="listaAlumnosChoiceBox" prefWidth="150.0" />
-                        <Button mnemonicParsing="false" onAction="#onClickAniadirButton" text="Añadir" />
+                        <Button mnemonicParsing="false" onAction="#onClickAniadirButton" text="Añadir" textFill="#02547f">
+                           <font>
+                              <Font size="13.0" />
+                           </font></Button>
                      </children>
                   </HBox>
                </children>

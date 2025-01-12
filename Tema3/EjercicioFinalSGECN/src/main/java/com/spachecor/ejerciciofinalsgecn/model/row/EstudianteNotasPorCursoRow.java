@@ -3,6 +3,11 @@ package com.spachecor.ejerciciofinalsgecn.model.row;
 import com.spachecor.ejerciciofinalsgecn.model.entity.Estudiante;
 import com.spachecor.ejerciciofinalsgecn.model.entity.Nota;
 
+/**
+ * Clase EstudianteNotasPorCursoRow, que determina como se repesentan los estudiantes y sus notas en una tabla
+ * @author Selene
+ * @version 1.0
+ */
 public class EstudianteNotasPorCursoRow {
     private Integer idEstudiante;
     private String nombreEstudiante;

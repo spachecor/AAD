@@ -10,6 +10,11 @@ import javafx.scene.image.ImageView;
 
 import java.util.Objects;
 
+/**
+ * Clase EstudianteRow, que define como se representan los estudiantes en las tablas
+ * @author Selene
+ * @version 1.0
+ */
 public class EstudianteRow {
     private Integer id;
     private String nombre;
@@ -35,6 +40,12 @@ public class EstudianteRow {
         });
         this.setIcon(this.eliminar, new Image(Objects.requireNonNull(Main.class.getResourceAsStream("/com/spachecor/ejerciciofinalsgecn/img/eliminar-icon.png"))));
     }
+
+    /**
+     * Método que fija un icono a un botón
+     * @param button El botón al que agregar el icono
+     * @param image El icono a agregar
+     */
     private void setIcon(Button button, Image image){
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(20);

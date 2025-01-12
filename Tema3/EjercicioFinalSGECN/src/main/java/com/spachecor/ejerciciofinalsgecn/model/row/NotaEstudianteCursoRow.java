@@ -4,6 +4,12 @@ import com.spachecor.ejerciciofinalsgecn.model.entity.Curso;
 import com.spachecor.ejerciciofinalsgecn.model.entity.Estudiante;
 import com.spachecor.ejerciciofinalsgecn.model.entity.Nota;
 
+/**
+ * Clase NotaEstudianteCursoRow, que define como se representan los estudiantes, los cursos y las notas en una misma
+ * tabla.
+ * @author Selene
+ * @version 1.0
+ */
 public class NotaEstudianteCursoRow {
     private Integer idEstudiante;
     private String nombreEstudiante;

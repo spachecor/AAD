@@ -11,6 +11,11 @@ import javafx.scene.image.ImageView;
 import java.time.LocalDate;
 import java.util.Objects;
 
+/**
+ * Clase NotaRow, que define como se representan las notas en las tablas
+ * @author Selene
+ * @version 1.0
+ */
 public class NotaRow {
     private Integer id;
     private Double valor;
@@ -40,6 +45,12 @@ public class NotaRow {
         });
         this.setIcon(this.eliminar, new Image(Objects.requireNonNull(Main.class.getResourceAsStream("/com/spachecor/ejerciciofinalsgecn/img/eliminar-icon.png"))));
     }
+
+    /**
+     * Método que fija un icono a un botón
+     * @param button El botón al que agregar el icono
+     * @param image El icono a agregar
+     */
     private void setIcon(Button button, Image image){
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(20);

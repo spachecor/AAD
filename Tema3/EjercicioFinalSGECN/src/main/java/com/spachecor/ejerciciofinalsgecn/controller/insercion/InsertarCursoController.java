@@ -1,12 +1,10 @@
 package com.spachecor.ejerciciofinalsgecn.controller.insercion;
 
-import com.spachecor.ejerciciofinalsgecn.controller.gestion.GestionarCursosController;
 import com.spachecor.ejerciciofinalsgecn.controller.service.FXService;
 import com.spachecor.ejerciciofinalsgecn.controller.service.tablaservice.EntidadRowListener;
 import com.spachecor.ejerciciofinalsgecn.controller.service.tablaservice.TableRecargable;
 import com.spachecor.ejerciciofinalsgecn.model.entity.Curso;
 import com.spachecor.ejerciciofinalsgecn.model.entity.Estudiante;
-import com.spachecor.ejerciciofinalsgecn.model.row.CursoRow;
 import com.spachecor.ejerciciofinalsgecn.model.row.EstudianteRow;
 import com.spachecor.ejerciciofinalsgecn.model.service.repository.EstudianteCursoRepository;
 import com.spachecor.ejerciciofinalsgecn.model.service.repository.GenericRepositoryService;
@@ -18,6 +16,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.*;
 
+/**
+ * Clase InsertarCursoController, que es el controlador de la interfaz gráfica con la que el usuario agregar o
+ * modificar cursos
+ * @author Selene
+ * @version 1.0
+ */
 public class InsertarCursoController implements TableRecargable, EntidadRowListener<Estudiante> {
     @FXML
     private TextField nombreTextField;
@@ -44,6 +48,10 @@ public class InsertarCursoController implements TableRecargable, EntidadRowListe
         this.inicializarColumnas();
         this.recargar();
     }
+
+    /**
+     * Método que agrega un nuevo estudiante a la lista de estudiantes del curso
+     */
     @FXML
     private void onClickAniadirButton(){
         if(this.listaAlumnosChoiceBox.getValue()!=null){
@@ -54,6 +62,11 @@ public class InsertarCursoController implements TableRecargable, EntidadRowListe
             this.estudiantesEliminados.remove(this.listaAlumnosChoiceBox.getValue());
         }else this.errorLabel.setText("Debes seleccionar un estudiante.");
     }
+
+    /**
+     * Método que guarda la nueva o modificada entidad en la base de datos usando el repositorio. Valida que no haya campos
+     * vacíos antes de guardar, si los hay, avisa y no guarda.
+     */
     @FXML
     private void onClickGuardarButton(){
         if(!this.nombreTextField.getText().isEmpty() || !this.descripcionTextField.getText().isEmpty()){
@@ -72,11 +85,21 @@ public class InsertarCursoController implements TableRecargable, EntidadRowListe
             this.onClickVolverButton();
         }else this.errorLabel.setText("El nombre y la descripción son obligatorios.");
     }
+
+    /**
+     * Método que nos devuelve a la pantalla anterior
+     */
     @FXML
     private void onClickVolverButton(){
         FXService.setCurso(null);
         FXService.cambiarVentana(FXService.GESTIONAR_CURSOS);
     }
+
+    /**
+     * Método que nos devuelve una lista tipo ObservableList con todos los estudiantes actuales preparada para usarla
+     * en la tabla
+     * @return Una lista tipo ObservableList con todos los estudiantes preparada para usarse en la tabla
+     */
     private ObservableList<EstudianteRow> obtenerEstudiantesCurso(){
         Set<Estudiante> estudiantes = this.curso.getEstudiantes();
         List<EstudianteRow> estudianteRowList = new ArrayList<>();
@@ -85,6 +108,11 @@ public class InsertarCursoController implements TableRecargable, EntidadRowListe
         }
         return FXCollections.observableList(estudianteRowList);
     }
+
+    /**
+     * Método que inicializa las columnas de la tabla, vinculandolas a cada atributo de la entidad EstudianteRow, específicamente
+     * hecha para mostrar estudiantes en la tabla.
+     */
     private void inicializarColumnas(){
         TableColumn<EstudianteRow, Integer> idTableColumn = new TableColumn<>("ID");
         idTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -112,12 +140,31 @@ public class InsertarCursoController implements TableRecargable, EntidadRowListe
         this.centrarCentroContenidoComumna(eliminarTableColumn);
         this.tablaAlumnosTableView.getColumns().addAll(idTableColumn, nombreColumn, apellidoColumn, emailColumn, nCursosEstudianteColumn, eliminarTableColumn);
     }
+
+    /**
+     * Método que centra el contenido de una columna en el centro
+     * @param column La columna a centrar
+     * @param <T> El tipo de dato que contiene la columna
+     */
     private <T> void centrarCentroContenidoComumna(TableColumn<EstudianteRow, T> column){
         this.centrarContenidoColumna(column, "-fx-alignment: CENTER;");
     }
+
+    /**
+     * Método que centra el contenido de una columna en la izquierda
+     * @param column La columna a centrar
+     * @param <T> El tipo de dato que contiene la columna
+     */
     private <T> void centrarIzqContenidoComumna(TableColumn<EstudianteRow, T> column){
         this.centrarContenidoColumna(column, "-fx-alignment: CENTER-LEFT;");
     }
+
+    /**
+     * Método que centra el contenido de una columna según se le indique
+     * @param column La columna a centrar
+     * @param style Como queremos que se centre la columna (EJ: -fx-alignment: CENTER-LEFT; para centro izquierda)
+     * @param <T> El tipo de dato que contiene la columna
+     */
     private <T> void centrarContenidoColumna(TableColumn<EstudianteRow, T> column, String style) {
         column.setCellFactory(_ -> new TableCell<>() {
             @Override
@@ -139,6 +186,11 @@ public class InsertarCursoController implements TableRecargable, EntidadRowListe
             }
         });
     }
+
+    /**
+     * Método que refresca el correspondiente ChoiceBox de alumnos siempre y cuando estén inscritos todos al mismo
+     * curso (que se ha seleccionado anteriormente con otro ChoiceBox)
+     */
     private void refrescarAlumnosChoiceBox(){
         this.listaAlumnosChoiceBox.getItems().clear();
         GenericRepositoryService<Estudiante> estudianteGenericRepositoryService = new GenericRepositoryService<>(Estudiante.class);
@@ -150,13 +202,6 @@ public class InsertarCursoController implements TableRecargable, EntidadRowListe
             }
         }else estudiantesList = estudiantes;
         this.listaAlumnosChoiceBox.getItems().addAll(estudiantesList);
-    }
-    public Curso getCurso() {
-        return curso;
-    }
-
-    public void setCurso(Curso curso) {
-        this.curso = curso;
     }
     @Override
     public void recargar() {
@@ -176,5 +221,12 @@ public class InsertarCursoController implements TableRecargable, EntidadRowListe
         }
         if(!estudiantesEliminados.contains(estudiante))this.estudiantesEliminados.add(estudiante);
         this.recargar();
+    }
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = curso;
     }
 }

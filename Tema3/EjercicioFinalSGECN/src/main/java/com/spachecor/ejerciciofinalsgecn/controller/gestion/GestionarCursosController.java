@@ -15,6 +15,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase GestionarCursosController, que es el controlador de la interfaz gráfica con la que el usuario puede gestionar
+ * los cursos.
+ * @author Selene
+ * @version 1.0
+ */
 public class GestionarCursosController implements TableRecargable, EntidadRowListener<Curso> {
     @FXML
     private TableView<CursoRow> tablaCursosTableView;
@@ -27,14 +33,28 @@ public class GestionarCursosController implements TableRecargable, EntidadRowLis
         this.inicializarColumnas();
         this.recargar();
     }
+
+    /**
+     * Método que nos envía a la interfaz gráfica para insertar un nuevo curso
+     */
     @FXML
     private void onClickNuevoButton(){
         FXService.cambiarVentana(FXService.INSERTAR_CURSO);
     }
+
+    /**
+     * Método que nos devuelve a la pantalla anterior
+     */
     @FXML
     private void onClickSalirButton() {
         FXService.cambiarVentana(FXService.MAIN);
     }
+
+    /**
+     * Método que nos devuelve una lista tipo ObservableList con todos los cursos actuales preparada para usarla
+     * en la tabla
+     * @return Una lista tipo ObservableList con todos los cursos preparada para usarse en la tabla
+     */
     private ObservableList<CursoRow> getObservableListToCursos(){
         List<Curso> cursos = genericRepositoryService.listar();
         List<CursoRow> cursoRowList = new ArrayList<>();
@@ -43,6 +63,11 @@ public class GestionarCursosController implements TableRecargable, EntidadRowLis
         }
         return FXCollections.observableList(cursoRowList);
     }
+
+    /**
+     * Método que inicializa las columnas de la tabla, vinculandolas a cada atributo de la entidad CursoRow, específicamente
+     * hecha para mostrar cursos en la tabla.
+     */
     private void inicializarColumnas(){
         TableColumn<CursoRow, Integer> idTableColumn = new TableColumn<>("ID");
         idTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -70,12 +95,31 @@ public class GestionarCursosController implements TableRecargable, EntidadRowLis
         this.centrarCentroContenidoComumna(eliminarTableColumn);
         this.tablaCursosTableView.getColumns().addAll(idTableColumn, nombreTableColumn, descripcionTableColumn, nEstudiantesTableColumn, modificarTableColumn, eliminarTableColumn);
     }
+
+    /**
+     * Método que centra el contenido de una columna en el centro
+     * @param column La columna a centrar
+     * @param <T> El tipo de dato que contiene la columna
+     */
     private <T> void centrarCentroContenidoComumna(TableColumn<CursoRow, T> column){
         this.centrarContenidoColumna(column, "-fx-alignment: CENTER;");
     }
+
+    /**
+     * Método que centra el contenido de una columna en la izquierda
+     * @param column La columna a centrar
+     * @param <T> El tipo de dato que contiene la columna
+     */
     private <T> void centrarIzqContenidoComumna(TableColumn<CursoRow, T> column){
         this.centrarContenidoColumna(column, "-fx-alignment: CENTER-LEFT;");
     }
+
+    /**
+     * Método que centra el contenido de una columna según se le indique
+     * @param column La columna a centrar
+     * @param style Como queremos que se centre la columna (EJ: -fx-alignment: CENTER-LEFT; para centro izquierda)
+     * @param <T> El tipo de dato que contiene la columna
+     */
     private <T> void centrarContenidoColumna(TableColumn<CursoRow, T> column, String style) {
         column.setCellFactory(_ -> new TableCell<>() {
             @Override

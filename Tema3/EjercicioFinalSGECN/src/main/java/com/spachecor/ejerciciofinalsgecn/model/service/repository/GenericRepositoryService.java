@@ -33,8 +33,6 @@ public class GenericRepositoryService<T extends Entidad> {
             session.beginTransaction();
             list = this.repository.listar(session);
             session.getTransaction().commit();
-        }catch (Exception e) {
-            e.printStackTrace();
         }finally {
             return list;
         }
@@ -52,8 +50,6 @@ public class GenericRepositoryService<T extends Entidad> {
             session.beginTransaction();
             result = Optional.ofNullable(this.repository.porId(session, id));
             session.getTransaction().commit();
-        }catch (Exception e) {
-            e.printStackTrace();
         }finally {
             return result;
         }
@@ -70,7 +66,6 @@ public class GenericRepositoryService<T extends Entidad> {
             repository.guardar(session, t);
             session.getTransaction().commit();
         }catch (Exception e) {
-            e.printStackTrace();
             session.getTransaction().rollback();
         }
     }

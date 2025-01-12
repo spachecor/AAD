@@ -8,7 +8,6 @@ import com.spachecor.ejerciciofinalsgecn.model.entity.Nota;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -65,6 +64,14 @@ public class FXService {
             System.exit(1);
         }
     }
+
+    /**
+     * Método que se encarga de cambiar las ventanas según el nombre de la vista que le pasemos. También se encarga de
+     * definir una entidad. Esta variante del método se usa para modificar entidades
+     * @param ventana El nombre del fichero .fxml que le pasamos.
+     * @param t La entidad a modificar
+     * @param <T> Entidad que herede de la clase Entidad
+     */
     public static <T extends Entidad> void cambiarVentana(String ventana, T t){
         if(t instanceof Curso){
             FXService.setCurso((Curso) t);

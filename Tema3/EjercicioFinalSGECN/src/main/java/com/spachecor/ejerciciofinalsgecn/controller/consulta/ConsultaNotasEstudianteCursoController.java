@@ -14,6 +14,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase ConsultaNotasEstudianteCursoController, que es el controlador de la interfaz gráfica con la que el usuario
+ * puede consultar las notas de todos los estudiantes en un curso en específico.
+ * @author Selene
+ * @version 1.0
+ */
 public class ConsultaNotasEstudianteCursoController {
     @FXML
     private ChoiceBox<Curso> cursoChoiceBox;
@@ -50,10 +56,19 @@ public class ConsultaNotasEstudianteCursoController {
             }
         });
     }
+
+    /**
+     * Método que nos devuelve a la pantalla anterior
+     */
     @FXML
     private void onClickVolverButton(){
         FXService.cambiarVentana(FXService.MAIN);
     }
+
+    /**
+     * Método que inicializa las columnas de la tabla, vinculandolas a cada atributo de la entidad NotaEstudianteCursoRow,
+     * específicamente hecha para mostrar esta relación en la tabla
+     */
     private void inicializarColumnas(){
         TableColumn<NotaEstudianteCursoRow, Integer> idEstudianteColumn = new TableColumn<>("ID ESTUDIANTE");
         idEstudianteColumn.setCellValueFactory(new PropertyValueFactory<>("idEstudiante"));
@@ -77,12 +92,31 @@ public class ConsultaNotasEstudianteCursoController {
         this.centrarCentroContenidoComumna(notaColumn);
         this.tablaTableView.getColumns().addAll(idEstudianteColumn, nombreEstudianteColumn, idCursoColumn, nombreCursoColumn, notaColumn);
     }
+
+    /**
+     * Método que centra el contenido de una columna en el centro
+     * @param column La columna a centrar
+     * @param <T> El tipo de dato que contiene la columna
+     */
     private <T> void centrarCentroContenidoComumna(TableColumn<NotaEstudianteCursoRow, T> column){
         this.centrarContenidoColumna(column, "-fx-alignment: CENTER;");
     }
+
+    /**
+     * Método que centra el contenido de una columna en la izquierda
+     * @param column La columna a centrar
+     * @param <T> El tipo de dato que contiene la columna
+     */
     private <T> void centrarIzqContenidoComumna(TableColumn<NotaEstudianteCursoRow, T> column){
         this.centrarContenidoColumna(column, "-fx-alignment: CENTER-LEFT;");
     }
+
+    /**
+     * Método que centra el contenido de una columna según se le indique
+     * @param column La columna a centrar
+     * @param style Como queremos que se centre la columna (EJ: -fx-alignment: CENTER-LEFT; para centro izquierda)
+     * @param <T> El tipo de dato que contiene la columna
+     */
     private <T> void centrarContenidoColumna(TableColumn<NotaEstudianteCursoRow, T> column, String style) {
         column.setCellFactory(_ -> new TableCell<>() {
             @Override
