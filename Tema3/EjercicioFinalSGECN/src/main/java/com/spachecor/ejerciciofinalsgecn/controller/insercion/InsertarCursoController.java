@@ -1,6 +1,7 @@
 package com.spachecor.ejerciciofinalsgecn.controller.insercion;
 
 import com.spachecor.ejerciciofinalsgecn.controller.service.FXService;
+import com.spachecor.ejerciciofinalsgecn.controller.service.FontService;
 import com.spachecor.ejerciciofinalsgecn.controller.service.tablaservice.EntidadRowListener;
 import com.spachecor.ejerciciofinalsgecn.controller.service.tablaservice.TableRecargable;
 import com.spachecor.ejerciciofinalsgecn.model.entity.Curso;
@@ -182,6 +183,7 @@ public class InsertarCursoController implements TableRecargable, EntidadRowListe
                         setGraphic(null);
                     }
                     setStyle(style);
+                    setFont(FontService.NORMAL_FONT);
                 }
             }
         });

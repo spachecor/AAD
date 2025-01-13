@@ -1,5 +1,6 @@
 package com.spachecor.ejerciciofinalsgecn.controller.gestion;
 
+import com.spachecor.ejerciciofinalsgecn.controller.service.FontService;
 import com.spachecor.ejerciciofinalsgecn.controller.service.tablaservice.EntidadRowListener;
 import com.spachecor.ejerciciofinalsgecn.controller.service.FXService;
 import com.spachecor.ejerciciofinalsgecn.controller.service.tablaservice.TableRecargable;
@@ -11,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Font;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -137,6 +139,7 @@ public class GestionarCursosController implements TableRecargable, EntidadRowLis
                         setGraphic(null);
                     }
                     setStyle(style);
+                    setFont(FontService.NORMAL_FONT);
                 }
             }
         });

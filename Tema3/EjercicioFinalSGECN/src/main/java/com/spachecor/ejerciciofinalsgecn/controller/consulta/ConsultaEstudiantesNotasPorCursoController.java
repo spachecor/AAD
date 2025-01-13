@@ -1,6 +1,7 @@
 package com.spachecor.ejerciciofinalsgecn.controller.consulta;
 
 import com.spachecor.ejerciciofinalsgecn.controller.service.FXService;
+import com.spachecor.ejerciciofinalsgecn.controller.service.FontService;
 import com.spachecor.ejerciciofinalsgecn.model.entity.Curso;
 import com.spachecor.ejerciciofinalsgecn.model.entity.Estudiante;
 import com.spachecor.ejerciciofinalsgecn.model.entity.Nota;
@@ -116,6 +117,7 @@ public class ConsultaEstudiantesNotasPorCursoController {
                         setGraphic(null);
                     }
                     setStyle(style);
+                    setFont(FontService.NORMAL_FONT);
                 }
             }
         });

@@ -1,5 +1,6 @@
 package com.spachecor.ejerciciofinalsgecn.controller.gestion;
 
+import com.spachecor.ejerciciofinalsgecn.controller.service.FontService;
 import com.spachecor.ejerciciofinalsgecn.controller.service.tablaservice.EntidadRowListener;
 import com.spachecor.ejerciciofinalsgecn.controller.service.FXService;
 import com.spachecor.ejerciciofinalsgecn.controller.service.tablaservice.TableRecargable;
@@ -141,6 +142,7 @@ public class GestionarEstudiantesController implements TableRecargable, EntidadR
                         setGraphic(null);
                     }
                     setStyle(style);
+                    setFont(FontService.NORMAL_FONT);
                 }
             }
         });
