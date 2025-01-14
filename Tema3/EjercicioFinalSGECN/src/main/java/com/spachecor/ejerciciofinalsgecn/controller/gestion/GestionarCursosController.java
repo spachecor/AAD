@@ -71,31 +71,50 @@ public class GestionarCursosController implements TableRecargable, EntidadRowLis
      * hecha para mostrar cursos en la tabla.
      */
     private void inicializarColumnas(){
-        TableColumn<CursoRow, Integer> idTableColumn = new TableColumn<>("ID");
+        TableColumn<CursoRow, Integer> idTableColumn = new TableColumn<>();
         idTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         idTableColumn.setMinWidth(75);
+        this.setCustomColumnHeader(idTableColumn, "ID");
         this.centrarCentroContenidoComumna(idTableColumn);
-        TableColumn<CursoRow, String> nombreTableColumn = new TableColumn<>("NOMBRE");
+        TableColumn<CursoRow, String> nombreTableColumn = new TableColumn<>();
         nombreTableColumn.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         nombreTableColumn.setMinWidth(200);
+        this.setCustomColumnHeader(nombreTableColumn, "NOMBRE");
         this.centrarIzqContenidoComumna(nombreTableColumn);
-        TableColumn<CursoRow, String> descripcionTableColumn = new TableColumn<>("DESCRIPCIÓN");
+        TableColumn<CursoRow, String> descripcionTableColumn = new TableColumn<>();
         descripcionTableColumn.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
-        descripcionTableColumn.setMinWidth(655);
+        descripcionTableColumn.setMinWidth(605);
+        this.setCustomColumnHeader(descripcionTableColumn, "DESCRIPCION");
         this.centrarIzqContenidoComumna(descripcionTableColumn);
-        TableColumn<CursoRow, Integer> nEstudiantesTableColumn = new TableColumn<>("Nº ESTUDIANTES");
+        TableColumn<CursoRow, Integer> nEstudiantesTableColumn = new TableColumn<>();
         nEstudiantesTableColumn.setCellValueFactory(new PropertyValueFactory<>("nEstudiantes"));
         nEstudiantesTableColumn.setMinWidth(150);
+        this.setCustomColumnHeader(nEstudiantesTableColumn, "N ESTUDIANTES");
         this.centrarCentroContenidoComumna(nEstudiantesTableColumn);
-        TableColumn<CursoRow, Button> modificarTableColumn = new TableColumn<>("MODIFICAR");
+        TableColumn<CursoRow, Button> modificarTableColumn = new TableColumn<>();
         modificarTableColumn.setCellValueFactory(new PropertyValueFactory<>("modificar"));
-        modificarTableColumn.setMinWidth(75);
+        modificarTableColumn.setMinWidth(100);
+        this.setCustomColumnHeader(modificarTableColumn, "MODIFICAR");
         this.centrarCentroContenidoComumna(modificarTableColumn);
-        TableColumn<CursoRow, Button> eliminarTableColumn = new TableColumn<>("ELIMINAR");
+        TableColumn<CursoRow, Button> eliminarTableColumn = new TableColumn<>();
         eliminarTableColumn.setCellValueFactory(new PropertyValueFactory<>("eliminar"));
-        eliminarTableColumn.setMinWidth(75);
+        eliminarTableColumn.setMinWidth(100);
+        this.setCustomColumnHeader(eliminarTableColumn, "ELIMINAR");
         this.centrarCentroContenidoComumna(eliminarTableColumn);
         this.tablaCursosTableView.getColumns().addAll(idTableColumn, nombreTableColumn, descripcionTableColumn, nEstudiantesTableColumn, modificarTableColumn, eliminarTableColumn);
+    }
+
+    /**
+     * Método que aplica una fuente personalizada al encabezado de la columna.
+     *
+     * @param column La columna a la que se aplicará la fuente.
+     * @param text   El texto del encabezado.
+     * @param <T>    El tipo de dato de la columna.
+     */
+    private <T> void setCustomColumnHeader(TableColumn<CursoRow, T> column, String text) {
+        Label header = new Label(text);
+        header.setFont(FontService.SMALL_FONT);
+        column.setGraphic(header);
     }
 
     /**

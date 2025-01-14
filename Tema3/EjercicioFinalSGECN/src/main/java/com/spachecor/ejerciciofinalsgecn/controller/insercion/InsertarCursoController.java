@@ -115,31 +115,50 @@ public class InsertarCursoController implements TableRecargable, EntidadRowListe
      * hecha para mostrar estudiantes en la tabla.
      */
     private void inicializarColumnas(){
-        TableColumn<EstudianteRow, Integer> idTableColumn = new TableColumn<>("ID");
+        TableColumn<EstudianteRow, Integer> idTableColumn = new TableColumn<>();
         idTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         idTableColumn.setMinWidth(50);
+        this.setCustomColumnHeader(idTableColumn, "ID");
         this.centrarCentroContenidoComumna(idTableColumn);
-        TableColumn<EstudianteRow, String> nombreColumn = new TableColumn<>("NOMBRE");
+        TableColumn<EstudianteRow, String> nombreColumn = new TableColumn<>();
         nombreColumn.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         nombreColumn.setMinWidth(150);
+        this.setCustomColumnHeader(nombreColumn, "NOMBRE");
         this.centrarIzqContenidoComumna(nombreColumn);
-        TableColumn<EstudianteRow, String> apellidoColumn = new TableColumn<>("APELLIDO");
+        TableColumn<EstudianteRow, String> apellidoColumn = new TableColumn<>();
         apellidoColumn.setCellValueFactory(new PropertyValueFactory<>("apellido"));
         apellidoColumn.setMinWidth(150);
+        this.setCustomColumnHeader(apellidoColumn, "APELLIDO");
         this.centrarIzqContenidoComumna(apellidoColumn);
-        TableColumn<EstudianteRow, String> emailColumn = new TableColumn<>("EMAIL");
+        TableColumn<EstudianteRow, String> emailColumn = new TableColumn<>();
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
         emailColumn.setMinWidth(110);
+        this.setCustomColumnHeader(emailColumn, "EMAIL");
         this.centrarIzqContenidoComumna(emailColumn);
-        TableColumn<EstudianteRow, Integer> nCursosEstudianteColumn = new TableColumn<>("Nº CURSOS");
+        TableColumn<EstudianteRow, Integer> nCursosEstudianteColumn = new TableColumn<>();
         nCursosEstudianteColumn.setCellValueFactory(new PropertyValueFactory<>("nCursosInscrito"));
-        nCursosEstudianteColumn.setMinWidth(50);
+        nCursosEstudianteColumn.setMinWidth(75);
+        this.setCustomColumnHeader(nCursosEstudianteColumn, "N CURSOS");
         this.centrarCentroContenidoComumna(nCursosEstudianteColumn);
-        TableColumn<EstudianteRow, Button> eliminarTableColumn = new TableColumn<>("ELIMINAR");
+        TableColumn<EstudianteRow, Button> eliminarTableColumn = new TableColumn<>();
         eliminarTableColumn.setCellValueFactory(new PropertyValueFactory<>("eliminar"));
         eliminarTableColumn.setMinWidth(50);
+        this.setCustomColumnHeader(eliminarTableColumn, "ELIMINAR");
         this.centrarCentroContenidoComumna(eliminarTableColumn);
         this.tablaAlumnosTableView.getColumns().addAll(idTableColumn, nombreColumn, apellidoColumn, emailColumn, nCursosEstudianteColumn, eliminarTableColumn);
+    }
+
+    /**
+     * Método que aplica una fuente personalizada al encabezado de la columna.
+     *
+     * @param column La columna a la que se aplicará la fuente.
+     * @param text   El texto del encabezado.
+     * @param <T>    El tipo de dato de la columna.
+     */
+    private <T> void setCustomColumnHeader(TableColumn<EstudianteRow, T> column, String text) {
+        Label header = new Label(text);
+        header.setFont(FontService.X_SMALL_FONT);
+        column.setGraphic(header);
     }
 
     /**

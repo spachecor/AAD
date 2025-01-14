@@ -5,6 +5,7 @@ import com.spachecor.ejerciciofinalsgecn.controller.service.FontService;
 import com.spachecor.ejerciciofinalsgecn.controller.service.tablaservice.EntidadRowListener;
 import com.spachecor.ejerciciofinalsgecn.controller.service.tablaservice.TableRecargable;
 import com.spachecor.ejerciciofinalsgecn.model.entity.Nota;
+import com.spachecor.ejerciciofinalsgecn.model.row.EstudianteRow;
 import com.spachecor.ejerciciofinalsgecn.model.row.NotaRow;
 import com.spachecor.ejerciciofinalsgecn.model.service.repository.GenericRepositoryService;
 import javafx.collections.FXCollections;
@@ -71,43 +72,65 @@ public class GestionarNotasController implements TableRecargable, EntidadRowList
      * hecha para mostrar notas en la tabla.
      */
     private void inicializarColumnas(){
-        TableColumn<NotaRow, Integer> idColumn = new TableColumn<>("ID");
+        TableColumn<NotaRow, Integer> idColumn = new TableColumn<>();
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         idColumn.setMinWidth(75);
+        this.setCustomColumnHeader(idColumn, "ID");
         this.centrarCentroContenidoComumna(idColumn);
-        TableColumn<NotaRow, Double> valorColumn = new TableColumn<>("VALOR");
+        TableColumn<NotaRow, Double> valorColumn = new TableColumn<>();
         valorColumn.setCellValueFactory(new PropertyValueFactory<>("valor"));
         valorColumn.setMinWidth(75);
+        this.setCustomColumnHeader(valorColumn, "VALOR");
         this.centrarCentroContenidoComumna(valorColumn);
-        TableColumn<NotaRow, LocalDate> fechaColumn = new TableColumn<>("FECHA");
+        TableColumn<NotaRow, LocalDate> fechaColumn = new TableColumn<>();
         fechaColumn.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         fechaColumn.setMinWidth(150);
+        this.setCustomColumnHeader(fechaColumn, "FECHA");
         this.centrarCentroContenidoComumna(fechaColumn);
-        TableColumn<NotaRow, Integer> idCursoColumn = new TableColumn<>("ID CURSO");
+        TableColumn<NotaRow, Integer> idCursoColumn = new TableColumn<>();
         idCursoColumn.setCellValueFactory(new PropertyValueFactory<>("idCurso"));
         idCursoColumn.setMinWidth(75);
+        this.setCustomColumnHeader(idCursoColumn, "ID CURSO");
         this.centrarCentroContenidoComumna(idCursoColumn);
-        TableColumn<NotaRow, String> nombreCursoColumn = new TableColumn<>("NOMBRE DEL CURSO");
+        TableColumn<NotaRow, String> nombreCursoColumn = new TableColumn<>();
         nombreCursoColumn.setCellValueFactory(new PropertyValueFactory<>("nombreCurso"));
-        nombreCursoColumn.setMinWidth(300);
+        nombreCursoColumn.setMinWidth(250);
+        this.setCustomColumnHeader(nombreCursoColumn, "NOMBRE DEL CURSO");
         this.centrarIzqContenidoComumna(nombreCursoColumn);
-        TableColumn<NotaRow, Integer> idEstudianteColumn = new TableColumn<>("ID ESTUDIANTE");
+        TableColumn<NotaRow, Integer> idEstudianteColumn = new TableColumn<>();
         idEstudianteColumn.setCellValueFactory(new PropertyValueFactory<>("idEstudiante"));
-        idEstudianteColumn.setMinWidth(75);
+        idEstudianteColumn.setMinWidth(125);
+        this.setCustomColumnHeader(idEstudianteColumn, "ID ESTUDIANTE");
         this.centrarCentroContenidoComumna(idEstudianteColumn);
-        TableColumn<NotaRow, String> nombreEstudianteColumn = new TableColumn<>("NOMBRE DEL ESTUDIANTE");
+        TableColumn<NotaRow, String> nombreEstudianteColumn = new TableColumn<>();
         nombreEstudianteColumn.setCellValueFactory(new PropertyValueFactory<>("nombreEstudiante"));
-        nombreEstudianteColumn.setMinWidth(300);
+        nombreEstudianteColumn.setMinWidth(250);
+        this.setCustomColumnHeader(nombreEstudianteColumn, "NOMBRE DEL ESTUDIANTE");
         this.centrarIzqContenidoComumna(nombreEstudianteColumn);
-        TableColumn<NotaRow, Button> modificarTableColumn = new TableColumn<>("MODIFICAR");
+        TableColumn<NotaRow, Button> modificarTableColumn = new TableColumn<>();
         modificarTableColumn.setCellValueFactory(new PropertyValueFactory<>("modificar"));
-        modificarTableColumn.setMinWidth(75);
+        modificarTableColumn.setMinWidth(100);
+        this.setCustomColumnHeader(modificarTableColumn, "MODIFICAR");
         this.centrarCentroContenidoComumna(modificarTableColumn);
-        TableColumn<NotaRow, Button> eliminarTableColumn = new TableColumn<>("ELIMINAR");
+        TableColumn<NotaRow, Button> eliminarTableColumn = new TableColumn<>();
         eliminarTableColumn.setCellValueFactory(new PropertyValueFactory<>("eliminar"));
-        eliminarTableColumn.setMinWidth(75);
+        eliminarTableColumn.setMinWidth(100);
+        this.setCustomColumnHeader(eliminarTableColumn, "ELIMINAR");
         this.centrarCentroContenidoComumna(eliminarTableColumn);
         this.tablaCursosTableView.getColumns().addAll(idColumn, valorColumn, fechaColumn, idCursoColumn, nombreCursoColumn, idEstudianteColumn, nombreEstudianteColumn, modificarTableColumn, eliminarTableColumn);
+    }
+
+    /**
+     * Método que aplica una fuente personalizada al encabezado de la columna.
+     *
+     * @param column La columna a la que se aplicará la fuente.
+     * @param text   El texto del encabezado.
+     * @param <T>    El tipo de dato de la columna.
+     */
+    private <T> void setCustomColumnHeader(TableColumn<NotaRow, T> column, String text) {
+        Label header = new Label(text);
+        header.setFont(FontService.SMALL_FONT);
+        column.setGraphic(header);
     }
 
     /**
