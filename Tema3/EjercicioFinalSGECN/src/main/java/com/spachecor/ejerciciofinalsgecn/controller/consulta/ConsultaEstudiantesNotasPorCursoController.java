@@ -23,11 +23,21 @@ import java.util.List;
  */
 public class ConsultaEstudiantesNotasPorCursoController {
     @FXML
+    private Label cursoLabel;
+    @FXML
     private ChoiceBox<Curso> cursoChoiceBox;
+    @FXML
+    private Button volverButton;
     @FXML
     private TableView<EstudianteNotasPorCursoRow> tablaTableView;
     @FXML
     protected void initialize() {
+        FontService.setFont(
+                FontService.NORMAL_FONT,
+                this.cursoLabel,
+                this.cursoChoiceBox,
+                this.volverButton
+        );
         this.inicializarColumnas();
         GenericRepositoryService<Curso> cursoGenericRepositoryService = new GenericRepositoryService<>(Curso.class);
         this.cursoChoiceBox.getItems().addAll(cursoGenericRepositoryService.listar());
@@ -91,6 +101,7 @@ public class ConsultaEstudiantesNotasPorCursoController {
         Label header = new Label(text);
         header.setFont(FontService.SMALL_FONT);
         column.setGraphic(header);
+        column.setStyle("-fx-background-color:  #ECFBFF; -fx-border-color:  #ccffff");
     }
 
     /**
@@ -135,6 +146,7 @@ public class ConsultaEstudiantesNotasPorCursoController {
                     }
                     setStyle(style);
                     setFont(FontService.NORMAL_FONT);
+                    setStyle("-fx-background-color:  #f1f1e6; -fx-border-color:  #ccffff");
                 }
             }
         });

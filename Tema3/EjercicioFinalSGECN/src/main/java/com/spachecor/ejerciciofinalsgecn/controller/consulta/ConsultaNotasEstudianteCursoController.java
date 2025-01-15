@@ -5,7 +5,6 @@ import com.spachecor.ejerciciofinalsgecn.controller.service.FontService;
 import com.spachecor.ejerciciofinalsgecn.model.entity.Curso;
 import com.spachecor.ejerciciofinalsgecn.model.entity.Estudiante;
 import com.spachecor.ejerciciofinalsgecn.model.entity.Nota;
-import com.spachecor.ejerciciofinalsgecn.model.row.CursoRow;
 import com.spachecor.ejerciciofinalsgecn.model.row.NotaEstudianteCursoRow;
 import com.spachecor.ejerciciofinalsgecn.model.service.repository.GenericRepositoryService;
 import javafx.fxml.FXML;
@@ -23,15 +22,29 @@ import java.util.List;
  */
 public class ConsultaNotasEstudianteCursoController {
     @FXML
+    private Label cursoLabel;
+    @FXML
     private ChoiceBox<Curso> cursoChoiceBox;
     @FXML
+    private Label estudianteLabel;
+    @FXML
     private ChoiceBox<Estudiante> estudianteChoiceBox;
+    @FXML
+    private Button volverButton;
     @FXML
     private TableView<NotaEstudianteCursoRow> tablaTableView;
     GenericRepositoryService<Curso> cursoGenericRepositoryService;
     GenericRepositoryService<Estudiante> estudianteGenericRepositoryService;
     @FXML
     protected void initialize() {
+        FontService.setFont(
+                FontService.NORMAL_FONT,
+                this.cursoLabel,
+                this.cursoChoiceBox,
+                this.estudianteLabel,
+                this.estudianteChoiceBox,
+                this.volverButton
+        );
         this.inicializarColumnas();
         this.cursoGenericRepositoryService = new GenericRepositoryService<>(Curso.class);
         this.estudianteGenericRepositoryService = new GenericRepositoryService<>(Estudiante.class);
@@ -71,27 +84,46 @@ public class ConsultaNotasEstudianteCursoController {
      * específicamente hecha para mostrar esta relación en la tabla
      */
     private void inicializarColumnas(){
-        TableColumn<NotaEstudianteCursoRow, Integer> idEstudianteColumn = new TableColumn<>("ID ESTUDIANTE");
+        TableColumn<NotaEstudianteCursoRow, Integer> idEstudianteColumn = new TableColumn<>();
         idEstudianteColumn.setCellValueFactory(new PropertyValueFactory<>("idEstudiante"));
         idEstudianteColumn.setMinWidth(125);
+        this.setCustomColumnHeader(idEstudianteColumn, "ID ESTUDIANTE");
         this.centrarCentroContenidoComumna(idEstudianteColumn);
-        TableColumn<NotaEstudianteCursoRow, String> nombreEstudianteColumn = new TableColumn<>("NOMBRE ESTUDIANTE");
+        TableColumn<NotaEstudianteCursoRow, String> nombreEstudianteColumn = new TableColumn<>();
         nombreEstudianteColumn.setCellValueFactory(new PropertyValueFactory<>("nombreEstudiante"));
         nombreEstudianteColumn.setMinWidth(250);
+        this.setCustomColumnHeader(nombreEstudianteColumn, "NOMBRE ESTUDIANTE");
         this.centrarIzqContenidoComumna(nombreEstudianteColumn);
-        TableColumn<NotaEstudianteCursoRow, Integer> idCursoColumn = new TableColumn<>("ID CURSO");
+        TableColumn<NotaEstudianteCursoRow, Integer> idCursoColumn = new TableColumn<>();
         idCursoColumn.setCellValueFactory(new PropertyValueFactory<>("idCurso"));
         idCursoColumn.setMinWidth(75);
+        this.setCustomColumnHeader(idCursoColumn, "ID CURSO");
         this.centrarCentroContenidoComumna(idCursoColumn);
         TableColumn<NotaEstudianteCursoRow, String> nombreCursoColumn = new TableColumn<>("NOMBRE CURSO");
         nombreCursoColumn.setCellValueFactory(new PropertyValueFactory<>("nombreCurso"));
         nombreCursoColumn.setMinWidth(250);
+        this.setCustomColumnHeader(nombreCursoColumn, "NOMBRE CURSO");
         this.centrarIzqContenidoComumna(nombreCursoColumn);
-        TableColumn<NotaEstudianteCursoRow, Double> notaColumn = new TableColumn<>("NOTA");
+        TableColumn<NotaEstudianteCursoRow, Double> notaColumn = new TableColumn<>();
         notaColumn.setCellValueFactory(new PropertyValueFactory<>("nota"));
         notaColumn.setMinWidth(75);
+        this.setCustomColumnHeader(notaColumn, "NOTA");
         this.centrarCentroContenidoComumna(notaColumn);
         this.tablaTableView.getColumns().addAll(idEstudianteColumn, nombreEstudianteColumn, idCursoColumn, nombreCursoColumn, notaColumn);
+    }
+
+    /**
+     * Método que aplica una fuente personalizada al encabezado de la columna.
+     *
+     * @param column La columna a la que se aplicará la fuente.
+     * @param text   El texto del encabezado.
+     * @param <T>    El tipo de dato de la columna.
+     */
+    private <T> void setCustomColumnHeader(TableColumn<NotaEstudianteCursoRow, T> column, String text) {
+        Label header = new Label(text);
+        header.setFont(FontService.SMALL_FONT);
+        column.setGraphic(header);
+        column.setStyle("-fx-background-color:  #ECFBFF; -fx-border-color:  #ccffff");
     }
 
     /**
@@ -136,6 +168,7 @@ public class ConsultaNotasEstudianteCursoController {
                     }
                     setStyle(style);
                     setFont(FontService.NORMAL_FONT);
+                    setStyle("-fx-background-color:  #f1f1e6; -fx-border-color:  #ccffff");
                 }
             }
         });

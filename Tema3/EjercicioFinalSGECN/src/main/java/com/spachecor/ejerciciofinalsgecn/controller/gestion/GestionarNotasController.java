@@ -26,12 +26,18 @@ import java.util.List;
  */
 public class GestionarNotasController implements TableRecargable, EntidadRowListener<Nota> {
     @FXML
+    private Label eduTrackLabel;
+    @FXML
     private TableView<NotaRow> tablaCursosTableView;
     @FXML
-    private Label errorLabel;
+    private Button nuevoButton;
+    @FXML
+    private Button salirButton;
     private GenericRepositoryService<Nota> genericRepositoryService;
     @FXML
     protected void initialize() {
+        FontService.setFont(FontService.LARGE_FONT, this.eduTrackLabel);
+        FontService.setFont(FontService.NORMAL_FONT, this.nuevoButton, this.salirButton);
         genericRepositoryService = new GenericRepositoryService<>(Nota.class);
         this.inicializarColumnas();
         recargar();
@@ -131,6 +137,7 @@ public class GestionarNotasController implements TableRecargable, EntidadRowList
         Label header = new Label(text);
         header.setFont(FontService.SMALL_FONT);
         column.setGraphic(header);
+        column.setStyle("-fx-background-color:  #ECFBFF; -fx-border-color:  #ccffff");
     }
 
     /**
@@ -175,6 +182,7 @@ public class GestionarNotasController implements TableRecargable, EntidadRowList
                     }
                     setStyle(style);
                     setFont(FontService.NORMAL_FONT);
+                    setStyle("-fx-background-color:  #f1f1e6; -fx-border-color:  #ccffff");
                 }
             }
         });

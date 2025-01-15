@@ -9,27 +9,30 @@
    <children>
       <VBox alignment="CENTER" prefHeight="50.0" prefWidth="1240.0">
          <children>
-            <Label text="EduTrack" textFill="#02547f">
+            <Label fx:id="eduTrackLabel" text="EduTrack" textFill="#02547f">
                <font>
                   <Font size="24.0" />
                </font></Label>
          </children></VBox>
       <VBox alignment="CENTER" prefHeight="530.0" prefWidth="1240.0">
          <children>
-            <TableView fx:id="tablaCursosTableView" prefHeight="530.0" prefWidth="1240.0" />
+            <TableView fx:id="tablaCursosTableView" prefHeight="530.0" prefWidth="1240.0" style="-fx-background-color: #ECFBFF;" />
          </children></VBox>
       <VBox alignment="CENTER" prefHeight="50.0" prefWidth="100.0">
          <children>
-            <Label fx:id="errorLabel" textFill="#6f0000" />
+            <Label fx:id="errorLabel" textFill="#6f0000">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
          </children>
       </VBox>
       <HBox alignment="CENTER" prefHeight="50.0" prefWidth="1240.0" spacing="250.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#onClickNuevoButton" text="Nuevo" textFill="#02547f">
+            <Button fx:id="nuevoButton" mnemonicParsing="false" onAction="#onClickNuevoButton" style="-fx-background-color: #ECFBFF; -fx-border-color: #02547F; -fx-background-radius: 10; -fx-border-radius: 10;" text="Nuevo" textFill="#02547f">
                <font>
                   <Font size="18.0" />
                </font></Button>
-            <Button fx:id="salirButton" mnemonicParsing="false" onAction="#onClickSalirButton" text="Salir" textFill="#02547f">
+            <Button fx:id="salirButton" mnemonicParsing="false" onAction="#onClickSalirButton" style="-fx-background-color: #ECFBFF; -fx-border-color: #02547F; -fx-background-radius: 10; -fx-border-radius: 10;" text="Salir" textFill="#02547f">
                <font>
                   <Font size="18.0" />
                </font></Button>

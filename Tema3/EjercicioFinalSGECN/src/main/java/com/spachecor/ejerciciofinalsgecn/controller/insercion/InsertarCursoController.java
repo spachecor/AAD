@@ -25,9 +25,23 @@ import java.util.*;
  */
 public class InsertarCursoController implements TableRecargable, EntidadRowListener<Estudiante> {
     @FXML
+    private Label nombreLabel;
+    @FXML
     private TextField nombreTextField;
     @FXML
+    private Label descripcionLabel;
+    @FXML
     private TextField descripcionTextField;
+    @FXML
+    private Button guardarButton;
+    @FXML
+    private Button volverButton;
+    @FXML
+    private Button aniadirButton;
+    @FXML
+    private Label alumnosInscritosLabel;
+    @FXML
+    private Label nuevoAlumnoLabel;
     @FXML
     private ChoiceBox<Estudiante> listaAlumnosChoiceBox;
     @FXML
@@ -39,6 +53,23 @@ public class InsertarCursoController implements TableRecargable, EntidadRowListe
 
     @FXML
     protected void initialize(){
+        FontService.setFont(
+                FontService.NORMAL_FONT,
+                this.nombreLabel,
+                this.nombreTextField,
+                this.descripcionLabel,
+                this.descripcionTextField,
+                this.nuevoAlumnoLabel,
+                this.listaAlumnosChoiceBox,
+                this.errorLabel,
+                this.guardarButton,
+                this.volverButton,
+                this.aniadirButton
+                );
+        FontService.setFont(
+                FontService.LARGE_FONT,
+                this.alumnosInscritosLabel
+        );
         this.estudiantesEliminados = new ArrayList<>();
         if(FXService.getCurso()!=null){
             this.curso = FXService.getCurso();
@@ -159,6 +190,7 @@ public class InsertarCursoController implements TableRecargable, EntidadRowListe
         Label header = new Label(text);
         header.setFont(FontService.X_SMALL_FONT);
         column.setGraphic(header);
+        column.setStyle("-fx-background-color:  #ECFBFF; -fx-border-color:  #ccffff");
     }
 
     /**
@@ -203,6 +235,7 @@ public class InsertarCursoController implements TableRecargable, EntidadRowListe
                     }
                     setStyle(style);
                     setFont(FontService.NORMAL_FONT);
+                    setStyle("-fx-background-color:  #f1f1e6; -fx-border-color:  #ccffff");
                 }
             }
         });

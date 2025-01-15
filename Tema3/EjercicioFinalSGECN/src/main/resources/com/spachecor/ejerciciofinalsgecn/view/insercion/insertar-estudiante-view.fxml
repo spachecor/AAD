@@ -9,38 +9,38 @@
    <children>
       <VBox alignment="CENTER" prefHeight="480.0" prefWidth="1240.0" spacing="25.0">
          <children>
-            <Label text="Nombre del Estudiante" textFill="#02547f">
+            <Label fx:id="nombreLabel" text="Nombre del Estudiante" textFill="#02547f">
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <TextField fx:id="nombreTextField" maxWidth="500.0">
+            <TextField fx:id="nombreTextField" maxWidth="500.0" style="-fx-border-color: #02547F; -fx-background-radius: 5; -fx-border-radius: 5;">
                <VBox.margin>
                   <Insets bottom="25.0" />
                </VBox.margin></TextField>
-            <Label layoutX="608.0" layoutY="212.0" text="Apellidos del Estudiante" textFill="#02547f">
+            <Label fx:id="apellidoLabel" layoutX="608.0" layoutY="212.0" text="Apellidos del Estudiante" textFill="#02547f">
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <TextField fx:id="apellidoTextField" layoutX="380.0" layoutY="229.0" maxWidth="500.0">
+            <TextField fx:id="apellidoTextField" layoutX="380.0" layoutY="229.0" maxWidth="500.0" style="-fx-border-color: #02547F; -fx-background-radius: 5; -fx-border-radius: 5;">
                <VBox.margin>
                   <Insets bottom="25.0" />
                </VBox.margin></TextField>
-            <Label layoutX="608.0" layoutY="258.0" text="Email del Estudiante" textFill="#02547f">
+            <Label fx:id="emailLabel" layoutX="608.0" layoutY="258.0" text="Email del Estudiante" textFill="#02547f">
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <TextField fx:id="emailTextField" layoutX="380.0" layoutY="275.0" maxWidth="500.0" />
+            <TextField fx:id="emailTextField" layoutX="380.0" layoutY="275.0" maxWidth="500.0" style="-fx-border-color: #02547F; -fx-background-radius: 5; -fx-border-radius: 5;" />
          </children></VBox>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="1240.0" spacing="20.0">
          <children>
             <Label fx:id="errorLabel" textFill="#900000" />
             <HBox alignment="CENTER" prefHeight="125.0" prefWidth="1240.0" spacing="250.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#onClickGuardarButton" text="Guardar" textFill="#02547f">
+                  <Button fx:id="guadarButton" mnemonicParsing="false" onAction="#onClickGuardarButton" style="-fx-background-color: #ECFBFF; -fx-border-color: #02547F; -fx-background-radius: 10; -fx-border-radius: 10;" text="Guardar" textFill="#02547f">
                      <font>
                         <Font size="18.0" />
                      </font></Button>
-                  <Button mnemonicParsing="false" onAction="#onClickVolverButton" text="Volver" textFill="#02547f">
+                  <Button fx:id="volverButton" mnemonicParsing="false" onAction="#onClickVolverButton" style="-fx-background-color: #ECFBFF; -fx-border-color: #02547F; -fx-background-radius: 10; -fx-border-radius: 10;" text="Volver" textFill="#02547f">
                      <font>
                         <Font size="18.0" />
                      </font></Button>

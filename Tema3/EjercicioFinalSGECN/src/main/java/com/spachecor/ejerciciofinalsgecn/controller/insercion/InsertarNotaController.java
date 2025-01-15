@@ -1,15 +1,13 @@
 package com.spachecor.ejerciciofinalsgecn.controller.insercion;
 
 import com.spachecor.ejerciciofinalsgecn.controller.service.FXService;
+import com.spachecor.ejerciciofinalsgecn.controller.service.FontService;
 import com.spachecor.ejerciciofinalsgecn.model.entity.Curso;
 import com.spachecor.ejerciciofinalsgecn.model.entity.Estudiante;
 import com.spachecor.ejerciciofinalsgecn.model.entity.Nota;
 import com.spachecor.ejerciciofinalsgecn.model.service.repository.GenericRepositoryService;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.time.LocalDate;
 
@@ -21,29 +19,55 @@ import java.time.LocalDate;
  */
 public class InsertarNotaController {
     @FXML
+    private Label valorLabel;
+    @FXML
     private TextField valorTextField;
     @FXML
-    private DatePicker fechaTextField;
+    private Label fechaLabel;
+    @FXML
+    private DatePicker fechaDatePicker;
+    @FXML
+    private Label cursoLabel;
     @FXML
     private ChoiceBox<Curso> cursoChoiceBox;
+    @FXML
+    private Label estudianteLabel;
     @FXML
     private ChoiceBox<Estudiante> estudianteChoiceBox;
     @FXML
     private Label errorLabel;
+    @FXML
+    private Button guardarButton;
+    @FXML
+    private Button volverButton;
     private Nota nota;
     @FXML
     public void initialize() {
+        FontService.setFont(
+                FontService.NORMAL_FONT,
+                this.valorLabel,
+                this.valorTextField,
+                this.fechaLabel,
+                this.fechaDatePicker,
+                this.estudianteLabel,
+                this.estudianteChoiceBox,
+                this.cursoLabel,
+                this.cursoChoiceBox,
+                this.errorLabel,
+                this.guardarButton,
+                this.volverButton
+        );
         this.recargarCursoChoiceBox();
         if(FXService.getNota()!=null){
             this.valorTextField.setText(String.valueOf(FXService.getNota().getValor()));
-            this.fechaTextField.setValue(FXService.getNota().getFecha());
+            this.fechaDatePicker.setValue(FXService.getNota().getFecha());
             this.cursoChoiceBox.setValue(FXService.getNota().getCurso());
             this.recargarEstudianteChoiceBox(cursoChoiceBox.getValue());
             this.estudianteChoiceBox.setValue(FXService.getNota().getEstudiante());
             this.nota=FXService.getNota();
         }else{
             this.nota = new Nota();
-            this.fechaTextField.setValue(LocalDate.now());
+            this.fechaDatePicker.setValue(LocalDate.now());
         }
         this.cursoChoiceBox.getSelectionModel().selectedItemProperty().addListener((_, _, newValue) -> {
             this.recargarEstudianteChoiceBox(newValue);
@@ -56,7 +80,7 @@ public class InsertarNotaController {
      */
     @FXML
     private void onClickGuardarButton(){
-        if(this.valorTextField.getText().isEmpty() || this.fechaTextField.getValue()==null || this.cursoChoiceBox.getValue()==null || this.estudianteChoiceBox.getValue()==null){
+        if(this.valorTextField.getText().isEmpty() || this.fechaDatePicker.getValue()==null || this.cursoChoiceBox.getValue()==null || this.estudianteChoiceBox.getValue()==null){
             this.errorLabel.setText("El valor debe ser numérico");
             return;
         }
@@ -65,7 +89,7 @@ public class InsertarNotaController {
             return;
         }
         this.nota.setValor(Double.parseDouble(valorTextField.getText()));
-        this.nota.setFecha(fechaTextField.getValue());
+        this.nota.setFecha(fechaDatePicker.getValue());
         this.nota.setCurso(cursoChoiceBox.getValue());
         this.nota.setEstudiante(estudianteChoiceBox.getValue());
         GenericRepositoryService<Nota> notaGenericRepositoryService = new GenericRepositoryService<>(Nota.class);

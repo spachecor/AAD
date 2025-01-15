@@ -12,7 +12,7 @@
    <children>
       <VBox alignment="CENTER" prefHeight="100.0" prefWidth="1240.0">
          <children>
-            <Label text="EduTrack" textFill="#02547f">
+            <Label fx:id="eduTrackLabel" text="EduTrack" textFill="#02547f">
                <font>
                   <Font size="48.0" />
                </font></Label>
@@ -20,7 +20,7 @@
       </VBox>
       <VBox alignment="CENTER" prefHeight="580.0" prefWidth="1240.0" spacing="40.0">
          <children>
-            <Button fx:id="gestionarCursosButton" mnemonicParsing="false" onAction="#onClickGestionarCursosButton" text="Gestionar Cursos" textFill="#02547f">
+            <Button fx:id="gestionarCursosButton" mnemonicParsing="false" onAction="#onClickGestionarCursosButton" style="-fx-background-color: #ECFBFF; -fx-border-color: #02547F; -fx-border-radius: 10; -fx-background-radius: 10;" text="Gestionar Cursos" textFill="#02547f">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -28,7 +28,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="gestionarEstudiantesButton" mnemonicParsing="false" onAction="#onClickGestionarEstudiantesButton" text="Gestionar Estudiantes" textFill="#02547f">
+            <Button fx:id="gestionarEstudiantesButton" mnemonicParsing="false" onAction="#onClickGestionarEstudiantesButton" style="-fx-background-color: #ECFBFF; -fx-border-color: #02547F; -fx-border-radius: 10; -fx-background-radius: 10;" text="Gestionar Estudiantes" textFill="#02547f">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -36,7 +36,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="gestionarNotasButton" mnemonicParsing="false" onAction="#onClickGestionarNotasButton" text="Gestionar Notas" textFill="#02547f">
+            <Button fx:id="gestionarNotasButton" mnemonicParsing="false" onAction="#onClickGestionarNotasButton" style="-fx-background-color: #ECFBFF; -fx-border-color: #02547F; -fx-background-radius: 10; -fx-border-radius: 10;" text="Gestionar Notas" textFill="#02547f">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -44,7 +44,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="consultaNotasEstudiantePorCursoButton" mnemonicParsing="false" onAction="#onClickconsultaNotasEstudiantePorCursoButton" text="Ver notas de un estudiante en un curso" textFill="#02547f">
+            <Button fx:id="consultaNotasEstudiantePorCursoButton" mnemonicParsing="false" onAction="#onClickconsultaNotasEstudiantePorCursoButton" style="-fx-background-color: #ECFBFF; -fx-border-color: #02547F; -fx-background-radius: 10; -fx-border-radius: 10;" text="Ver notas de un estudiante en un curso" textFill="#02547f">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -52,7 +52,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="consultaEstudianteNotaCursoButton" layoutX="516.0" layoutY="397.0" mnemonicParsing="false" onAction="#onClickConsultaEstudianteNotaCursoButton" text="Ver estudiantes y sus notas por curso" textFill="#02547f">
+            <Button fx:id="consultaEstudianteNotaCursoButton" layoutX="516.0" layoutY="397.0" mnemonicParsing="false" onAction="#onClickConsultaEstudianteNotaCursoButton" style="-fx-background-color: #ECFBFF; -fx-border-color: #02547F; -fx-background-radius: 10; -fx-border-radius: 10;" text="Ver estudiantes y sus notas por curso" textFill="#02547f">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>

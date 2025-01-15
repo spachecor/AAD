@@ -25,12 +25,18 @@ import java.util.List;
  */
 public class GestionarEstudiantesController implements TableRecargable, EntidadRowListener<Estudiante> {
     @FXML
+    private Label eduTrackLabel;
+    @FXML
     private TableView<EstudianteRow> tablaCursosTableView;
     @FXML
-    private Label errorLabel;
+    private Button nuevoButton;
+    @FXML
+    private Button salirButton;
     private GenericRepositoryService<Estudiante> genericRepositoryService;
     @FXML
     protected void initialize() {
+        FontService.setFont(FontService.LARGE_FONT, this.eduTrackLabel);
+        FontService.setFont(FontService.NORMAL_FONT, this.nuevoButton, this.salirButton);
         genericRepositoryService = new GenericRepositoryService<>(Estudiante.class);
         this.inicializarColumnas();
         recargar();
@@ -120,6 +126,7 @@ public class GestionarEstudiantesController implements TableRecargable, EntidadR
         Label header = new Label(text);
         header.setFont(FontService.SMALL_FONT);
         column.setGraphic(header);
+        column.setStyle("-fx-background-color:  #ECFBFF; -fx-border-color:  #ccffff");
     }
 
     /**
@@ -164,6 +171,7 @@ public class GestionarEstudiantesController implements TableRecargable, EntidadR
                     }
                     setStyle(style);
                     setFont(FontService.NORMAL_FONT);
+                    setStyle("-fx-background-color:  #f1f1e6; -fx-border-color:  #ccffff");
                 }
             }
         });

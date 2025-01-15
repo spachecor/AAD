@@ -1,9 +1,11 @@
 package com.spachecor.ejerciciofinalsgecn.controller.insercion;
 
 import com.spachecor.ejerciciofinalsgecn.controller.service.FXService;
+import com.spachecor.ejerciciofinalsgecn.controller.service.FontService;
 import com.spachecor.ejerciciofinalsgecn.model.entity.Estudiante;
 import com.spachecor.ejerciciofinalsgecn.model.service.repository.GenericRepositoryService;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -15,16 +17,38 @@ import javafx.scene.control.TextField;
  */
 public class InsertarEstudianteController {
     @FXML
+    private Label nombreLabel;
+    @FXML
     private TextField nombreTextField;
     @FXML
+    private Label apellidoLabel;
+    @FXML
     private TextField apellidoTextField;
+    @FXML
+    private Label emailLabel;
     @FXML
     private TextField emailTextField;
     @FXML
     private Label errorLabel;
+    @FXML
+    private Button guadarButton;
+    @FXML
+    private Button volverButton;
     private Estudiante estudiante;
     @FXML
     protected void initialize(){
+        FontService.setFont(
+                FontService.NORMAL_FONT,
+                this.nombreLabel,
+                this.nombreTextField,
+                this.apellidoLabel,
+                this.apellidoTextField,
+                this.emailLabel,
+                this.emailTextField,
+                this.errorLabel,
+                this.guadarButton,
+                this.volverButton
+        );
         if(FXService.getEstudiante()!=null){
             this.nombreTextField.setText(FXService.getEstudiante().getNombre());
             this.apellidoTextField.setText(FXService.getEstudiante().getApellido());

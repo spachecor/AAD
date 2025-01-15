@@ -49,6 +49,7 @@ public class CursoRow {
         imageView.setFitHeight(20);
         imageView.setFitWidth(20);
         button.setGraphic(imageView);
+        button.setStyle("-fx-background-color:  #ECFBFF; -fx-border-color:  #02547F; -fx-border-radius: 10; -fx-background-radius: 10");
     }
 
     public Integer getId() {

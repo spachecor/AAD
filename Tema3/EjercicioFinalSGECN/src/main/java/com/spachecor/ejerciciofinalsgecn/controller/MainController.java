@@ -1,6 +1,7 @@
 package com.spachecor.ejerciciofinalsgecn.controller;
 
 import com.spachecor.ejerciciofinalsgecn.controller.service.FXService;
+import com.spachecor.ejerciciofinalsgecn.controller.service.FontService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,6 +12,32 @@ import javafx.scene.control.Label;
  * @version 1.0
  */
 public class MainController {
+    @FXML
+    private Label eduTrackLabel;
+    @FXML
+    private Button gestionarCursosButton;
+    @FXML
+    private Button gestionarEstudiantesButton;
+    @FXML
+    private Button gestionarNotasButton;
+    @FXML
+    private Button consultaNotasEstudiantePorCursoButton;
+    @FXML
+    private Button consultaEstudianteNotaCursoButton;
+    @FXML
+    protected void initialize(){
+        FontService.setFont(
+                FontService.BIG_FONT,
+                this.eduTrackLabel);
+        FontService.setFont(
+                FontService.NORMAL_FONT,
+                this.gestionarCursosButton,
+                this.gestionarEstudiantesButton,
+                this.gestionarNotasButton,
+                this.consultaNotasEstudiantePorCursoButton,
+                this.consultaEstudianteNotaCursoButton
+        );
+    }
     /**
      * Método que nos envía a la interfaz donde ponermos gestionar los cursos
      */
