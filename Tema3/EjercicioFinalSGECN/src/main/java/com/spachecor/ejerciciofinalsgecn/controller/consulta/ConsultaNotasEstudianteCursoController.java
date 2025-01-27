@@ -99,7 +99,7 @@ public class ConsultaNotasEstudianteCursoController {
         idCursoColumn.setMinWidth(75);
         this.setCustomColumnHeader(idCursoColumn, "ID CURSO");
         this.centrarCentroContenidoComumna(idCursoColumn);
-        TableColumn<NotaEstudianteCursoRow, String> nombreCursoColumn = new TableColumn<>("NOMBRE CURSO");
+        TableColumn<NotaEstudianteCursoRow, String> nombreCursoColumn = new TableColumn<>();
         nombreCursoColumn.setCellValueFactory(new PropertyValueFactory<>("nombreCurso"));
         nombreCursoColumn.setMinWidth(250);
         this.setCustomColumnHeader(nombreCursoColumn, "NOMBRE CURSO");
