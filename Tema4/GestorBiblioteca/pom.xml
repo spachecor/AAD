@@ -24,7 +24,12 @@
       <artifactId>javafx-fxml</artifactId>
       <version>17.0.6</version>
     </dependency>
-
+    <!-- https://mvnrepository.com/artifact/org.basex/basex-api -->
+    <dependency>
+      <groupId>org.basex</groupId>
+      <artifactId>basex-api</artifactId>
+      <version>11.7</version>
+    </dependency>
 <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
@@ -58,7 +63,7 @@
             <!-- Default configuration for running with: mvn clean javafx:run -->
             <id>default-cli</id>
             <configuration>
-              <mainClass>com.spachecor.gestorbiblioteca.gestorbiblioteca/com.spachecor.gestorbiblioteca.gestorbiblioteca.HelloApplication</mainClass>
+              <mainClass>com.spachecor.gestorbiblioteca/com.spachecor.gestorbiblioteca.Main</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>

@@ -1,79 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <library>
 	<books>
-		<category name="fiction">
-			<subcategory name="classics">
-				<book id="1">
-					<title>The Great Gatsby</title>
-					<author>F. Scott Fitzgerald</author>
-					<publicationYear>1925</publicationYear>
-					<isbn>9780743273565</isbn>
-					<publisher>Scribner</publisher>
-					<availableCopies>5</availableCopies>
-				</book>
-			</subcategory>
-			<subcategory name="dystopian">
-				<book id="2">
-					<title>1984</title>
-					<author>George Orwell</author>
-					<publicationYear>1949</publicationYear>
-					<isbn>9780451524935</isbn>
-					<publisher>Harvill Secker</publisher>
-					<availableCopies>3</availableCopies>
-				</book>
-			</subcategory>
-		</category>
-		<category name="non-fiction">
-			<subcategory name="memoir">
-				<book id="3">
-					<title>Educated</title>
-					<author>Tara Westover</author>
-					<publicationYear>2018</publicationYear>
-					<isbn>9780399590504</isbn>
-					<publisher>Random House</publisher>
-					<availableCopies>8</availableCopies>
-				</book>
-			</subcategory>
-			<subcategory name="biography">
-				<book id="4">
-					<title>Becoming</title>
-					<author>Michelle Obama</author>
-					<publicationYear>2018</publicationYear>
-					<isbn>9781524763138</isbn>
-					<publisher>Penguin Random House</publisher>
-					<availableCopies>10</availableCopies>
-				</book>
-			</subcategory>
-		</category>
-		<category name="children">
-			<subcategory name="fantasy">
-				<book id="5">
-					<title>Harry Potter and the Sorcerer's Stone</title>
-					<author>J.K. Rowling</author>
-					<publicationYear>1997</publicationYear>
-					<isbn>9780590353427</isbn>
-					<publisher>Scholastic</publisher>
-					<availableCopies>12</availableCopies>
-				</book>
-			</subcategory>
-		</category>
+		<book>
+			<id>1</id>
+			<title>The Great Gatsby</title>
+			<author>F. Scott Fitzgerald</author>
+			<publicationYear>1925</publicationYear>
+			<category>fiction</category>
+			<subcategory>classics</subcategory>
+			<isbn>9780743273565</isbn>
+			<publisher>Scribner</publisher>
+			<pages>150</pages>
+			<availableCopies>5</availableCopies>
+		</book>
+		<book>
+			<id>2</id>
+			<title>1984</title>
+			<author>George Orwell</author>
+			<publicationYear>1949</publicationYear>
+			<category>fiction</category>
+			<subcategory>dystopian</subcategory>
+			<isbn>9780451524935</isbn>
+			<publisher>Harvill Secker</publisher>
+			<pages>250</pages>
+			<availableCopies>3</availableCopies>
+		</book>
+		<book>
+			<id>3</id>
+			<title>Educated</title>
+			<author>Tara Westover</author>
+			<publicationYear>2018</publicationYear>
+			<category>non-fiction</category>
+			<subcategory>memoir</subcategory>
+			<isbn>9780399590504</isbn>
+			<publisher>Random House</publisher>
+			<pages>350</pages>
+			<availableCopies>8</availableCopies>
+		</book>
+		<book>
+			<id>4</id>
+			<title>Becoming</title>
+			<author>Michelle Obama</author>
+			<publicationYear>2018</publicationYear>
+			<category>non-fiction</category>
+			<subcategory>biography</subcategory>
+			<isbn>9781524763138</isbn>
+			<publisher>Penguin Random House</publisher>
+			<pages>100</pages>
+			<availableCopies>10</availableCopies>
+		</book>
+		<book>
+			<id>5</id>
+			<title>Harry Potter and the Sorcerer's Stone</title>
+			<author>J.K. Rowling</author>
+			<publicationYear>1997</publicationYear>
+			<category>children</category>
+			<subcategory>fantasy</subcategory>
+			<isbn>9780590353427</isbn>
+			<publisher>Scholastic</publisher>
+			<pages>150</pages>
+			<availableCopies>12</availableCopies>
+		</book>
 	</books>
 	<users>
-		<user id="1">
+		<user>
+			<id>1</id>
 			<dni>12345678A</dni>
 			<name>Juan Pérez</name>
 			<email>juan.perez@email.com</email>
 			<phone>123456789</phone>
 			<address>Calle Ficticia 123, Madrid</address>
 		</user>
-		<user id="2">
+		<user>
+			<id>2</id>
 			<dni>87654321B</dni>
 			<name>Laura García</name>
 			<email>laura.garcia@email.com</email>
 			<phone>987654321</phone>
 			<address>Avenida Imaginaria 456, Barcelona</address>
 		</user>
-		<user id="3">
+		<user>
+			<id>3</id>
 			<dni>23456789C</dni>
 			<name>Carlos Rodríguez</name>
 			<email>carlos.rodriguez@email.com</email>
@@ -82,19 +89,22 @@
 		</user>
 	</users>
 	<loans>
-		<loan id="1">
+		<loan>
+			<id>1</id>
 			<userId>1</userId>
 			<bookId>1</bookId>
 			<loanDate>2025-02-15</loanDate>
 			<returnDate>2025-03-01</returnDate>
 		</loan>
-		<loan id="2">
+		<loan>
+			<id>2</id>
 			<userId>2</userId>
 			<bookId>3</bookId>
 			<loanDate>2025-02-20</loanDate>
 			<returnDate>2025-03-05</returnDate>
 		</loan>
-		<loan id="3">
+		<loan>
+			<id>3</id>
 			<userId>3</userId>
 			<bookId>5</bookId>
 			<loanDate>2025-02-22</loanDate>
