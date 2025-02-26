@@ -1,21 +1,19 @@
 package com.spachecor.gestorbiblioteca.model.mapper;
 
 import com.spachecor.gestorbiblioteca.model.entity.Libro;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import java.io.ByteArrayInputStream;
 
+/**
+ * Clase LibroMapper que sirve para definir como se mapea un libro de XML a Libro y viceversa.
+ * @author Selene
+ * @version 1.0
+ */
 public class LibroMapper implements Mapper<Libro> {
     @Override
     public Libro deXML(String xml) {
         Libro libro = new Libro();
         try {
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder builder = factory.newDocumentBuilder();
-            Document doc = builder.parse(new ByteArrayInputStream(xml.getBytes("UTF-8")));
-            Element root = doc.getDocumentElement();
+            Element root = this.obtenerElementoRaiz(xml);
 
             libro.setId(Integer.parseInt(root.getElementsByTagName("id").item(0).getTextContent()));
             libro.setTitulo(root.getElementsByTagName("title").item(0).getTextContent());
@@ -35,6 +33,17 @@ public class LibroMapper implements Mapper<Libro> {
 
     @Override
     public String aXML(Libro libro) {
-        return "";
+        return "<book>" +
+                "<id>" + libro.getId() + "</id>" +
+                "<title>" + libro.getTitulo() + "</title>" +
+                "<author>" + libro.getAutor() + "</author>" +
+                "<publicationYear>" + libro.getAnioPublicacion() + "</publicationYear>" +
+                "<category>" + libro.getCategoria() + "</category>" +
+                "<subcategory>" + libro.getSubCategoria() + "</subcategory>" +
+                "<isbn>" + libro.getIsbn() + "</isbn>" +
+                "<publisher>" + libro.getEditorial() + "</publisher>" +
+                "<pages>" + libro.getNumeroPaginas() + "</pages>" +
+                "<availableCopies>" + libro.getNumeroCopiasDisponibles() + "</availableCopies>" +
+                "</book>";
     }
 }

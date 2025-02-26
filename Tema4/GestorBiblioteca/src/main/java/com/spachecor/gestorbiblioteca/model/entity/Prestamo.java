@@ -2,6 +2,11 @@ package com.spachecor.gestorbiblioteca.model.entity;
 
 import java.time.LocalDate;
 
+/**
+ * Clase Prestamo que define las propiedades y el comportamiento del objeto Prestamo
+ * @author Selene
+ * @version 1.0
+ */
 public class Prestamo extends Entidad<Prestamo>{
     private Integer id;
     private Usuario usuario;

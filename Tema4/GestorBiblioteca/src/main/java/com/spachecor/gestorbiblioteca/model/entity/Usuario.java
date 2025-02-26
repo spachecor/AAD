@@ -1,5 +1,10 @@
 package com.spachecor.gestorbiblioteca.model.entity;
 
+/**
+ * Clase Usuario que define las propiedades y el comportamiento del objeto Usuario
+ * @author Selene
+ * @version 1.0
+ */
 public class Usuario extends Entidad<Usuario>{
     private Integer id;
     private String dni;

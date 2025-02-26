@@ -11,5 +11,5 @@ public abstract class Entidad<T extends Entidad> implements Comparable<T>{
      * Funcion para obtener el id de la entidad
      * @return El id de la entidad
      */
-    protected abstract Integer getId();
+    public abstract Integer getId();
 }

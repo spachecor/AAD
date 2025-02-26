@@ -3,6 +3,7 @@ package com.spachecor.gestorbiblioteca.model.dao;
 import com.spachecor.gestorbiblioteca.model.entity.Entidad;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Interfaz generica GenericDAO que se encarga de definir las funciones para el acceso a la base de datos
@@ -21,9 +22,9 @@ public interface GenericDAO<T extends Entidad> {
     /**
      * Funcion que busca una Entidad concreta del tipo T a partir de su id
      * @param id El id de la Entidad
-     * @return La Entidad que coincide con el id
+     * @return Un objeto Optionar que puede contener la Entidad que coincide con el id
      */
-    T buscarPorId(Integer id);
+    Optional<T> buscarPorId(Integer id);
 
     /**
      * Funcion que crea una Entidad en la base de datos a partir de la Entidad pasada por parametro

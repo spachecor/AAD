@@ -1,5 +1,10 @@
 package com.spachecor.gestorbiblioteca.model.entity;
 
+/**
+ * Clase Libro que define las propiedades y el comportamiento del objeto Libro
+ * @author Selene
+ * @version 1.0
+ */
 public class Libro extends Entidad<Libro> {
     private Integer id;
     private String titulo;
