@@ -1,8 +1,8 @@
-package com.spachecor.gestorbiblioteca.model.dao;
+package com.spachecor.ejerciciofinalsgb.model.dao;
 
-import com.spachecor.gestorbiblioteca.model.entity.Entidad;
-import com.spachecor.gestorbiblioteca.model.mapper.Mapper;
-import com.spachecor.gestorbiblioteca.model.repository.BaseXSessionUtil;
+import com.spachecor.ejerciciofinalsgb.model.entity.Entidad;
+import com.spachecor.ejerciciofinalsgb.model.mapper.Mapper;
+import com.spachecor.ejerciciofinalsgb.model.repository.BaseXSessionUtil;
 import org.basex.api.client.ClientSession;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -53,7 +53,7 @@ public abstract class EntidadGenericDAOImpl<T extends Entidad> implements Generi
     public List<T> listar() {
         List<T> lista = new ArrayList<>();
         try(ClientSession session = BaseXSessionUtil.getSession()){
-            String xquery = "for $t in "+this.getCollectionPath()+"/"+this.getEntityTag()+" return $t";
+            String xquery = "collection('"+BaseXSessionUtil.DATABASE+"')//"+this.getEntityTag()+"[starts-with(db:path(.), '"+this.getCollectionPath()+"')]";
             String resultado = session.query(xquery).execute();
             //si no hay resultados, se devuelve la lista vacia
             if (resultado == null || resultado.trim().isEmpty()) {
@@ -91,7 +91,8 @@ public abstract class EntidadGenericDAOImpl<T extends Entidad> implements Generi
     @Override
     public Optional<T> buscarPorId(Integer id) {
         try(ClientSession session = BaseXSessionUtil.getSession()){
-            String xquery = "for $t in "+this.getCollectionPath()+"/"+this.getEntityTag()+"[id="+id+"] return $t";
+            String xquery = "collection('"+BaseXSessionUtil.DATABASE+"')//"+this.getEntityTag()+"[starts-with(db:path(.), '"+this.getCollectionPath()+"')]"+"[id="+id+"]";
+            //String xquery = "for $t in "+this.getCollectionPath()+"/"+this.getEntityTag()+"[id="+id+"] return $t";
             String resultado = session.query(xquery).execute();
             //si ha habido resultado:
             if (resultado != null && !resultado.trim().isEmpty()) {
@@ -106,16 +107,13 @@ public abstract class EntidadGenericDAOImpl<T extends Entidad> implements Generi
     }
 
     @Override
-    public void crear(T t) {
+    public void crear(String url, String subColeccion) {
         try (ClientSession session = BaseXSessionUtil.getSession()) {
             //creamos el backup antes que nada para realizar una "gestion de transacciones"
             BaseXSessionUtil.iniciarBackup(session);
-            String xml = getMapper().aXML(t);
-            String insertQuery = "insert node " + xml + " into " + this.getCollectionPath();
+            String insertQuery = "add to "+this.getCollectionPath()+ ((subColeccion!=null&&!subColeccion.isEmpty())?"/"+subColeccion:"") +"/ "+url;
             try{
-                session.query(insertQuery).execute();
-                //si sale bien, persistimos en la base de datos original, el xml padre
-                BaseXSessionUtil.persistirEnBBDDOriginal(session);
+                session.execute(insertQuery);
             }catch (Exception e){
                 //si sale mal, restauramos al backup y relanzamos la excepcion
                 BaseXSessionUtil.restaurarBackup(session);
@@ -132,11 +130,10 @@ public abstract class EntidadGenericDAOImpl<T extends Entidad> implements Generi
             //creamos el backup antes que nada para realizar una "gestion de transacciones"
             BaseXSessionUtil.iniciarBackup(session);
             String xml = getMapper().aXML(t);
-            String updateQuery = "replace node " + this.getCollectionPath() + "/" + this.getEntityTag() + "[id='" + t.getId() + "'] with " + xml;
+            String updateQuery = "replace node collection('"+BaseXSessionUtil.DATABASE+"')//"+this.getEntityTag()+"[starts-with(db:path(.), '"+this.getCollectionPath()+"')][id="+t.getId()+"] with "+xml;
             try{
                 session.query(updateQuery).execute();
-                //si sale bien, persistimos en la base de datos original, el xml padre
-                BaseXSessionUtil.persistirEnBBDDOriginal(session);
+                //todo falta persistir en el documento original
             }catch (Exception e){
                 //si sale mal, restauramos al backup y relanzamos la excepcion
                 BaseXSessionUtil.restaurarBackup(session);
@@ -152,11 +149,14 @@ public abstract class EntidadGenericDAOImpl<T extends Entidad> implements Generi
         try (ClientSession session = BaseXSessionUtil.getSession()) {
             //creamos el backup antes que nada para realizar una "gestion de transacciones"
             BaseXSessionUtil.iniciarBackup(session);
-            String deleteQuery = "delete node " + this.getCollectionPath() + "/" + this.getEntityTag() + "[id='" + t.getId() + "']";
+            String deleteQuery = "delete node collection('"+BaseXSessionUtil.DATABASE+"')//"+this.getEntityTag()+"[starts-with(db:path(.), '"+this.getCollectionPath()+"')][id="+t.getId()+"]";
+            //String deleteQuery = "delete node " + this.getCollectionPath() + "/" + this.getEntityTag() + "[id='" + t.getId() + "']";
+            //eliminamos tambien el recurso, eliminanto to el rastro de nuestro registro
+            String deleteResource = "delete "+this.getCollectionPath()+"/"+this.getEntityTag()+t.getId()+".xml";
             try{
                 session.query(deleteQuery).execute();
-                //si sale bien, persistimos en la base de datos original, el xml padre
-                BaseXSessionUtil.persistirEnBBDDOriginal(session);
+                session.execute(deleteResource);
+                //todo falta eliminar el documento del proyecto
             }catch (Exception e){
                 //si sale mal, restauramos al backup y relanzamos la excepcion
                 BaseXSessionUtil.restaurarBackup(session);

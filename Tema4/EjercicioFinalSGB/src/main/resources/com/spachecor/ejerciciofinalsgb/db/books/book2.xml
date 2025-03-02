@@ -1,0 +1,12 @@
+<book>
+    <id>2</id>
+    <title>1984</title>
+    <author>George Orwell</author>
+    <publicationYear>1949</publicationYear>
+    <category>fiction</category>
+    <subcategory>dystopian</subcategory>
+    <isbn>9780451524935</isbn>
+    <publisher>Harvill Secker</publisher>
+    <pages>250</pages>
+    <availableCopies>3</availableCopies>
+</book>

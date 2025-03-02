@@ -1,0 +1,8 @@
+<loan>
+    <id>1</id>
+    <userId>1</userId>
+    <bookId>1</bookId>
+    <loanDate>2025-02-15</loanDate>
+    <returnDate>2025-03-01</returnDate>
+    <returned>true</returned>
+</loan>

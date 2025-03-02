@@ -1,0 +1,12 @@
+<book>
+    <id>5</id>
+    <title>Harry Potter and the Sorcerer's Stone</title>
+    <author>J.K. Rowling</author>
+    <publicationYear>1997</publicationYear>
+    <category>children</category>
+    <subcategory>fantasy</subcategory>
+    <isbn>9780590353427</isbn>
+    <publisher>Scholastic</publisher>
+    <pages>150</pages>
+    <availableCopies>12</availableCopies>
+</book>
