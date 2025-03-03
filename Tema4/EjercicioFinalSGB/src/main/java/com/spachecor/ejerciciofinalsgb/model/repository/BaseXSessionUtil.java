@@ -13,8 +13,8 @@ import java.nio.file.Paths;
 public class BaseXSessionUtil {
     private static final String HOST = "localhost";
     private static final int PORT = 1984;
-    private static final String USER = "selene";
-    private static final String PASSWORD = "selene";
+    private static final String USER = "admin";
+    private static final String PASSWORD = "admin";
     public static final String DATABASE = "librarywithcollections";
     public static final String URL_DATABASE_ORIGINAL = Paths.get("src/main/resources/com/spachecor/gestorbiblioteca/db/library.xml").toAbsolutePath().toString();
 
