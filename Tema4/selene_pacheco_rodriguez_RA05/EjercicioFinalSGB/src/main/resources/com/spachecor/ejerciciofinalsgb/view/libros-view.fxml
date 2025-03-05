@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox alignment="CENTER" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #DDD0C8;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.spachecor.ejerciciofinalsgb.controller.LibrosController">
+   <children>
+      <VBox prefHeight="720.0" prefWidth="340.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="50.0" prefWidth="340.0">
+               <children>
+                  <Label text="Libros" textFill="#323232">
+                     <font>
+                        <Font name="Times New Roman Bold" size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="670.0" prefWidth="340.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="340.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0">
+                           <children>
+                              <Label text="ID" textFill="#323232">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="190.0">
+                           <children>
+                              <TextField fx:id="idTextField" promptText="Id del libro">
+                                 <font>
+                                    <Font name="Times New Roman" size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                           <padding>
+                              <Insets right="20.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="320.0" prefHeight="50.0" prefWidth="340.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0">
+                           <children>
+                              <Label text="TÍTULO" textFill="#323232">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="190.0">
+                           <children>
+                              <TextField fx:id="tituloTextField" promptText="Título del libro">
+                                 <font>
+                                    <Font name="Times New Roman" size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                           <padding>
+                              <Insets right="20.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="295.0" prefHeight="50.0" prefWidth="340.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0">
+                           <children>
+                              <Label text="AUTOR" textFill="#323232">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="190.0">
+                           <children>
+                              <TextField fx:id="autorTextField" promptText="Autor del libro">
+                                 <font>
+                                    <Font name="Times New Roman" size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                           <padding>
+                              <Insets right="20.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="370.0" prefHeight="50.0" prefWidth="340.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0">
+                           <children>
+                              <Label text="AÑO" textFill="#323232">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="190.0">
+                           <children>
+                              <TextField fx:id="anioTextField" promptText="Año del libro">
+                                 <font>
+                                    <Font name="Times New Roman" size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                           <padding>
+                              <Insets right="20.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="345.0" prefHeight="50.0" prefWidth="340.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0">
+                           <children>
+                              <Label text="CATEGORÍA&#10;(Colección)" textAlignment="CENTER" textFill="#323232">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="190.0">
+                           <children>
+                              <TextField fx:id="categoriaTextField" promptText="Categoría del libro">
+                                 <font>
+                                    <Font name="Times New Roman" size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                           <padding>
+                              <Insets right="20.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="370.0" prefHeight="50.0" prefWidth="340.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0">
+                           <children>
+                              <Label text="SUBCATEGORÍA" textFill="#323232">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="190.0">
+                           <children>
+                              <TextField fx:id="subCategoriaTextField" promptText="Subcategoría del libro">
+                                 <font>
+                                    <Font name="Times New Roman" size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                           <padding>
+                              <Insets right="20.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="445.0" prefHeight="50.0" prefWidth="340.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0">
+                           <children>
+                              <Label text="ISBN" textFill="#323232">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="190.0">
+                           <children>
+                              <TextField fx:id="isbnTextField" promptText="ISBN del libro">
+                                 <font>
+                                    <Font name="Times New Roman" size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                           <padding>
+                              <Insets right="20.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="470.0" prefHeight="50.0" prefWidth="340.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0">
+                           <children>
+                              <Label text="EDITORIAL" textFill="#323232">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="190.0">
+                           <children>
+                              <TextField fx:id="editorialTextField" promptText="Editorial del libro">
+                                 <font>
+                                    <Font name="Times New Roman" size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                           <padding>
+                              <Insets right="20.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="495.0" prefHeight="50.0" prefWidth="340.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0">
+                           <children>
+                              <Label text="Nº PÁGINAS" textFill="#323232">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="190.0">
+                           <children>
+                              <TextField fx:id="paginasTextField" promptText="Nº de páginas del libro">
+                                 <font>
+                                    <Font name="Times New Roman" size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                           <padding>
+                              <Insets right="20.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="470.0" prefHeight="50.0" prefWidth="340.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0">
+                           <children>
+                              <Label text="Nº COPIAS" textFill="#323232">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="190.0">
+                           <children>
+                              <TextField fx:id="copiasTextField" promptText="Nº de copias del libro">
+                                 <font>
+                                    <Font name="Times New Roman" size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                           <padding>
+                              <Insets right="20.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="75.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#onClickAniadirButton" style="-fx-background-color: #323232;" text="Añadir" textFill="#ddd0c8">
+                           <font>
+                              <Font name="Times New Roman Bold" size="18.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding></Button>
+                        <Button layoutX="142.0" layoutY="40.0" mnemonicParsing="false" onAction="#onClickModificarButton" style="-fx-background-color: #323232;" text="Modificar" textFill="#ddd0c8">
+                           <font>
+                              <Font name="Times New Roman Bold" size="18.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </Button>
+                        <Button layoutX="104.0" layoutY="40.0" mnemonicParsing="false" onAction="#onClickEliminarButton" style="-fx-background-color: #323232;" text="Eliminar" textFill="#ddd0c8">
+                           <font>
+                              <Font name="Times New Roman Bold" size="18.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="558.0" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#onClickBuscarButton" style="-fx-background-color: #323232;" text="Buscar&#10;(Por ID o&#10;categoría)" textAlignment="CENTER" textFill="#ddd0c8">
+                           <font>
+                              <Font name="Times New Roman Bold" size="18.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </Button>
+                        <Button layoutX="104.0" layoutY="40.0" mnemonicParsing="false" onAction="#onClickListarButton" style="-fx-background-color: #323232;" text="Listar" textFill="#ddd0c8">
+                           <font>
+                              <Font name="Times New Roman Bold" size="18.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </Button>
+                        <Button layoutX="194.0" layoutY="28.0" mnemonicParsing="false" onAction="#onClickSalirButton" style="-fx-background-color: #323232;" text="Salir" textFill="#ddd0c8">
+                           <font>
+                              <Font name="Times New Roman Bold" size="18.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children></VBox>
+         </children></VBox>
+      <VBox prefHeight="720.0" prefWidth="940.0">
+         <children>
+            <TableView fx:id="librosTableView" onMouseClicked="#onClickLibrosTablaView" prefHeight="720.0" prefWidth="940.0">
+              <columns>
+                <TableColumn fx:id="idTableColumn" prefWidth="50.0" text="ID" />
+                <TableColumn fx:id="tituloTableColumn" prefWidth="150.0" text="TITULO" />
+                  <TableColumn fx:id="autorTableColumn" prefWidth="150.0" text="AUTOR" />
+                  <TableColumn fx:id="anioTableColumn" prefWidth="50.0" text="AÑO" />
+                  <TableColumn fx:id="categoriaTableColumn" prefWidth="100.0" text="CATEGORIA" />
+                  <TableColumn fx:id="subCategoriaTableColumn" prefWidth="100.0" text="SUBCATEGORIA" />
+                  <TableColumn fx:id="isbnTableColumn" prefWidth="100.0" text="ISBN" />
+                  <TableColumn fx:id="editorialTableColumn" prefWidth="100.0" text="EDITORIAL" />
+                  <TableColumn fx:id="paginasTableColumn" prefWidth="75.0" text="PAGINAS" />
+                  <TableColumn fx:id="copiasTableColumn" prefWidth="50.0" text="COPIAS" />
+              </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
+</HBox>

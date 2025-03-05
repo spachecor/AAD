@@ -1,0 +1,8 @@
+<user>
+    <id>1</id>
+    <dni>12345678A</dni>
+    <name>Juan Pérez</name>
+    <email>juan.perez@email.com</email>
+    <phone>123456789</phone>
+    <address>Calle Ficticia 123, Madrid</address>
+</user>

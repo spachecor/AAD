@@ -132,6 +132,13 @@ public abstract class EntidadGenericDAOImpl<T extends Entidad> implements Generi
             e.printStackTrace();
         }
     }
+
+    /**
+     * Funcion que nos genera una lista de entidades a partir de una query que le entra por parámetro, permitiendo
+     * que con cualquier consulta consigamos una lista de entidades, según el filtro que apliquemos
+     * @param query La consulta para obtener la lista de entidades
+     * @return La lista de entidades
+     */
     protected List<T> getListaAPartirDeQuery(String query) {
         List<T> lista = new ArrayList<>();
         try(ClientSession session = BaseXSessionUtil.getSession()){
@@ -168,6 +175,12 @@ public abstract class EntidadGenericDAOImpl<T extends Entidad> implements Generi
         }
         return lista;
     }
+
+    /**
+     * Funcion que obtiene la ruta interna donde se encuentra una entidad en la Base de datos
+     * @param t La entidad
+     * @return La ruta donde la entidad se encuentra
+     */
     public String obtenerRutaEntidad(T t){
         String url = null;
         try(ClientSession session = BaseXSessionUtil.getSession()){

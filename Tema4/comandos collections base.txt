@@ -1,0 +1,66 @@
+Para crear colecciones:
+- create db library
+- add to library/users/ C:\Users\Selene\Documents\AAD\Tema4\GestorBiblioteca\src\main\resources\com\spachecor\gestorbiblioteca\db\users\user1.xml
+	(IMP users/ <- La barra es obligatoria para luego poder acceder a los datos)(repetir y agregar lo que queramos)
+- xquery db:get("library", "library/users/user1.xml")//user
+	(Este comando nos devuelve el user contenido en user1.xml)
+- xquery db:get("library", "library/users")//user[id=1]
+	(También podemos acceder a todos los users y filtrarlos)
+- xquery collection("library")//users
+	(Con este podemos consultar en la coleccion library y
+	filtrar por los usuarios)
+- xquery collection("library")//user[starts-with(db:path(.), "library/users")]
+	(Con esta consulta buscamos todos los users en la ruta
+	library/users. Esta simula subcolecciones, aunque no 
+	existan en basex)
+
+CREAR BBDD:
+	CREAR(Sin collections):
+	- create db librarywithoutcollections C:\Users\Selene\Documents\AAD\Tema4\GestorBiblioteca\src\main\resources\com\spachecor\gestorbiblioteca\db\library.xml
+	CREAR(Con collections):
+	- create db librarywithcollections
+	- add to librarywithcollections/books/fiction/ C:\Users\Selene\Documents\AAD\Tema4\EjercicioFinalSGB\src\main\resources\com\spachecor\ejerciciofinalsgb\db\books\book1.xml
+	- add to librarywithcollections/books/fiction/ C:\Users\Selene\Documents\AAD\Tema4\EjercicioFinalSGB\src\main\resources\com\spachecor\ejerciciofinalsgb\db\books\book2.xml
+	- add to librarywithcollections/books/nonfiction/ C:\Users\Selene\Documents\AAD\Tema4\EjercicioFinalSGB\src\main\resources\com\spachecor\ejerciciofinalsgb\db\books\book3.xml
+	- add to librarywithcollections/books/nonfiction/ C:\Users\Selene\Documents\AAD\Tema4\EjercicioFinalSGB\src\main\resources\com\spachecor\ejerciciofinalsgb\db\books\book4.xml
+	- add to librarywithcollections/books/children/ C:\Users\Selene\Documents\AAD\Tema4\EjercicioFinalSGB\src\main\resources\com\spachecor\ejerciciofinalsgb\db\books\book5.xml
+	- add to librarywithcollections/users/ C:\Users\Selene\Documents\AAD\Tema4\EjercicioFinalSGB\src\main\resources\com\spachecor\ejerciciofinalsgb\db\users\user1.xml
+	- add to librarywithcollections/users/ C:\Users\Selene\Documents\AAD\Tema4\EjercicioFinalSGB\src\main\resources\com\spachecor\ejerciciofinalsgb\db\users\user2.xml
+	- add to librarywithcollections/users/ C:\Users\Selene\Documents\AAD\Tema4\EjercicioFinalSGB\src\main\resources\com\spachecor\ejerciciofinalsgb\db\users\user3.xml
+	- add to librarywithcollections/loans/ C:\Users\Selene\Documents\AAD\Tema4\EjercicioFinalSGB\src\main\resources\com\spachecor\ejerciciofinalsgb\db\loans\loan1.xml
+	- add to librarywithcollections/loans/ C:\Users\Selene\Documents\AAD\Tema4\EjercicioFinalSGB\src\main\resources\com\spachecor\ejerciciofinalsgb\db\loans\loan2.xml
+	- add to librarywithcollections/loans/ C:\Users\Selene\Documents\AAD\Tema4\EjercicioFinalSGB\src\main\resources\com\spachecor\ejerciciofinalsgb\db\loans\loan3
+.xml
+
+CONSULTAS:
+	LISTAR(Sin collections):
+	- xquery for $l in /library/books/book return $l 
+	LISTAR(Con collections):
+	- xquery collection("librarywithcollections")//book[starts-with(db:path(.), "librarywithcollections/books")]
+	- xquery collection("librarywithcollections")//book[starts-with(db:path(.), "librarywithcollections/books/fiction")]
+	(con filtro para dar la "coleccion" de ficcion)
+
+	BUSCAR POR ID(Sin collections):
+	- xquery for $l in /library/books/book[id=1] return $l
+	BUSCAR POR ID(Con collections):
+	- xquery collection("librarywithcollections")//book[starts-with(db:path(.), "librarywithcollections/books")][id=1]
+
+	CREAR(Sin collections):
+	- xquery insert node <book><id>6</id><title>Example</title><author>Tara Westover</author><publicationYear>2018</publicationYear><category>non-fiction</category><subcategory>memoir</subcategory><isbn>9780399590504</isbn><publisher>Random House</publisher><pages>350</pages><availableCopies>8</availableCopies></book> into /library/books
+	CREAR(Con collections):
+	- add to librarywithcollections/books/ C:\Users\Selene\Documents\AAD\Tema4\EjercicioFinalSGB\src\main\resources\com\spachecor\ejerciciofinalsgb\db\books\book6.xml
+
+	MODIFICAR(Sin collections):
+	- xquery replace node /library/books/book[id=6] with <book><id>6</id><title>EEEEEEEEE</title><author>Tara Westover</author><publicationYear>2018</publicationYear><category>non-fiction</category><subcategory>memoir</subcategory><isbn>9780399590504</isbn><publisher>Random House</publisher><pages>350</pages><availableCopies>8</availableCopies></book>
+	MODIFICAR(Con collections):
+	- xquery replace node collection("librarywithcollections")//book[starts-with(db:path(.), "librarywithcollections/books")][id=6] with <book><id>6</id><title>EEEEEEEEE</title><author>Tara Westover</author><publicationYear>2018</publicationYear><category>non-fiction</category><subcategory>memoir</subcategory><isbn>9780399590504</isbn><publisher>Random House</publisher><pages>350</pages><availableCopies>8</availableCopies></book>
+
+	ELIMINAR(Sin collections):
+	- xquery delete node /library/books/book[id=6]
+	ELIMINAR(Con collections):
+	- xquery delete node collection("librarywithcollections")//book[starts-with(db:path(.), "librarywithcollections/books")][id=6]
+	- delete librarywithcollections/books/book6.xml (eliminamos el recurso, porque aunque borremos el libro,
+	el recurso seguirá ahí, vacío, pero seguirá)
+
+	BUSCAR LA RTUA DE UN ARCHIVO POR ID(Con collections)
+	- xquery for $doc in collection('librarywithcollections')//book where $doc/id = 1 and starts-with(db:path($doc), 'librarywithcollections/books') return db:path($doc)

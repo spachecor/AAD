@@ -1,0 +1,99 @@
+package com.spachecor.ejerciciofinalsgb.model.entity;
+
+import java.time.LocalDate;
+
+/**
+ * Clase Prestamo que define las propiedades y el comportamiento del objeto Prestamo
+ * @author Selene
+ * @version 1.0
+ */
+public class Prestamo extends Entidad<Prestamo>{
+    private Integer id;
+    private Usuario usuario;
+    private Libro libro;
+    private LocalDate fechaPrestamo;
+    private LocalDate fechaDevolucion;
+    private Boolean devuelto;
+
+    public Prestamo() {}
+
+    public Prestamo(Integer id, Usuario usuario, Libro libro, LocalDate fechaPrestamo, LocalDate fechaDevolucion, Boolean devuelto) {
+        this.id = id;
+        this.usuario = usuario;
+        this.libro = libro;
+        this.fechaPrestamo = fechaPrestamo;
+        this.fechaDevolucion = fechaDevolucion;
+        this.devuelto = devuelto;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Libro getLibro() {
+        return libro;
+    }
+
+    public void setLibro(Libro libro) {
+        this.libro = libro;
+    }
+
+    public LocalDate getFechaPrestamo() {
+        return fechaPrestamo;
+    }
+
+    public void setFechaPrestamo(LocalDate fechaPrestamo) {
+        this.fechaPrestamo = fechaPrestamo;
+    }
+
+    public LocalDate getFechaDevolucion() {
+        return fechaDevolucion;
+    }
+
+    public void setFechaDevolucion(LocalDate fechaDevolucion) {
+        this.fechaDevolucion = fechaDevolucion;
+    }
+
+    public Boolean getDevuelto() {
+        return devuelto;
+    }
+
+    public void setDevuelto(Boolean devuelto) {
+        this.devuelto = devuelto;
+    }
+
+    @Override
+    public String toString() {
+        return "Prestamo{" +
+                "id=" + id +
+                ", usuario=" + usuario.getId() +
+                ", libro=" + libro.getId() +
+                ", fechaPrestamo=" + fechaPrestamo +
+                ", fechaDevolucion=" + fechaDevolucion +
+                ", devuelto=" + devuelto +
+                '}';
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    @Override
+    public int compareTo(Prestamo t) {
+        if(
+                this.usuario.equals(t.getUsuario())
+                        && this.libro.equals(t.getLibro())
+                        && this.fechaPrestamo.equals(t.getFechaPrestamo())
+                        && this.fechaDevolucion.equals(t.getFechaDevolucion())
+        )return 0;
+        else return -1;
+    }
+}

@@ -1,0 +1,12 @@
+<book>
+    <id>1</id>
+    <title>The Great Gatsby</title>
+    <author>F. Scott Fitzgerald</author>
+    <publicationYear>1925</publicationYear>
+    <category>fiction</category>
+    <subcategory>classics</subcategory>
+    <isbn>9780743273565</isbn>
+    <publisher>Scribner</publisher>
+    <pages>150</pages>
+    <availableCopies>5</availableCopies>
+</book>
