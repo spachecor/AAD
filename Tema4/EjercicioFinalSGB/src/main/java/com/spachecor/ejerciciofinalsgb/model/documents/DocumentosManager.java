@@ -48,7 +48,8 @@ public class DocumentosManager {
      */
     public static void exportarBBDD(String url){
         try(ClientSession session = BaseXSessionUtil.getSession()){
-            session.execute("export "+url);
+            System.out.println("export \""+url+"\"");
+            session.execute("export \""+url+"\"");
         }catch (Exception e){
             e.printStackTrace();
         }

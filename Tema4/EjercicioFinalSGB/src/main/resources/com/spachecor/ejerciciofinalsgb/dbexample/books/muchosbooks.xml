@@ -1,0 +1,50 @@
+<books>
+    <book>
+        <id>17</id>
+        <title>The Catcher in the Rye</title>
+        <author>J.D. Salinger</author>
+        <publicationYear>1951</publicationYear>
+        <category>fiction</category>
+        <subcategory>classics</subcategory>
+        <isbn>9780316769488</isbn>
+        <publisher>Little, Brown and Company</publisher>
+        <pages>277</pages>
+        <availableCopies>12</availableCopies>
+    </book>
+    <book>
+        <id>18</id>
+        <title>1984</title>
+        <author>George Orwell</author>
+        <publicationYear>1949</publicationYear>
+        <category>fiction</category>
+        <subcategory>dystopian</subcategory>
+        <isbn>9780451524935</isbn>
+        <publisher>Harcourt Brace Jovanovich</publisher>
+        <pages>328</pages>
+        <availableCopies>8</availableCopies>
+    </book>
+    <book>
+        <id>19</id>
+        <title>Brave New World</title>
+        <author>Aldous Huxley</author>
+        <publicationYear>1932</publicationYear>
+        <category>fiction</category>
+        <subcategory>dystopian</subcategory>
+        <isbn>9780060850524</isbn>
+        <publisher>HarperCollins</publisher>
+        <pages>311</pages>
+        <availableCopies>10</availableCopies>
+    </book>
+    <book>
+        <id>20</id>
+        <title>Fahrenheit 451</title>
+        <author>Ray Bradbury</author>
+        <publicationYear>1953</publicationYear>
+        <category>fiction</category>
+        <subcategory>dystopian</subcategory>
+        <isbn>9781451673319</isbn>
+        <publisher>Simon &amp; Schuster</publisher>
+        <pages>158</pages>
+        <availableCopies>7</availableCopies>
+    </book>
+</books>

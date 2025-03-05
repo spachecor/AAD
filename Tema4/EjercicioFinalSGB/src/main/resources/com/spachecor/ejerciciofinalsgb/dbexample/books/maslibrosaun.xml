@@ -1,0 +1,62 @@
+<books>
+    <book>
+        <id>21</id>
+        <title>The Name of the Wind</title>
+        <author>Patrick Rothfuss</author>
+        <publicationYear>2007</publicationYear>
+        <category>fantasy</category>
+        <subcategory>epic fantasy</subcategory>
+        <isbn>9780756404741</isbn>
+        <publisher>DAW Books</publisher>
+        <pages>662</pages>
+        <availableCopies>8</availableCopies>
+    </book>
+    <book>
+        <id>22</id>
+        <title>The Hobbit</title>
+        <author>J.R.R. Tolkien</author>
+        <publicationYear>1937</publicationYear>
+        <category>fantasy</category>
+        <subcategory>classic fantasy</subcategory>
+        <isbn>9780345339683</isbn>
+        <publisher>Ballantine Books</publisher>
+        <pages>310</pages>
+        <availableCopies>15</availableCopies>
+    </book>
+    <book>
+        <id>23</id>
+        <title>A Game of Thrones</title>
+        <author>George R.R. Martin</author>
+        <publicationYear>1996</publicationYear>
+        <category>fantasy</category>
+        <subcategory>epic fantasy</subcategory>
+        <isbn>9780553103540</isbn>
+        <publisher>Bantam Books</publisher>
+        <pages>694</pages>
+        <availableCopies>5</availableCopies>
+    </book>
+    <book>
+        <id>24</id>
+        <title>The Lies of Locke Lamora</title>
+        <author>Scott Lynch</author>
+        <publicationYear>2006</publicationYear>
+        <category>fantasy</category>
+        <subcategory>high fantasy</subcategory>
+        <isbn>9780553588941</isbn>
+        <publisher>Random House</publisher>
+        <pages>541</pages>
+        <availableCopies>6</availableCopies>
+    </book>
+    <book>
+        <id>25</id>
+        <title>The Priory of the Orange Tree</title>
+        <author>Samantha Shannon</author>
+        <publicationYear>2019</publicationYear>
+        <category>fantasy</category>
+        <subcategory>epic fantasy</subcategory>
+        <isbn>9781635570298</isbn>
+        <publisher>Bloomsbury Publishing</publisher>
+        <pages>848</pages>
+        <availableCopies>4</availableCopies>
+    </book>
+</books>
