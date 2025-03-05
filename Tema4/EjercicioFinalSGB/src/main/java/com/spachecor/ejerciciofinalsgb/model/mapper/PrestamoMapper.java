@@ -52,6 +52,7 @@ public class PrestamoMapper implements Mapper<Prestamo> {
                 "<bookId>"+prestamo.getLibro().getId()+"</bookId>" +
                 "<loanDate>"+prestamo.getFechaPrestamo()+"</loanDate>" +
                 "<returnDate>"+prestamo.getFechaDevolucion()+"</returnDate>" +
+                "<returned>"+prestamo.getDevuelto()+"</returned>" +
                 "</loan>";
     }
 }

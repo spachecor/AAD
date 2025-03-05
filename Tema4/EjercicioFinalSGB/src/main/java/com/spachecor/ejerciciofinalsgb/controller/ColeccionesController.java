@@ -2,6 +2,8 @@ package com.spachecor.ejerciciofinalsgb.controller;
 
 import com.spachecor.ejerciciofinalsgb.controller.service.FXService;
 import com.spachecor.ejerciciofinalsgb.model.collections.ColeccionesManager;
+import com.spachecor.ejerciciofinalsgb.model.dao.LibroDAOGenericImpl;
+import com.spachecor.ejerciciofinalsgb.model.entity.Libro;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,6 +14,7 @@ import javafx.scene.control.TextField;
 
 import javax.swing.*;
 import java.util.Arrays;
+import java.util.List;
 
 public class ColeccionesController {
     @FXML
@@ -29,9 +32,9 @@ public class ColeccionesController {
 
     @FXML
     protected void initialize() {
-        this.cargarColeccionesYSubColecciones();
         this.coleccionesTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()));
         this.subColeccionesTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()));
+        this.cargarColeccionesYSubColecciones();
         this.coleccionesTableView.setSelectionModel(null);
     }
     @FXML
@@ -46,7 +49,17 @@ public class ColeccionesController {
                         && !this.nombreTextField.getText().isEmpty()
                         && !this.subColeccionesTableView.getSelectionModel().getSelectedItem().equals(this.nombreTextField.getText())
         ){
-            ColeccionesManager.modificarSubcoleccion(this.nombreTextField.getText(), this.subColeccionesTableView.getSelectionModel().getSelectedItem());
+            //1º modificamos las categorias en los libros para que coincida
+            LibroDAOGenericImpl libroDao = new LibroDAOGenericImpl();
+            List<Libro> librosPorCategoria = libroDao.obtenerLibrosPorCategoria(this.subColeccionesTableView.getSelectionModel().getSelectedItem());
+            if(!librosPorCategoria.isEmpty()){
+                for(Libro libro : librosPorCategoria){
+                    libro.setCategoria(this.nombreTextField.getText());
+                    libroDao.actualizar(libro);
+                }
+            }
+            //2º modificamos la ruta para cambiar el nombre de la coleccion
+            ColeccionesManager.modificarTodosLosMiembrosSubcoleccion(this.nombreTextField.getText(), this.subColeccionesTableView.getSelectionModel().getSelectedItem());
             this.limpiarCampos();
             this.cargarColeccionesYSubColecciones();
         }else JOptionPane.showMessageDialog(null, "Seleccione una subcoleccion y no olvide poner el nuevo nombre(Debe ser diferente al anterior)");
@@ -68,8 +81,8 @@ public class ColeccionesController {
         this.subColeccionesTableView.getItems().clear();
         this.colecciones = FXCollections.observableArrayList(Arrays.asList(ColeccionesManager.listarColecciones()));
         this.subColecciones = FXCollections.observableArrayList(Arrays.asList(ColeccionesManager.listarSubColeccionesLibros()));
-        this.coleccionesTableView.setItems(colecciones);
-        this.subColeccionesTableView.setItems(subColecciones);
+        this.coleccionesTableView.setItems(this.colecciones);
+        this.subColeccionesTableView.setItems(this.subColecciones);
     }
     private void limpiarCampos(){
         this.nombreTextField.setText("");

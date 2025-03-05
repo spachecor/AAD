@@ -1,7 +1,13 @@
 package com.spachecor.ejerciciofinalsgb.model.repository;
 
+import com.spachecor.ejerciciofinalsgb.model.documents.DocumentosManager;
+import com.spachecor.ejerciciofinalsgb.model.entity.Libro;
+import com.spachecor.ejerciciofinalsgb.model.entity.Prestamo;
+import com.spachecor.ejerciciofinalsgb.model.entity.Usuario;
+import com.thoughtworks.xstream.core.BaseException;
 import org.basex.api.client.ClientSession;
 
+import java.awt.print.Book;
 import java.io.IOException;
 import java.nio.file.Paths;
 
@@ -16,16 +22,19 @@ public class BaseXSessionUtil {
     private static final String USER = "admin";
     private static final String PASSWORD = "admin";
     public static final String DATABASE = "librarywithcollections";
-    public static final String URL_DATABASE_ORIGINAL = Paths.get("src/main/resources/com/spachecor/gestorbiblioteca/db/library.xml").toAbsolutePath().toString();
 
     /**
      * Funcion que crea la sesion para acceder a la base de datos XML nativa con BaseX y abre la base de datos concreta.
      * @return El objeto ClientSession necesario y configurado para hacer consultas a la base de datos
-     * @throws IOException Excepcion que puede generar
      */
     public static ClientSession getSession() {
         try{
             ClientSession clientSession = new ClientSession(BaseXSessionUtil.HOST, BaseXSessionUtil.PORT, BaseXSessionUtil.USER, BaseXSessionUtil.PASSWORD);
+            //si la bbdd no existe, la creamos y le metemos algunas entidades de ejemplo
+            if(!Boolean.parseBoolean(clientSession.query("db:exists('"+BaseXSessionUtil.DATABASE+"')").execute())){
+                clientSession.execute("create db "+BaseXSessionUtil.DATABASE);
+                BaseXSessionUtil.crearDatosDePrueba();
+            }
             clientSession.execute("open "+BaseXSessionUtil.DATABASE);
             return clientSession;
         }catch (IOException e){
@@ -55,11 +64,19 @@ public class BaseXSessionUtil {
     }
 
     /**
-     * Funcion que persiste en el xml que originó la base de datos
-     * @param session El objeto ClientSession para ejecutar la persistencia de el xml padre
-     * @throws IOException Excepcion que puede lanzar
+     * Funcion que genera una serie de entidades de prueba
      */
-    public static void persistirEnBBDDOriginal(ClientSession session) throws IOException {
-        session.execute("export "+BaseXSessionUtil.URL_DATABASE_ORIGINAL);
+    private static void crearDatosDePrueba(){
+        DocumentosManager.agregarDocumento(Libro.class, Paths.get("src/main/resources/com/spachecor/ejerciciofinalsgb/dbexample/books/book1.xml").toAbsolutePath().toString(), "fiction");
+        DocumentosManager.agregarDocumento(Libro.class, Paths.get("src/main/resources/com/spachecor/ejerciciofinalsgb/dbexample/books/book2.xml").toAbsolutePath().toString(), "fiction");
+        DocumentosManager.agregarDocumento(Libro.class, Paths.get("src/main/resources/com/spachecor/ejerciciofinalsgb/dbexample/books/book3.xml").toAbsolutePath().toString(), "nonfiction");
+        DocumentosManager.agregarDocumento(Libro.class, Paths.get("src/main/resources/com/spachecor/ejerciciofinalsgb/dbexample/books/book4.xml").toAbsolutePath().toString(), "nonfiction");
+        DocumentosManager.agregarDocumento(Libro.class, Paths.get("src/main/resources/com/spachecor/ejerciciofinalsgb/dbexample/books/book5.xml").toAbsolutePath().toString(), "children");
+        DocumentosManager.agregarDocumento(Usuario.class, Paths.get("src/main/resources/com/spachecor/ejerciciofinalsgb/dbexample/users/user1.xml").toAbsolutePath().toString(), null);
+        DocumentosManager.agregarDocumento(Usuario.class, Paths.get("src/main/resources/com/spachecor/ejerciciofinalsgb/dbexample/users/user2.xml").toAbsolutePath().toString(), null);
+        DocumentosManager.agregarDocumento(Usuario.class, Paths.get("src/main/resources/com/spachecor/ejerciciofinalsgb/dbexample/users/user3.xml").toAbsolutePath().toString(), null);
+        DocumentosManager.agregarDocumento(Prestamo.class, Paths.get("src/main/resources/com/spachecor/ejerciciofinalsgb/dbexample/loans/loan1.xml").toAbsolutePath().toString(), null);
+        DocumentosManager.agregarDocumento(Prestamo.class, Paths.get("src/main/resources/com/spachecor/ejerciciofinalsgb/dbexample/loans/loan2.xml").toAbsolutePath().toString(), null);
+        DocumentosManager.agregarDocumento(Prestamo.class, Paths.get("src/main/resources/com/spachecor/ejerciciofinalsgb/dbexample/loans/loan3.xml").toAbsolutePath().toString(), null);
     }
 }

@@ -70,14 +70,7 @@ public class Usuario extends Entidad<Usuario>{
 
     @Override
     public String toString() {
-        return "Usuario{" +
-                "id=" + id +
-                ", dni='" + dni + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", email='" + email + '\'' +
-                ", telefono='" + telefono + '\'' +
-                ", direccion='" + direccion + '\'' +
-                '}';
+        return this.nombre;
     }
 
     @Override

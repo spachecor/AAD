@@ -3,6 +3,9 @@ package com.spachecor.ejerciciofinalsgb.model.dao;
 import com.spachecor.ejerciciofinalsgb.model.entity.Libro;
 import com.spachecor.ejerciciofinalsgb.model.mapper.LibroMapper;
 import com.spachecor.ejerciciofinalsgb.model.mapper.Mapper;
+import com.spachecor.ejerciciofinalsgb.model.repository.BaseXSessionUtil;
+
+import java.util.List;
 
 /**
  * Clase LibroDAOGenericImpl que se encarga de definir el Mapper, el CollectionPath y el EntityTag relacionados con el
@@ -31,5 +34,11 @@ public class LibroDAOGenericImpl extends EntidadGenericDAOImpl<Libro> {
     @Override
     protected String getEntityTag() {
         return "book";
+    }
+
+    public List<Libro> obtenerLibrosPorCategoria(String categoria) {
+        String xquery = "collection('"+BaseXSessionUtil.DATABASE+"')//"+this.getEntityTag()+"[starts-with(db:path(.), '"+this.getCollectionPath()+"/"+categoria+"')]";
+        System.out.println(xquery);
+        return super.getListaAPartirDeQuery(xquery);
     }
 }

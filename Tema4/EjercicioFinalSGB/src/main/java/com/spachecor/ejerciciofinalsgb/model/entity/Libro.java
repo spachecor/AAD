@@ -110,18 +110,7 @@ public class Libro extends Entidad<Libro> {
 
     @Override
     public String toString() {
-        return "Libro{" +
-                "id=" + id +
-                ", titulo='" + titulo + '\'' +
-                ", autor='" + autor + '\'' +
-                ", anioPublicacion=" + anioPublicacion +
-                ", categoria='" + categoria + '\'' +
-                ", subCategoria='" + subCategoria + '\'' +
-                ", isbn=" + isbn +
-                ", editorial='" + editorial + '\'' +
-                ", numeroPaginas=" + numeroPaginas +
-                ", numeroCopiasDisponibles=" + numeroCopiasDisponibles +
-                '}';
+        return this.titulo;
     }
 
     @Override

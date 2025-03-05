@@ -14,12 +14,14 @@ public class FXService {
     public static final String USUARIOS_VIEW;
     public static final String PRESTAMOS_VIEW;
     public static final String COLECCIONES_VIEW;
+    public static final String DOCUMENTOS_VIEW;
     static {
         MENU_VIEW = "menu-view.fxml";
         LIBROS_VIEW = "libros-view.fxml";
         USUARIOS_VIEW = "usuarios-view.fxml";
         PRESTAMOS_VIEW = "prestamos-view.fxml";
         COLECCIONES_VIEW = "colecciones-view.fxml";
+        DOCUMENTOS_VIEW = "documentos-view.fxml";
     }
     /**
      * Método que se encarga de cambiar las ventanas según el nombre de la vista que le pasemos.

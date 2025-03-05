@@ -22,4 +22,8 @@ public class MenuController {
     private void onClickColeccionesButton(){
         FXService.cambiarVentana(FXService.COLECCIONES_VIEW);
     }
+    @FXML
+    private void onClickGestionarDocumentosButton(){
+        FXService.cambiarVentana(FXService.DOCUMENTOS_VIEW);
+    }
 }

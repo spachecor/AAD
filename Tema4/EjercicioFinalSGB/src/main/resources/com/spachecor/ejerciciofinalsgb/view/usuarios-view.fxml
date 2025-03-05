@@ -1,11 +1,248 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #DDD0C8;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.spachecor.ejerciciofinalsgb.controller.UsuariosController">
-
-</VBox>
+<HBox alignment="CENTER" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #DDD0C8;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.spachecor.ejerciciofinalsgb.controller.UsuariosController">
+    <children>
+        <VBox prefHeight="720.0" prefWidth="340.0">
+            <children>
+                <VBox alignment="CENTER" prefHeight="50.0" prefWidth="340.0">
+                    <children>
+                        <Label text="Usuarios" textFill="#323232">
+                            <font>
+                                <Font name="Times New Roman Bold" size="36.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+                <VBox alignment="CENTER" prefHeight="670.0" prefWidth="340.0">
+                    <children>
+                        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="340.0">
+                            <children>
+                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0">
+                                    <children>
+                                        <Label text="ID" textFill="#323232">
+                                            <font>
+                                                <Font name="Times New Roman Bold" size="14.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="190.0">
+                                    <children>
+                                        <TextField fx:id="idTextField" promptText="Id del usuario">
+                                            <font>
+                                                <Font name="Times New Roman" size="14.0" />
+                                            </font>
+                                        </TextField>
+                                    </children>
+                                    <padding>
+                                        <Insets right="20.0" />
+                                    </padding>
+                                </VBox>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="320.0" prefHeight="50.0" prefWidth="340.0">
+                            <children>
+                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0">
+                                    <children>
+                                        <Label text="DNI" textFill="#323232">
+                                            <font>
+                                                <Font name="Times New Roman Bold" size="14.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="190.0">
+                                    <children>
+                                        <TextField fx:id="dniTextField" promptText="DNI del usuario">
+                                            <font>
+                                                <Font name="Times New Roman" size="14.0" />
+                                            </font>
+                                        </TextField>
+                                    </children>
+                                    <padding>
+                                        <Insets right="20.0" />
+                                    </padding>
+                                </VBox>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="295.0" prefHeight="50.0" prefWidth="340.0">
+                            <children>
+                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0">
+                                    <children>
+                                        <Label text="NOMBRE" textFill="#323232">
+                                            <font>
+                                                <Font name="Times New Roman Bold" size="14.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="190.0">
+                                    <children>
+                                        <TextField fx:id="nombreTextField" promptText="Nombre del usuario">
+                                            <font>
+                                                <Font name="Times New Roman" size="14.0" />
+                                            </font>
+                                        </TextField>
+                                    </children>
+                                    <padding>
+                                        <Insets right="20.0" />
+                                    </padding>
+                                </VBox>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="370.0" prefHeight="50.0" prefWidth="340.0">
+                            <children>
+                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0">
+                                    <children>
+                                        <Label text="EMAIL" textFill="#323232">
+                                            <font>
+                                                <Font name="Times New Roman Bold" size="14.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="190.0">
+                                    <children>
+                                        <TextField fx:id="emailTextField" promptText="Email de usuario">
+                                            <font>
+                                                <Font name="Times New Roman" size="14.0" />
+                                            </font>
+                                        </TextField>
+                                    </children>
+                                    <padding>
+                                        <Insets right="20.0" />
+                                    </padding>
+                                </VBox>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="345.0" prefHeight="50.0" prefWidth="340.0">
+                            <children>
+                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0">
+                                    <children>
+                                        <Label text="TELÉFONO" textAlignment="CENTER" textFill="#323232">
+                                            <font>
+                                                <Font name="Times New Roman Bold" size="14.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="190.0">
+                                    <children>
+                                        <TextField fx:id="telefonoTextField" promptText="Teléfono del usuario">
+                                            <font>
+                                                <Font name="Times New Roman" size="14.0" />
+                                            </font>
+                                        </TextField>
+                                    </children>
+                                    <padding>
+                                        <Insets right="20.0" />
+                                    </padding>
+                                </VBox>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="370.0" prefHeight="50.0" prefWidth="340.0">
+                            <children>
+                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0">
+                                    <children>
+                                        <Label text="DIRECCIÓN" textFill="#323232">
+                                            <font>
+                                                <Font name="Times New Roman Bold" size="14.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="190.0">
+                                    <children>
+                                        <TextField fx:id="direccionTextField" promptText="Dirección del usuario">
+                                            <font>
+                                                <Font name="Times New Roman" size="14.0" />
+                                            </font>
+                                        </TextField>
+                                    </children>
+                                    <padding>
+                                        <Insets right="20.0" />
+                                    </padding>
+                                </VBox>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="75.0" prefWidth="200.0" spacing="20.0">
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#onClickAniadirButton" style="-fx-background-color: #323232;" text="Añadir" textFill="#ddd0c8">
+                                    <font>
+                                        <Font name="Times New Roman Bold" size="18.0" />
+                                    </font>
+                                    <padding>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </padding></Button>
+                                <Button layoutX="142.0" layoutY="40.0" mnemonicParsing="false" onAction="#onClickModificarButton" style="-fx-background-color: #323232;" text="Modificar" textFill="#ddd0c8">
+                                    <font>
+                                        <Font name="Times New Roman Bold" size="18.0" />
+                                    </font>
+                                    <padding>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </padding>
+                                </Button>
+                                <Button layoutX="104.0" layoutY="40.0" mnemonicParsing="false" onAction="#onClickEliminarButton" style="-fx-background-color: #323232;" text="Eliminar" textFill="#ddd0c8">
+                                    <font>
+                                        <Font name="Times New Roman Bold" size="18.0" />
+                                    </font>
+                                    <padding>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </padding>
+                                </Button>
+                            </children>
+                     <VBox.margin>
+                        <Insets top="100.0" />
+                     </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="558.0" prefHeight="75.0" prefWidth="200.0" spacing="30.0">
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#onClickBuscarButton" style="-fx-background-color: #323232;" text="Buscar&#10;(Por ID)" textAlignment="CENTER" textFill="#ddd0c8">
+                                    <font>
+                                        <Font name="Times New Roman Bold" size="18.0" />
+                                    </font>
+                                    <padding>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </padding>
+                                </Button>
+                                <Button layoutX="104.0" layoutY="40.0" mnemonicParsing="false" onAction="#onClickListarButton" style="-fx-background-color: #323232;" text="Listar" textFill="#ddd0c8">
+                                    <font>
+                                        <Font name="Times New Roman Bold" size="18.0" />
+                                    </font>
+                                    <padding>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </padding>
+                                </Button>
+                                <Button layoutX="194.0" layoutY="28.0" mnemonicParsing="false" onAction="#onClickSalirButton" style="-fx-background-color: #323232;" text="Salir" textFill="#ddd0c8">
+                                    <font>
+                                        <Font name="Times New Roman Bold" size="18.0" />
+                                    </font>
+                                    <padding>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </padding>
+                                </Button>
+                            </children>
+                        </HBox>
+                    </children></VBox>
+            </children></VBox>
+        <VBox prefHeight="720.0" prefWidth="940.0">
+            <children>
+                <TableView fx:id="usuarioTableView" onMouseClicked="#onClickUsuariosTableView" prefHeight="720.0" prefWidth="940.0">
+                    <columns>
+                        <TableColumn fx:id="idTableColumn" prefWidth="50.0" text="ID" />
+                        <TableColumn fx:id="dniTableColumn" prefWidth="150.0" text="DNI" />
+                        <TableColumn fx:id="nombreTableColumn" prefWidth="150.0" text="NOMBRE" />
+                        <TableColumn fx:id="emailTableColumn" prefWidth="150.0" text="EMAIL" />
+                        <TableColumn fx:id="telefonoTableColumn" prefWidth="150.0" text="TELÉFONO" />
+                        <TableColumn fx:id="direccionTableColumn" prefWidth="275.0" text="DIRECCIÓN" />
+                    </columns>
+                </TableView>
+            </children>
+        </VBox>
+    </children>
+</HBox>

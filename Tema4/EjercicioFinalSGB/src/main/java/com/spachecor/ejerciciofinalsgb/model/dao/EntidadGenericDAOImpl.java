@@ -51,10 +51,91 @@ public abstract class EntidadGenericDAOImpl<T extends Entidad> implements Generi
 
     @Override
     public List<T> listar() {
+        String xquery = "collection('"+BaseXSessionUtil.DATABASE+"')//"+this.getEntityTag()+"[starts-with(db:path(.), '"+this.getCollectionPath()+"')]";
+        return this.getListaAPartirDeQuery(xquery);
+    }
+
+    @Override
+    public Optional<T> buscarPorId(Integer id) {
+        try(ClientSession session = BaseXSessionUtil.getSession()){
+            String xquery = "collection('"+BaseXSessionUtil.DATABASE+"')//"+this.getEntityTag()+"[starts-with(db:path(.), '"+this.getCollectionPath()+"')]"+"[id="+id+"]";
+            //String xquery = "for $t in "+this.getCollectionPath()+"/"+this.getEntityTag()+"[id="+id+"] return $t";
+            String resultado = session.query(xquery).execute();
+            //si ha habido resultado:
+            if (resultado != null && !resultado.trim().isEmpty()) {
+                //asumimos que el xml que viene esta bien formado porque viene solo un resultado
+                return Optional.of(getMapper().deXML(resultado));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        //si no tenemos resultado, devolvemos un Optional vacío
+        return Optional.empty();
+    }
+
+    @Override
+    public void crear(String url, String subColeccion) {
+        try (ClientSession session = BaseXSessionUtil.getSession()) {
+            //creamos el backup antes que nada para realizar una "gestion de transacciones"
+            BaseXSessionUtil.iniciarBackup(session);
+            //mantenemos la agregación del documento en esta clase en vez de llamar a DocumentosManger para poder gestionarla y hacer backup en caso necesario
+            String insertQuery = "add to "+this.getCollectionPath()+ ((subColeccion!=null&&!subColeccion.isEmpty())?"/"+subColeccion:"") +"/ "+url;
+            try{
+                session.execute(insertQuery);
+            }catch (Exception e){
+                //si sale mal, restauramos al backup y relanzamos la excepcion
+                BaseXSessionUtil.restaurarBackup(session);
+                throw e;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void actualizar(T t) {
+        try (ClientSession session = BaseXSessionUtil.getSession()) {
+            //creamos el backup antes que nada para realizar una "gestion de transacciones"
+            BaseXSessionUtil.iniciarBackup(session);
+            String xml = getMapper().aXML(t);
+            String updateQuery = "replace node collection('"+BaseXSessionUtil.DATABASE+"')//"+this.getEntityTag()+"[starts-with(db:path(.), '"+this.getCollectionPath()+"')][id="+t.getId()+"] with "+xml;
+            try{
+                session.query(updateQuery).execute();
+            }catch (Exception e){
+                //si sale mal, restauramos al backup y relanzamos la excepcion
+                BaseXSessionUtil.restaurarBackup(session);
+                throw e;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void eliminar(T t) {
+        try (ClientSession session = BaseXSessionUtil.getSession()) {
+            //creamos el backup antes que nada para realizar una "gestion de transacciones"
+            BaseXSessionUtil.iniciarBackup(session);
+            String deleteQuery = "delete node collection('"+BaseXSessionUtil.DATABASE+"')//"+this.getEntityTag()+"[starts-with(db:path(.), '"+this.getCollectionPath()+"')][id="+t.getId()+"]";
+            //eliminamos tambien el recurso, eliminanto to el rastro de nuestro registro
+            String ruta = this.obtenerRutaEntidad(t);
+            String deleteResource = "delete "+ruta;
+            try{
+                session.query(deleteQuery).execute();
+                session.execute(deleteResource);
+            }catch (Exception e){
+                //si sale mal, restauramos al backup y relanzamos la excepcion
+                BaseXSessionUtil.restaurarBackup(session);
+                throw e;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    protected List<T> getListaAPartirDeQuery(String query) {
         List<T> lista = new ArrayList<>();
         try(ClientSession session = BaseXSessionUtil.getSession()){
-            String xquery = "collection('"+BaseXSessionUtil.DATABASE+"')//"+this.getEntityTag()+"[starts-with(db:path(.), '"+this.getCollectionPath()+"')]";
-            String resultado = session.query(xquery).execute();
+            String resultado = session.query(query).execute();
             //si no hay resultados, se devuelve la lista vacia
             if (resultado == null || resultado.trim().isEmpty()) {
                 return lista;
@@ -87,83 +168,13 @@ public abstract class EntidadGenericDAOImpl<T extends Entidad> implements Generi
         }
         return lista;
     }
-
-    @Override
-    public Optional<T> buscarPorId(Integer id) {
+    public String obtenerRutaEntidad(T t){
+        String url = null;
         try(ClientSession session = BaseXSessionUtil.getSession()){
-            String xquery = "collection('"+BaseXSessionUtil.DATABASE+"')//"+this.getEntityTag()+"[starts-with(db:path(.), '"+this.getCollectionPath()+"')]"+"[id="+id+"]";
-            //String xquery = "for $t in "+this.getCollectionPath()+"/"+this.getEntityTag()+"[id="+id+"] return $t";
-            String resultado = session.query(xquery).execute();
-            //si ha habido resultado:
-            if (resultado != null && !resultado.trim().isEmpty()) {
-                //asumimos que el xml que viene esta bien formado porque viene solo un resultado
-                return Optional.of(getMapper().deXML(resultado));
-            }
+            url = session.query("for $doc in collection('"+BaseXSessionUtil.DATABASE+"')//"+this.getEntityTag()+" where $doc/id = "+t.getId()+" and starts-with(db:path($doc), '"+this.getCollectionPath()+"') return db:path($doc)").execute();
         }catch (Exception e){
             e.printStackTrace();
         }
-        //si no tenemos resultado, devolvemos un Optional vacío
-        return Optional.empty();
-    }
-
-    @Override
-    public void crear(String url, String subColeccion) {
-        try (ClientSession session = BaseXSessionUtil.getSession()) {
-            //creamos el backup antes que nada para realizar una "gestion de transacciones"
-            BaseXSessionUtil.iniciarBackup(session);
-            String insertQuery = "add to "+this.getCollectionPath()+ ((subColeccion!=null&&!subColeccion.isEmpty())?"/"+subColeccion:"") +"/ "+url;
-            try{
-                session.execute(insertQuery);
-            }catch (Exception e){
-                //si sale mal, restauramos al backup y relanzamos la excepcion
-                BaseXSessionUtil.restaurarBackup(session);
-                throw e;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void actualizar(T t) {
-        try (ClientSession session = BaseXSessionUtil.getSession()) {
-            //creamos el backup antes que nada para realizar una "gestion de transacciones"
-            BaseXSessionUtil.iniciarBackup(session);
-            String xml = getMapper().aXML(t);
-            String updateQuery = "replace node collection('"+BaseXSessionUtil.DATABASE+"')//"+this.getEntityTag()+"[starts-with(db:path(.), '"+this.getCollectionPath()+"')][id="+t.getId()+"] with "+xml;
-            try{
-                session.query(updateQuery).execute();
-                //todo falta persistir en el documento original
-            }catch (Exception e){
-                //si sale mal, restauramos al backup y relanzamos la excepcion
-                BaseXSessionUtil.restaurarBackup(session);
-                throw e;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void eliminar(T t) {
-        try (ClientSession session = BaseXSessionUtil.getSession()) {
-            //creamos el backup antes que nada para realizar una "gestion de transacciones"
-            BaseXSessionUtil.iniciarBackup(session);
-            String deleteQuery = "delete node collection('"+BaseXSessionUtil.DATABASE+"')//"+this.getEntityTag()+"[starts-with(db:path(.), '"+this.getCollectionPath()+"')][id="+t.getId()+"]";
-            //String deleteQuery = "delete node " + this.getCollectionPath() + "/" + this.getEntityTag() + "[id='" + t.getId() + "']";
-            //eliminamos tambien el recurso, eliminanto to el rastro de nuestro registro
-            String deleteResource = "delete "+this.getCollectionPath()+"/"+this.getEntityTag()+t.getId()+".xml";
-            try{
-                session.query(deleteQuery).execute();
-                session.execute(deleteResource);
-                //todo falta eliminar el documento del proyecto
-            }catch (Exception e){
-                //si sale mal, restauramos al backup y relanzamos la excepcion
-                BaseXSessionUtil.restaurarBackup(session);
-                throw e;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        return url;
     }
 }

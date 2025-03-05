@@ -17,6 +17,9 @@ public class Test {
         for (Libro libro : libros) {
             System.out.println(libro);
         }
+        Libro libro = libroDAO.buscarPorId(1).get();
+        libro.setTitulo("Ejemplo");
+        libroDAO.actualizar(libro);
         UsuarioDAOGenericImpl usuarioDAO = new UsuarioDAOGenericImpl();
         List<Usuario> usuarios = usuarioDAO.listar();
         for (Usuario usuario : usuarios) {
